@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Analytics Template</title>
+</head>
+<style type="text/css">
+	*{
+			box-sizing: border-box;
+		}
+		html, body{
+			font-size: 10px;
+			margin: 0;
+			padding: 0;
+			/*height: 100%;*/
+		}
+		/*body{
+			background-color: #ffdddd;
+		}*/
+		a{
+			text-decoration: none;
+			color: black;
+		}
+		ul{
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+		}
+		div.overlay{
+			position: fixed;
+			left: 0;
+			right: 0;
+			width: 100%;
+			height: 100%;
+			display: none;
+			background-color: rgba(0,0,0,0.4);
+		}
+		nav{
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			background-color: black;
+			z-index: 33;
+		}
+		nav ul.nav-list{
+			display: flex;
+			justify-content: space-between;
+		}
+		nav ul.nav-list li{
+			font-size: 1.8rem;
+			color: white;
+			padding: 10px 16px;
+		}
+		nav ul.nav-list li.toggler{
+			cursor: pointer;
+			display: none;
+		}
+		nav ul.nav-list li.toggler:hover{
+			color: darkgrey;
+		}
+		nav ul.nav-list li span{
+			margin-right: 10px;
+			display: inline-block;
+			border: 1px solid white;
+			padding: 5px 4px;
+		}
+		aside{
+			margin-top: 41px;
+			border: 1px solid teal;
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 23%;
+			height: 100%;
+			z-index: 40;
+			background-color: white;
+			overflow: hidden;
+			transition: width 0.5s;
+		}
+		aside div.aside-head{
+			display: flex;
+			align-items: center;
+			padding-left: 15px;
+			padding-top: 8px;
+		}
+		div.aside-head img{
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+		}
+		div.aside-head div.welc{
+			margin-left: 45px;
+		}
+		div.aside-head div.welc p{
+			font-size: 1.6rem;
+			margin-bottom: 10px;
+		}
+		div.welc div.icont div.ic{
+			display: inline-block;
+			padding: 15px 20px;
+		}
+		div.welc div.icont div.ic:hover{
+			background-color: lightgrey;
+		}
+		div.welc div.icont div.ic span{
+			display: inline-block;
+			border: 1px solid black;
+			padding: 4px 3px;
+		}
+		aside hr{
+			margin: 20px 0;
+			opacity: 0.3;
+		}
+		div.aside-body h1{
+			font-size: 2rem;
+			padding-left: 15px;
+			margin: 0;
+			font-weight: normal;
+		}
+		div.aside-body ul.cat-list{
+			margin-top: 15px;
+		}
+		div.aside-body ul.cat-list li{
+			padding: 8px 19px;
+			cursor: pointer;
+		}
+		div.aside-body ul.cat-list li p{
+			margin: 0;
+			font-size: 1.6rem;
+			color: black;
+		}
+		div.aside-body ul.cat-list li.active{
+			background-color: #2196f3;
+		}
+		div.aside-body ul.cat-list li.active p{
+			color: white;
+		}
+		div.aside-body ul.cat-list li:hover{
+			background-color: lightgrey;
+		}
+		div.aside-body ul.cat-list li span{
+			display: inline-block;
+			border: 1px solid black;
+			padding: 4px 3px;
+			margin-right: 10px;
+		}
+		div.aside-body ul.cat-list li.active span{
+			border-color: white;
+		}
+		div.aside-body ul.cat-list li.active:hover p{
+			color: black;
+		}
+		div.aside-body ul.cat-list li.active:hover span{
+			border-color: black;
+		}
+		div.aside-body ul.cat-list li.close{
+			background-color: #616161;
+			padding: 18px 19px;
+			display: none;
+		}
+		div.aside-body ul.cat-list li.close p{
+			color: white;
+		}
+		div.aside-body ul.cat-list li.close p span{
+			border-color: white;
+		}
+		div.aside-body ul.cat-list li.close:hover{
+			background-color: black;
+		}
+		div.aside-body ul.cat-list li.close:hover p{
+			color: white;
+		}
+		div.aside-body ul.cat-list li.close:hover p span{
+			border-color: white;
+		}
+		main{
+			margin-left: 23%;
+			margin-top: 41px;
+			background-color: #f1f1f1;
+		}
+		section.dashboard{
+			margin: 0 18px;
+			padding: 18px 0;
+		}
+		section.dashboard h1{
+			font-size: 1.9rem;
+		}
+		section.dashboard h1 span{
+			display: inline-block;
+			border: 1px solid black;
+			padding: 5px 4px;
+			margin-right: 3px;
+		}
+		section.dashboard div.sect-cont{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		div.sect-cont div.sect{
+			width: 23%;
+			background-color: lightgrey;
+			padding: 18px 16px;
+		}
+		div.sect div.top-sec{
+			display: flex;
+			justify-content: space-between;
+		}
+		div.top-sec span.box{
+			display: inline-block;
+			border: 1px solid white;
+			padding: 15px 12px;
+		}
+		div.top-sec span.num{
+			font-size: 2.4rem;
+			color: white;
+		}
+		div.sect-cont div.sect p{
+			font-size: 2.1rem;
+			margin-bottom: 6px;
+			margin-top: 28px;
+			color: white;
+		}
+		section.rnf{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			margin: 10px 18px;
+		}
+		section.rnf div.regions{
+			width: 30%;
+		}
+		div.regions img{
+			width: 100%;
+			height: 33vh;
+		}
+		div.regions h2{
+			font-size: 2rem;
+			font-weight: normal;
+			margin-top: 6px;
+			margin-bottom: 12px;
+		}
+		section.rnf div.feeds{
+			width: 67.5%;
+		}
+		div.feeds h2{
+			font-size: 2rem;
+			font-weight: normal;
+			margin-top: 6px;
+			margin-bottom: 12px;
+		}
+		div.feeds ul.feed-list li{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			/*border: 1px solid teal;*/
+			padding: 12px 18px;
+		}
+		div.feeds ul.feed-list li:nth-child(odd){
+			background-color: white;
+		}
+		ul.feed-list li p{
+			margin: 0;
+			font-size: 1.6rem;
+		}
+		ul.feed-list li p.right-feed{
+			text-align: right;
+		}
+		ul.feed-list li p.left-feed{
+			width: 65%;
+		}
+		ul.feed-list li p.left-feed span{
+			display: inline-block;
+			border: 1px solid black;
+			padding: 4px 3px;
+			margin-right: 22px;
+		}
+		ul.feed-list li p.right-feed{
+			width: 35%;
+		}
+		section.stats{
+			margin: 30px 18px;
+		}
+		section.stats h2{
+			font-size: 2rem;
+			font-weight: normal;
+		}
+		ul.stat-list{
+			/*margin-bottom: 25px;*/
+		}
+		ul.stat-list li p{
+			font-size: 1.7rem;
+			color: black;
+		}
+		ul.stat-list li div.progress-bar{
+			width: 100%;
+			background-color: darkgrey;
+		}
+		ul.stat-list li div.progress{
+			padding: 9px;
+			color: white;
+			background-color: #616161;
+			text-align: center;
+			font-size: 1.6rem;
+		}
+		ul.stat-list li:nth-child(1) div.progress{
+			width: 25%;
+			background-color: #4caf50;
+		}
+		ul.stat-list li:nth-child(2) div.progress{
+			width: 50%;
+			background-color: #ff9800;
+		}
+		ul.stat-list li:nth-child(3) div.progress{
+			width: 75%;
+			background-color: #f44336;
+		}
+		section.country{
+			margin: 30px 18px;
+		}
+		section.country h2{
+			font-size: 2rem;
+			font-weight: normal;
+			margin-top: 6px;
+			margin-bottom: 12px;
+		}
+		section.country ul.country-list{
+			border: 1px solid lightgrey;
+			margin-bottom: 25px;
+		}
+		section.country ul.country-list li{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			border-bottom: 1px solid lightgrey;
+			padding: 12px 18px;
+		}
+		section.country ul.country-list li:hover{
+			background-color: lightgrey;
+		}
+		section.country ul.country-list li:nth-child(odd){
+			background-color: white;
+		}
+		section.country ul.country-list li:hover{
+			background-color: lightgrey;
+		}
+		ul.country-list li p{
+			margin: 0;
+			font-size: 1.6rem;
+		}
+		ul.country-list li p.right-country{
+			/*text-align: right;*/
+		}
+		ul.country-list li p.left-country{
+			width: 65%;
+		}
+		ul.country-list li p.right-country{
+			width: 35%;
+		}
+		section.country button{
+			color: white;
+			border: none;
+			font-size: 1.6rem;
+			background-color: #616161;
+			padding: 1rem 1.7rem;
+		}
+		section.country button span{
+			display: inline-block;
+			border: 1px solid white;
+			padding: 4px 3px;
+			margin-left: 7px;
+		}
+		section.recent-users{
+			margin: 30px 18px;
+		}
+		section.recent-users h1{
+			font-size: 2rem;
+			font-weight: normal;
+		}
+		section.recent-users ul.user-list{
+			background-color: white;
+			box-shadow: 2px 3px 8px 2px rgba(0,0,0,0.4);
+		}
+		section.recent-users ul.user-list li{
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			padding: 18px 15px;
+			border-bottom: 1px solid lightgrey;
+		}
+		section.recent-users ul.user-list li img{
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+		}
+		section.recent-users ul.user-list li h2{
+			font-size: 2.3rem;
+			font-weight: normal;
+			margin: 0px 0px 0px 20px;
+		}
+		section.comments{
+			margin: 30px 18px;
+		}
+		section.comments h1{
+			font-size: 2rem;
+			font-weight: normal;
+		}
+		section.comments ul.comment-list li{
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			margin-bottom: 20px;
+		}
+		section.comments ul.comment-list li img{
+			width: 90px;
+			height: 90px;
+			border-radius: 50%;
+		}
+		section.comments ul.comment-list li div.comment-detail{
+			width: 82%;
+		}
+		section.comments ul.comment-list li div.img-sec{
+			width: 15%;
+			/*border: 1px solid teal;*/
+		}
+		section.comments ul.comment-list li div.comment-detail h2{
+			font-size: 1.7rem;
+			font-weight: normal;
+			color: grey;
+			margin: 0px;
+		}
+		section.comments ul.comment-list li div.comment-detail h2 span{
+			color: black;
+			font-size: 2.3rem;
+		}
+		section.comments ul.comment-list li div.comment-detail p{
+			font-size: 1.6rem;
+			line-height: 21px;
+		}
+		section.demo{
+			padding: 25px 29px;
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			background-color: #616161;
+		}
+		section.demo>div{
+			width: 31%;
+		}
+		section.demo>div h2{
+			color: white;
+			font-size: 2rem;
+			margin-top: 10px;
+			margin-bottom: 0;
+		}
+		section.demo>div span{
+			display: inline-block;
+			width: 100%;
+			padding: 3px;
+			background-color: green;
+		}
+		section.demo>div ul.list li{
+			color: white;
+			font-size: 1.6rem;
+			margin: 15px 0;
+		}
+		section.demo>div.graphic span{
+			background-color: #4caf50;
+		}
+		section.demo>div.system span{
+			background-color: #f44336;
+		}
+		section.demo>div.target span{
+			background-color: #ff9800;
+		}
+		section.footer{
+			padding: 10px 20px;
+		}
+		section.footer h1{
+			font-size: 2.2rem;
+			font-weight: normal;
+		}
+		section.footer p{
+			font-size: 1.7rem;
+		}
+		@media screen and (max-width: 1000px){
+			nav ul.nav-list li.toggler{
+				display: block;
+			}
+			div.aside-body ul.cat-list li.close{
+				display: block;
+			}
+			main{
+				margin-left: 0%;
+			}
+			aside{
+				width: 0;
+			}
+		}
+		@media screen and (max-width: 600px){
+			div.sect-cont div.sect{
+				width: 100%;
+			}
+			section.rnf div.regions{
+				width: 100%;
+			}
+			section.rnf div.feeds{
+				width: 100%;
+			}
+			section.comments ul.comment-list li div.comment-detail{
+				width: 100%;
+			}
+			section.comments ul.comment-list li div.img-sec{
+				width: 100%;
+			}
+			section.demo>div{
+				width: 100%;
+			}
+			div.regions img{
+				height: 50vh;
+			}
+		}
+</style>
+<body>
+	<div class="overlay">
+		
+	</div>
+	<nav>
+		<ul class="nav-list">
+			<li class="toggler" onclick="toggleSide()">
+				<span></span>Menu
+			</li>
+			<li>
+				Logo
+			</li>
+		</ul>
+	</nav>
+	<aside>
+		<div class="aside-head">
+			<img src="images/mark.jpg">
+			<div class="welc">
+				<p>Welcome, <strong>Mike</strong></p>
+				<div class="icont">
+					<div class="ic">
+						<span></span>	
+					</div>
+					<div class="ic">
+						<span></span>	
+					</div>
+					<div class="ic">
+						<span></span>	
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr>
+		<div class="aside-body">
+			<h1>Dashboard</h1>
+			<ul class="cat-list">
+				<li class="close" onclick="closeSide()">
+					<p><span></span> Close Menu</p>
+				</li>
+				<li class="active">
+					<p><span></span> Overview</p>
+				</li>
+				<li>
+					<p><span></span> Views</p>
+				</li>
+				<li>
+					<p><span></span> Traffic</p>
+				</li>
+				<li>
+					<p><span></span> Overview</p>
+				</li>
+				<li>
+					<p><span></span> Geo</p>
+				</li>
+				<li>
+					<p><span></span> News</p>
+				</li>
+				<li>
+					<p><span></span> General</p>
+				</li>
+				<li>
+					<p><span></span> History</p>
+				</li>
+				<li>
+					<p><span></span> settings</p>
+				</li>
+			</ul>
+		</div>
+	</aside>
+	<main>
+		<section class="dashboard">
+			<h1><span></span> My Dashboard</h1>
+			<div class="sect-cont">
+				<div class="sect" style="background-color: #f44336">
+					<div class="top-sec">
+						<span class="box"></span>
+						<span class="num">52</span>
+					</div>
+					<p>Messages</p>
+				</div>
+				<div class="sect" style="background-color: #2196f3">
+					<div class="top-sec">
+						<span class="box"></span>
+						<span class="num">52</span>
+					</div>
+					<p>Views</p>
+				</div>
+				<div class="sect" style="background-color: #009688">
+					<div class="top-sec">
+						<span class="box"></span>
+						<span class="num">52</span>
+					</div>
+					<p>Shares</p>
+				</div>
+				<div class="sect" style="background-color: #ff9800">
+					<div class="top-sec">
+						<span class="box"></span>
+						<span class="num">52</span>
+					</div>
+					<p>Users</p>
+				</div>
+			</div>
+		</section>
+		<section class="rnf">
+			<div class="regions">
+				<h2>Regions</h2>
+				<img src="images/geometry.jpg">
+			</div>
+			<div class="feeds">
+				<h2>Feeds</h2>
+				<ul class="feed-list">
+					<li>
+						<p class="left-feed">
+							<span></span>
+							New record, over 90 views
+						</p>
+						<p class="right-feed"> 10 mins</p>
+					</li>
+					<li>
+						<p class="left-feed">
+							<span></span>
+							Database error
+						</p>
+						<p class="right-feed"> 15 mins</p>
+					</li>
+					<li>
+						<p class="left-feed">
+							<span></span>
+							New record, over 40 users.
+						</p>
+						<p class="right-feed"> 17 mins</p>
+					</li>
+					<li>
+						<p class="left-feed">
+							<span></span>
+							New comments
+						</p>
+						<p class="right-feed"> 25 mins</p>
+					</li>
+					<li>
+						<p class="left-feed">
+							<span></span>
+							Check transactions
+						</p>
+						<p class="right-feed"> 28 mins</p>
+					</li>
+					<li>
+						<p class="left-feed">
+							<span></span>
+							CPU overload
+						</p>
+						<p class="right-feed"> 35 mins</p>
+					</li>
+					<li>
+						<p class="left-feed">
+							<span></span>
+							New shares
+						</p>
+						<p class="right-feed"> 10 mins</p>
+					</li>
+				</ul>
+			</div>
+		</section>
+		<section class="stats">
+			<h2>General Stats</h2>
+			<ul class="stat-list">
+				<li>
+					<p>New Visitors</p>
+					<div class="progress-bar">
+						<div class="progress">25%</div>
+					</div>
+				</li>
+				<li>
+					<p>New Users</p>
+					<div class="progress-bar">
+						<div class="progress">50%</div>
+					</div>
+				</li>
+				<li>
+					<p>Bounce Rate</p>
+					<div class="progress-bar">
+						<div class="progress">75%</div>
+					</div>
+				</li>
+			</ul>
+		</section>
+		<section class="country">
+			<h2>Countries</h2>
+			<ul class="country-list">
+				<li>
+					<p class="left-country">
+						United States
+					</p>
+					<p class="right-country"> 65%</p>
+				</li>
+				<li>
+					<p class="left-country">
+						UK
+					</p>
+					<p class="right-country"> 15.7%</p>
+				</li>
+				<li>
+					<p class="left-country">
+						Russia
+					</p>
+					<p class="right-country"> 5.6%</p>
+				</li>
+				<li>
+					<p class="left-country">
+						Spain
+					</p>
+					<p class="right-country"> 2.1%</p>
+				</li>
+				<li>
+					<p class="left-country">
+						India
+					</p>
+					<p class="right-country"> 1.9%</p>
+				</li>
+				<li>
+					<p class="left-country">
+						France
+					</p>
+					<p class="right-country"> 1.5%</p>
+				</li>
+			</ul>
+			<button>More Countries <span></span></button>
+		</section>
+		<section class="recent-users">
+			<h1>Recent Users</h1>
+			<ul class="user-list">
+				<li>
+					<img src="images/mark.jpg">
+					<h2>Mike</h2>
+				</li>
+				<li>
+					<img src="images/kyle.jpg">
+					<h2>Jill</h2>
+				</li>
+				<li>
+					<img src="images/jenny.jpg">
+					<h2>Jane</h2>
+				</li>
+			</ul>
+		</section>
+		<section class="comments">
+			<h1>Recent Comments</h1>
+			<ul class="comment-list">
+				<li>
+					<div class="img-sec">
+						<img src="images/mark.jpg">
+					</div>
+					<div class="comment-detail">
+						<h2><span>John</span> Sep 29, 2014, 9:12 PM</h2>
+						<p>
+							Keep up the GREAT work! I am cheering for you!! Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua.
+						</p>
+					</div>
+				</li>
+				<li>
+					<div class="img-sec">
+						<img src="images/kyle.jpg">
+					</div>
+					<div class="comment-detail">
+						<h2><span>Bo</span> Sep 28, 2014, 10:15 PM</h2>
+						<p>
+							Sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua.
+						</p>
+					</div>
+				</li>
+			</ul>
+		</section>
+		<section class="demo">
+			<div class="graphic">
+				<h2>Demographic</h2>
+				<span></span>
+				<ul class="list">
+					<li>Language</li>
+					<li>Country</li>
+					<li>City</li>
+				</ul>
+			</div>
+			<div class="system">
+				<h2>System</h2>
+				<span></span>
+				<ul class="list">
+					<li>Browser</li>
+					<li>OS</li>
+					<li>More</li>
+				</ul>
+			</div>
+			<div class="target">
+				<h2>Target</h2>
+				<span></span>
+				<ul class="list">
+					<li>Users</li>
+					<li>Active</li>
+					<li>Geo</li>
+					<li>Interests</li>
+				</ul>
+			</div>
+		</section>
+		<section class="footer">
+			<h1>FOOTER</h1>
+			<p>Powered by <ins>shaw</ins></p>
+		</section>
+	</main>
+
+	<script type="text/javascript">
+		let aside = document.querySelector("aside")
+		let overlay = document.querySelector("div.overlay")
+		function toggleSide(){
+			if(aside.style.width){
+				aside.style.width = null
+				overlay.style.display = "none"
+			}
+			else{
+				aside.style.width = "50%"
+				overlay.style.display = "block"
+			}
+		}
+		function closeSide(){
+			aside.style.width = null
+			overlay.style.display = "none"
+		}
+	</script>
+</body>
+</html>

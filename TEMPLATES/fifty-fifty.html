@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fifty Fifty Template</title>
+	<style type="text/css">
+		*{
+			box-sizing: border-box;
+		}
+		html, body{
+			font-size: 10px;
+			margin: 0;
+			padding: 0;
+			/*height: 100%;*/
+		}
+		/*body{
+			background-color: #ffdddd;
+		}*/
+		a{
+			text-decoration: none;
+			color: black;
+		}
+		ul{
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+		}
+		section.splitter{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		section.splitter>div{
+			width: 50%;
+		}
+		div.menu-sect{
+			background-color: black;
+			padding: 25px 0;
+			height: 100vh;
+		} 
+		div.menu-sect h1{
+			color: white;
+			font-size: 3.5rem;
+			font-weight: normal;
+			text-align: center;
+			margin-top: 70px;
+		}
+		div.menu-sect ul{
+			margin: 150px 0;
+		}
+		div.menu-sect ul li{
+			text-align: center;
+			margin: 30px 0;
+		}
+		div.menu-sect ul li a{
+			color: white;
+			font-size: 1.8rem;
+		}
+		div.work{
+			height: 100vh;
+			background-color: #f1f1f1;
+			padding: 1px 0;
+		}
+		div.work h1{
+			font-size: 3.5rem;
+			font-weight: normal;
+			text-align: center;
+			margin: 80px 0 0;
+		}
+		div.work h3{
+			font-size: 1.7rem;
+			font-weight: normal;
+			text-align: center;
+			/*margin-top: 70px;*/
+		}
+		div.work div.img-cont{
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+			margin: 60px 0 30px;
+		}
+		div.work div.img-cont img{
+			width: 50%;
+			max-height: 20vh;
+		}
+		div.work p{
+			font-size: 1.7rem;
+			text-align: center;
+			/*margin-top: 70px;*/
+		}
+		div.swing{
+			height: 100vh;
+			background-color: #616161;
+			padding: 1px 0;
+		}
+		div.swing h1{
+			color: white;
+			font-size: 3.5rem;
+			font-weight: normal;
+			text-align: center;
+			margin: 80px 0 0;
+		}
+		div.swing ul.swing-list{
+			margin-top: 150px;
+		}
+		div.swing ul.swing-list li{
+			color: white;
+			text-align: center;
+			font-size: 1.8rem;
+			margin: 17px 0;
+		}
+		div.about{
+			height: 100vh;
+			background-color: #607d8b;
+			padding: 1px 35px;
+		}
+		div.about div.about-head{
+			text-align: center;
+		}
+		div.about div.about-head h1{
+			color: white;
+			font-size: 3.5rem;
+			font-weight: normal;
+			text-align: center;
+			margin: 80px 0 30px;
+		}
+		div.about div.about-head img{
+			width: 130px;
+			height: 130px;
+			border-radius: 50%;
+		}
+		div.about p{
+			margin: 40px 0 0;
+			color: white;
+			font-size: 1.8rem;
+			line-height: 23px;
+		}
+		div.resume{
+			height: 100vh;
+			background-color: #3f51b5;
+			padding: 1px 30px;
+			/*overflow-x: scroll;*/
+		}
+		div.resume h1{
+			font-size: 3.5rem;
+			font-weight: normal;
+			text-align: center;
+			margin: 80px 0 0;
+			color: white;
+		}
+		div.resume h3{
+			font-size: 1.7rem;
+			font-weight: normal;
+			text-align: center;
+			color: white;
+			margin-bottom: 50px;
+		}
+		div.resume ul.resume-list{
+			overflow-x: scroll;
+		}
+		div.resume ul.resume-list li{
+			display: flex;
+			/*border: 1px solid teal;*/
+			padding: 8px 15px;
+		}
+		div.resume ul.resume-list li p{
+			font-size: 1.8rem;
+			line-height: 22px;
+			margin: 0;
+			color: white;
+
+		}
+		div.resume ul.resume-list li:nth-child(even) p{
+			color: black;
+		}
+		div.resume ul.resume-list li:nth-child(even){
+			background-color: white;
+		}
+		div.resume ul.resume-list li p:nth-child(1){
+			width: 15%;
+		}
+		div.resume ul.resume-list li p:nth-child(2){
+			width: 43%;
+		}
+		div.resume ul.resume-list li p:nth-child(3){
+			width: 42%;
+		}
+		div.contact{
+			height: 100vh;
+			background-color: #009688;
+			padding: 1px 30px;
+		}
+		div.contact h1{
+			font-size: 3.5rem;
+			font-weight: normal;
+			margin: 80px 0 0;
+			color: white;
+		}
+		div.contact h3{
+			font-size: 1.7rem;
+			font-weight: normal;
+			color: white;
+			margin-bottom: 50px;
+		}
+		div.contact form{
+			background-color: white;
+			padding: 50px 25px 30px;
+		}
+		div.contact form label{
+			font-size: 1.7rem;
+		}
+		div.contact form input{
+			font-size: 1.7rem;
+			border: none;
+			border-bottom: 1px solid lightgrey;
+			padding: 1.3rem;
+			width: 100%;
+			margin: 5px 0 13px;
+		}
+		div.contact form div.button{
+			text-align: right;
+		}
+		div.contact form button{
+			font-size: 1.7rem;
+			border: none;
+			padding: 8px 16px;
+			color: white;
+			background-color: #009688;
+		}
+		section.footer{
+			padding: 20px 20px;
+			background-color: black;
+		}
+		section.footer p{
+			color: white;
+			font-size: 1.7rem;
+		}
+		@media screen and (max-width: 600px){
+			section.splitter>div{
+				width: 100%;
+			}
+			div.work div.img-cont img{
+				width: 100%;
+				max-height: 30vh;
+			}
+			div.work div.img-cont img.rem{
+				display: none;
+			}
+		}
+	</style>
+</head>
+<body>
+	<section class="splitter">
+		<!-- <div class="split-left"> -->
+		<div class="menu-sect">
+			<h1>My Logo</h1>
+			<ul class="menu-list">
+				<li>
+					<a href="#">Home</a>
+				</li>
+				<li>
+					<a href="#">My Work</a>
+				</li>
+				<li>
+					<a href="#">Resume</a>
+				</li>
+				<li>
+					<a href="#">Contact</a>
+				</li>
+			</ul>
+		</div>
+		<div class="about">
+			<div class="about-head">
+				<h1>About Me</h1>
+				<img src="images/jenny.jpg">
+			</div>
+			<p>
+				Lorem ipsum sed vitae justro condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.
+				<br><br>
+				Lorem ipsum sed vitae justro condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.
+			</p>
+		</div>
+		<div class="work">
+			<h1>My Work</h1>
+			<h3>Some of my latest projects.</h3>
+			<div class="img-cont">
+				<img src="images/default.jpg">
+				<img src="images/sec.jpg">
+				<img class="rem" src="images/kids.jpg">
+				<img class="rem" src="images/third.jpg">
+				<img class="rem" src="images/chamber.jpg">
+				<img class="rem" src="images/fourth.jpg">
+			</div>
+			<p>Just call me awesome</p>
+		</div>
+		<div class="resume">
+			<h1>Resume</h1>
+			<h3>A draft from my CV</h3>
+			<ul class="resume-list">
+				<li>
+					<p class="year">Year</p>
+					<p class="title">Title</p>
+					<p class="where">Where</p>
+				</li>
+				<li>
+					<p class="year">
+						2012 - <br> 2016
+					</p>
+					<p class="title">
+						The rest is history
+					</p>
+					<p class="where">
+						Lorem ipsum
+					</p>
+				</li>
+				<li>
+					<p class="year">
+						2009 - <br> 2012
+					</p>
+					<p class="title">
+						Started my own company
+					</p>
+					<p class="where">
+						My Garage
+					</p>
+				</li>
+				<li>
+					<p class="year">
+						2008 - <br> 2009
+					</p>
+					<p class="title">
+						Started working for Lorem
+					</p>
+					<p class="where">
+						London, UK
+					</p>
+				</li>
+				<li>
+					<p class="year">
+						2005 - 2008
+					</p>
+					<p class="title">
+						Degree in Bachelor of Design
+					</p>
+					<p class="where">
+						Harvard, USA
+					</p>
+				</li>
+				<li>
+					<p class="year">
+						2002 - 2005
+					</p>
+					<p class="title">
+						Degree in Bachelor of Business
+					</p>
+					<p class="where">
+						RMIT University, Melbourne, Australia
+					</p>
+				</li>
+				<li>
+					<p class="year">
+						2002 - 2005
+					</p>
+					<p class="title">
+						Degree in Bachelor of Business
+					</p>
+					<p class="where">
+						RMIT University, Melbourne, Australia
+					</p>
+				</li>
+			</ul>
+		</div>
+		<div class="swing">
+			<h1>Swing By</h1>
+			<ul class="swing-list">
+				<li>
+					..for a cup of coffea, or whatever.
+				</li>
+				<li>chicago, US</li>
+				<li>+00 151515151515</li>
+				<li>test@test.com</li>
+			</ul>
+		</div>
+		<div class="contact">
+			<h1>Contact</h1>
+			<h3>Get in touch</h3>
+			<form>
+				<label for="name">Name</label>
+				<input type="text" name="name" id="name">
+				<label for="email">Email</label>
+				<input type="email" name="email" id="email">
+				<label for="message">Message</label>
+				<input type="text" name="message" id="message">
+				<div class="button">
+					<button>Send</button>
+				</div>
+			</form>
+		</div>
+		<!-- </div> -->
+		<!-- <div class="split-right"> -->
+		
+		<!-- </div> -->
+	</section>
+	<section class="footer">
+		<p>Powered by <ins>shaw</ins></p>
+	</section>
+</body>
+</html>

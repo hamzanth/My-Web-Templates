@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Photo Template</title>
+	<style type="text/css">
+		*{
+			box-sizing: border-box;
+		}
+		html, body{
+			font-size: 10px;
+			margin: 0;
+			padding: 0;
+			/*height: 100%;*/
+		}
+		/*body{
+			background-color: #ffdddd;
+		}*/
+		a{
+			text-decoration: none;
+			color: black;
+		}
+		ul{
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+		}
+		section.hero img{
+			width: 100%;
+			max-height: 75vh;
+		}
+		section.hero{
+			position: relative;
+		}
+		section.hero div.center{
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+		}
+		section.hero div.center{
+			border: 1px solid white;
+			text-align: center;
+			padding: 16px 20px;
+		}
+		section.hero div.center h1{
+			color: white;
+			font-size: 3.6rem;
+			letter-spacing: 6px
+		}
+		section.hero div.center p{
+			color: black;
+			font-size: 2.4rem;
+			font-weight: bolder;
+			letter-spacing: 6px;
+		}
+		section.hero div.button-group{
+			position: absolute;
+			display:flex;
+			background-color: #f1f1f1;
+			border-radius: 10px;
+			bottom: -18px;
+			left: 50%;
+			/*border: 2px solid red;*/
+			transform: translateX(-50%);
+		}
+		div.button-group button{
+			border: none;
+			padding: 10px 16px;
+			background-color: #f1f1f1;
+			font-size: 1.6rem;
+			color: black;
+			/*border-radius: 5px;*/
+		}
+		div.button-group button:hover{
+			background-color: lightgrey;
+		}
+		section.imgshow{
+			width: 75%;
+			margin: 40px auto;
+		}
+		section.imgshow img{
+			width: 100%;
+			max-height: 70vh;
+			margin-bottom: 20px;
+		}
+		section.contact{
+			padding: 20px;
+			width: 75%;
+			margin: 0 auto;
+			background-color: #f1f1f1;
+		}
+		section.contact h1{
+			font-size: 2.7rem;
+			text-align: center;
+			font-weight: normal;
+		}
+		section.contact p{
+			font-size: 1.7rem;
+			text-align: justify;
+			line-height: 23px;
+		}
+		section.contact form label{
+			font-size: 1.6rem;
+			/*font-weight: bold;*/
+		}
+		section.contact form input{
+			width: 100%;
+			font-size: 1.5rem;
+			padding: 1rem;
+			margin-bottom: 20px;
+			border: 1px solid lightgrey;
+		}
+		section.contact form button{
+			width: 100%;
+			border: none;
+			color: white;
+			background-color: grey;
+			font-size: 1.5rem;
+			padding: 10px;
+			margin-bottom: 22px;
+		}
+		section.contact p.copy-right{
+			margin-bottom: 35px;
+		}
+		section.sub-nav{
+			padding: 15px;
+			background-color: #f1f1f1;
+			display: none;
+		}
+		section.sub-nav ul{
+			display: flex;
+			justify-content: center;
+		}
+		section.sub-nav ul li{
+			padding: 10px 17px;
+		}
+		section.sub-nav ul li:hover{
+			background-color: lightgrey;
+		}
+		section.sub-nav ul li a{
+			font-size: 1.7rem;
+		}
+		@media screen and (max-width: 1200px){
+			section.hero img{
+				height: 60vh;
+			}
+		}
+		@media screen and (max-width: 1000px){
+			section.hero img{
+				height: 55vh;
+			}
+			section.hero div.center h1{
+				letter-spacing: 3px;
+				font-weight: normal;
+			}
+			section.imgshow, section.contact{
+				width: 95%;
+			}
+			section.hero div.center p{
+				display: none;
+			}
+			section.hero div.center h1{
+				font-size: 2rem;
+			}
+		}
+		@media screen and (max-width: 800px){
+			section.hero img{
+				height: 45vh;
+			}
+		}
+		@media screen and (max-width: 600px){
+			section.hero img{
+				height: 30vh;
+			}
+			section.imgshow, section.contact{
+				width: 92%;
+			}
+			section.hero div.button-group{
+				display: none;
+			}
+			section.sub-nav{
+				display: block;
+			}
+			section.imgshow{
+				margin-top: 25px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<section class="hero">
+		<img src="images/chamber.jpg">
+		<div class="center">
+			<h1>JANE DOE</h1>
+			<p>PHOTOGRAPHER</p>
+		</div>
+		<div class="button-group">
+			<button>Home</button>
+			<button class="active">Portfolio</button>
+			<button>Contact</button>
+		</div>
+	</section>
+	<section class="sub-nav">
+		<ul>
+			<li>
+				<a href="#">Home</a>
+			</li>
+			<li>
+				<a href="#">Portfolio</a>
+			</li>
+			<li>
+				<a href="#">Contact</a>
+			</li>
+		</ul>
+	</section>
+	<section class="imgshow">
+		<img src="images/book.jpg">
+		<img src="images/boys.jpg">
+		<img src="images/fourth.jpg">
+		<img src="images/default.jpg">
+		<img src="images/kids.jpg">
+	</section>
+	<section class="contact">
+		<h1>Contact</h1>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur.
+		</p>
+		<form class="form-container">
+			<label for="name">Name</label>
+			<input type="text" name="name" id="name">
+			<label for="email">Email</label>
+			<input type="email" name="email" id="email">
+			<label for="message">Name</label>
+			<input type="text" name="message" id="message">
+			<button>Send</button>
+		</form>
+		<p class="copy-right">Powered by <ins>shaw</ins></p>
+	</section>
+</body>
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Architects</title>
+	<style type="text/css">
+		*{
+			box-sizing: border-box;
+		}
+		html, body{
+			font-size: 10px;
+			margin: 0;
+			padding: 0;
+			height: 100%;
+		}
+		a{
+			text-decoration: none;
+			color: black;
+		}
+		ul{
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+		}
+		nav{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			position: sticky;
+			background-color: white;
+			top: 0;
+			left: 0;
+			z-index: 33;
+			width: 100%;
+			padding: 5px 20px;
+			box-shadow: 0px 3px 6px rgba(0,0,0,0.2)
+		}
+		nav ul.navlist{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		nav ul.navlist li{
+			margin: 0 15px;
+			padding: 1rem;
+		} 
+		nav h1{
+			padding: 1rem;
+			margin: 0;
+			font-weight: normal;
+			cursor: pointer;
+		}
+		nav ul.navlist li:hover, nav h1:hover{
+			background-color: lightgrey;
+		}
+		ul.navlist li a, nav h1{
+			font-size: 1.8rem;
+			letter-spacing: 4px;
+			color: grey;
+		}
+		nav div.toggler{
+			cursor: pointer;
+			display: none;
+		}
+		nav div.toggler:hover{
+			/*background-color: red;*/
+		}
+		nav div.tog{
+			width: 1.8rem;
+			height: 0.2rem;
+			margin: 0.2rem;
+			background-color: black;
+		}
+		b{
+			display: inline-block;
+			margin-right: 10px;
+			color: black;
+		}
+		section.hero{
+			background-image: url("images/sec.jpg");
+			background-repeat: no-repeat;
+			background-size: cover;
+			height: 90vh;
+			position: relative;
+			margin-bottom: 70px;
+		}
+		section.hero h1{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			font-size: 4rem;
+			transform: translate(-50%, -50%);
+			/*color: darkgrey;*/
+		}
+		section.hero h1 span.br{
+			background-color: rgba(0,0,0,0.8);
+			color: white;
+			display: inline-block;
+			margin-right: 10px;
+			padding: 8px 16px;
+		}
+		section.projects{
+			margin: 100px 0;
+			width: 96%;
+			margin: 0 auto;
+		}
+		section.projects div.project-head{
+			margin-bottom: 50px;
+		}
+		div.project-head>p{
+			font-size: 2.6rem;
+		}
+		section.projects div.image-grid{
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		div.image-grid div.image{
+			width: 24%;
+			position: relative;
+			height: 25vh;
+			margin-bottom: 15px;
+		}
+		div.image img{
+			width: 100%;
+			height: 100%;
+		}
+		div.image p{
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-color: black;
+			color: white;
+			margin: 0;
+			padding: 10px 18px;
+			font-size: 1.8rem;
+		}
+		section.about{
+			width: 96%;
+			margin: 50px auto;
+		}
+		section.about div.about-head{
+			margin-bottom: 50px;
+		}
+		div.about-head p.abt{
+			font-size: 2.6rem;
+			margin-bottom: 40px;
+		}
+		div.about-head p.abt-body{
+			font-size: 1.6rem;
+		}
+		section.about div.card-container{
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		div.card-container div.card{
+			width: 24%;
+		}
+		div.card img{
+			width: 100%;
+			height: 35vh;
+		}
+		div.card p.name{
+			font-size: 2.5rem;
+		}
+		div.card p.work{
+			font-size: 1.7rem;
+			color: grey;
+		}
+		div.card p.desc{
+			font-size: 1.4rem;
+		}
+		div.card button.contact{
+			width: 100%;
+			border: none;
+			text-align: center;
+			font-size: 1.5rem;
+			padding: 15px;
+		}
+		section.contact{
+			width: 96%;
+			margin: 0 auto;
+			/*padding: 0 18px;*/
+		}
+		section.contact p.contact-head{
+			font-size: 2.5rem;
+		}
+		section.contact p.contact-desc{
+			font-size: 1.8rem;
+		}
+		section.contact hr, section.projects hr{
+			opacity: 0.4;
+			height: 0.3px;
+		}
+		section.contact input:not(input[type="submit"]){
+			width: 100%;
+			font-size: 1.4rem;
+			padding: 13px 6px;
+			border: none;
+			border: 1px solid grey; 
+			margin: 6px 0;
+		}
+		section input[type="submit"]{
+			border: none;
+			font-size: 1.4rem;
+			padding: 10px 16px;
+			margin-top: 15px;
+			color: white;
+			background-color: black;
+		}
+		section.map{
+			background: url("images/geometry.jpg");
+			height: 90vh;
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center;
+			margin: 80px 20px 0 20px;
+		}
+		section.footer p{
+			text-align: center;
+			font-size: 1.6rem;
+			padding: 35px;
+			background-color: black;
+			color: white;
+		}
+		@media screen and (max-width: 1000px){
+			section.hero{
+				height: 45vh;
+				background-position: center;
+			}
+			div.image-grid div.image{
+				width: 49%;
+				height: 35vh;
+			}
+			div.card-container div.card{
+			width: 49%;
+			margin-bottom: 5px;
+			}
+			section.map{
+				height: 45vh;
+			}
+		}
+		@media screen and (max-width: 600px){
+			section.projects div.image-grid{
+			/*flex-wrap: wrap;*/
+		}
+			div.image-grid div.image{
+				width: 100%;
+				height: 40vh;
+			}
+			div.card-container div.card{
+			width: 100%;
+			/*margin-bottom: 5px;*/
+			}
+			div.card img{
+				height: 45vh;
+			}
+			section.hero span.architect{
+				display: none;
+			}
+			nav ul.navlist{
+			display: none;
+			}
+			nav div.toggler{
+			display: block;
+			}
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<h1 class="navbrand"><b>BR</b>Architects</h1>
+		<ul class="navlist">
+			<li>
+				<a href="#about">Projects</a>
+			</li>
+			<li>
+				<a href="#menu">About</a>
+			</li>
+			<li>
+				<a href="#contact">Contact</a>
+			</li>
+		</ul>
+		<div class="toggler">
+			<div class="tog"></div>
+			<div class="tog"></div>
+			<div class="tog"></div>
+		</div>
+	</nav>
+	<section class="hero">
+		<h1><span class="br">BR</span><span class="architect">Architects</span></h1>
+	</section>
+	<section class="projects">
+		<div class="project-head">
+			<p>Projects</p>
+			<hr>
+		</div>
+		<div class="image-grid">
+			<div class="image">
+				<img src="images/book.jpg">
+				<p>Summer House</p>
+			</div>
+			<div class="image">
+				<img src="images/default.jpg">
+				<p>Brick House</p>
+			</div>
+			<div class="image">
+				<img src="images/sec.jpg">
+				<p>Renovated</p>
+			</div>
+			<div class="image">
+				<img src="images/fourth.jpg">
+				<p>Barne House</p>
+			</div>
+			<div class="image">
+				<img src="images/gnome.jpg">
+				<p>Summer House</p>
+			</div>
+			<div class="image">
+				<img src="images/kids.jpg">
+				<p>Brick House</p>
+			</div>
+			<div class="image">
+				<img src="images/sour.jpg">
+				<p>Renovated</p>
+			</div>
+			<div class="image">
+				<img src="images/third.jpg">
+				<p>Barne House</p>
+			</div>
+		</div>
+	</section>
+	<section class="about">
+		<div class="about-head">
+			<p class="abt">About</p>
+			<p class="abt-body">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+		</div>
+		<div class="card-container">
+			<div class="card">
+				<img src="images/mark.jpg">
+				<p class="name">John Doe</p>
+				<p class="work">CEO & FOUNDER</p>
+				<p class="desc">Pipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+				</p>
+				<button class="contact">Contact</button>
+			</div>
+			<div class="card">
+				<img src="images/jenny.jpg">
+				<p class="name">Jane Doe</p>
+				<p class="work">Architect</p>
+				<p class="desc">Pipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+				</p>
+				<button class="contact">Contact</button>
+			</div>
+			<div class="card">
+				<img src="images/kyle.jpg">
+				<p class="name">Mike Ross</p>
+				<p class="work">Architect</p>
+				<p class="desc">Pipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+				</p>
+				<button class="contact">Contact</button>
+			</div>
+			<div class="card">
+				<img src="images/rockstar.jpg">
+				<p class="name">Dan Star</p>
+				<p class="work">Architect</p>
+				<p class="desc">Pipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+				</p>
+				<button class="contact">Contact</button>
+			</div>
+		</div>
+	</section>
+	<section class="contact">
+		<p class="contact-head">Contact</p>
+		<hr>
+		<p class="contact-desc">Lets get in touch and talk about your next project</p>
+		<div class="form-container">
+			<form>
+				<input type="text" name="name" placeholder="Name">
+				<input type="text" name="people" placeholder="Email">
+				<input type="text" name="date" placeholder="Subject">
+				<input type="text" name="message" placeholder="Comment">
+				<input type="submit" value="SEND MESSAGE">
+			</form>
+		</div>
+	</section>
+	<section class="map">
+		
+	</section>
+	<section class="footer">
+		<p>Powered by Shaw</p>
+	</section>
+</body>
+</html>

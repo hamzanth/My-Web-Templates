@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>App Launch Template</title>
+	<style type="text/css">
+		*{
+			box-sizing: border-box;
+		}
+		html, body{
+			font-size: 10px;
+			margin: 0;
+			padding: 0;
+			/*height: 100%;*/
+		}
+		/*body{
+			background-color: #ffdddd;
+		}*/
+		a{
+			text-decoration: none;
+			color: black;
+		}
+		ul{
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+		}
+		section.hero{
+			position: relative;
+			/*padding: 0 15px;*/
+		}
+		section.hero img{
+			width: 100%;
+			max-height: 100vh;
+		}
+		section.hero button.top-btn{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			background-color: #4caf50;
+			border: none;
+			color: white;
+			text-align: center;
+			font-size: 1.7rem;
+			padding: 1.2rem 1.2rem;
+			cursor: pointer;
+			display: none;
+		}
+		section.hero button.top-btn:hover{
+			color: black;
+			background-color: #f1f1f1;
+		}
+		section.hero button.top-btn:hover span{
+			border-color: black;
+		}
+		section.hero button.top-btn span{
+			display: inline-block;
+			border: 1px solid white;
+			padding: 4px 3px;
+			margin: 0 4px;
+		}
+		section.hero div.photo{
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			left: 20px;
+			background-color: rgba(0,0,0,1);
+			padding: 25px 20px;
+			width: 32%;
+			opacity: 0.7;
+			border-radius: 7px;
+		}
+		section.hero div.photo:hover{
+			opacity: 1;
+		}
+		section.hero div.photo h1{
+			color: white;
+			margin: 0;
+			font-size: 2.5rem;
+			font-weight: normal;
+			text-align: center;
+			line-height: 40px;
+		}
+		section.hero div.photo hr{
+			color: white;
+			margin: 20px 0;
+		}
+		section.hero div.photo p{
+			color: white;
+			font-size: 1.7rem;
+			text-align: center;
+		}
+		section.hero div.photo button{
+			border: none;
+			font-size: 1.7rem;
+			padding: 1.2rem 1.3rem;
+			color: white;
+			background-color: #4caf50;
+			width: 100%;
+			border-radius: 7px;
+			cursor: pointer;
+		}
+		section.hero div.photo button:hover{
+			background-color: #f1f1f1;
+			color: black;
+		}
+		section.hero div.photo button:hover span{
+			border-color: black;
+		}
+		section.hero div.photo button span{
+			border: 1px solid white;
+			display: inline-block;
+			padding: 4px 3px;
+			margin: 0 4px;
+		}
+		section.hero button.tour{
+			position: absolute;
+			right: 20px;
+			top: 50%;
+			transform: translateY(-50%);
+			border: none;
+			color: white;
+			background-color: black;
+			padding: 1rem 1.5rem;
+			border-radius: 3px;
+			font-size: 1.7rem;
+		}
+		section.hero button.tour:hover{
+			background-color: #f1f1f1;
+			color: black;
+		}
+		section.hero button.tour:hover span{
+			border-color: black;
+		}
+		section.hero button.tour span{
+			display: inline-block;
+			border: 1px solid white;
+			padding: 5px 4px;
+		}
+		section.app{
+			padding: 75px 20px;
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		section.app div.left-side{
+			width: 67%;
+		}
+		section.app div.left-side h1{
+			font-size: 6rem;
+			/*margin-top: 0;*/
+			margin: 0;
+		}
+		section.app div.left-side h2{
+			font-size: 5rem;
+			color: #4caf50;
+		}
+		section.app div.left-side p{
+			font-size: 1.7rem;
+			line-height: 25px;
+		}
+		section.app div.left-side p span.big-text{
+			font-size: 2.4rem;
+		}
+		section.app div.left-side button{
+			border: none;
+			font-size: 1.7rem;
+			padding: 1.2rem 1.5rem;
+			cursor: pointer;
+			display: inline-block;
+			margin: 15px 0;
+		}
+		section.app div.left-side button:hover{
+			background-color: lightgrey;
+		}
+		section.app div.left-side button span{
+			display: inline-block;
+			border: 1px solid black;
+			padding: 4px 3px;
+		}
+		section.app div.left-side p span.box{
+			display: inline-block;
+			border: 1px solid black;
+			padding: 5px 4px;
+			margin: 0 4px;
+		}
+		section.app div.right-side{
+			width: 28%;
+		}
+		section.app div.right-side img{
+			width: 100%;
+			height: 70vh;
+		}
+		/*hkdhd*/
+		section.clarity{
+			padding: 75px 20px;
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		section.clarity div.right-side{
+			width: 67%;
+		}
+		section.clarity div.right-side h1{
+			font-size: 6rem;
+			/*margin-top: 0;*/
+			margin: 0;
+		}
+		section.clarity div.right-side h2{
+			font-size: 5rem;
+			color: #f44336;
+		}
+		section.clarity div.right-side p{
+			font-size: 1.7rem;
+			line-height: 25px;
+		}
+		section.clarity div.right-side p span.big-text{
+			font-size: 2.4rem;
+		}
+		section.clarity div.right-side button{
+			border: none;
+			font-size: 1.7rem;
+			padding: 1.2rem 1.5rem;
+			cursor: pointer;
+			display: inline-block;
+			margin: 15px 0;
+		}
+		section.clarity div.right-side button:hover{
+			background-color: lightgrey;
+		}
+		section.clarity div.right-side button span{
+			display: inline-block;
+			border: 1px solid black;
+			padding: 4px 3px;
+		}
+		section.clarity div.right-side p span.box{
+			display: inline-block;
+			border: 1px solid black;
+			padding: 5px 4px;
+			margin: 0 4px;
+		}
+		section.clarity div.left-side{
+			width: 28%;
+		}
+		section.clarity div.left-side img{
+			width: 100%;
+			height: 70vh;
+		}
+		section.features{
+			background-color: #616161;
+			padding: 20px 25px;
+		}
+		section.features h1{
+			color: white;
+			font-size: 6.5rem;
+			text-align: center;
+			margin-bottom: 30px;
+		}
+		section.features h4{
+			font-size: 1.7rem;
+			color: white;
+			text-align: center;
+		}
+		section.features div.feature-cont{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		div.feature-cont div.feature-box{
+			width: 25%;
+			text-align: center;
+			margin: 45px 0;
+		}
+		div.feature-box span{
+			display: inline-block;
+			width: 37px;
+			height: 48px;
+			border: 1px solid white;
+		}
+		div.feature-box p{
+			color: white;
+			font-size: 1.7rem;
+		}
+		section.pricing{
+			padding: 0 20px;
+		}
+		section.pricing h1{
+			font-size: 6.5rem;
+			text-align: center;
+			margin-bottom: 30px;
+		}
+		section.pricing h4{
+			font-size: 1.7rem;
+			text-align: center;
+		}
+		section.pricing div.charge-cont{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			margin-top: 70px;
+		}
+		div.charge-cont ul.charge-list{
+			width: 49%;
+			background-color: white;
+			/*border: 1px solid lightgrey;*/
+			box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
+		} 
+		div.charge-cont ul.charge-list:hover{
+			box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.6);
+		} 
+		ul.charge-list li{
+			text-align: center;
+			font-size: 1.8rem;
+			padding: 20px 2px;
+			border-bottom: 1px solid lightgrey;
+		}
+		ul.charge-list li.charge-head{
+			font-size: 2.7rem;
+			color: white;
+			background-color: #616161;
+			padding: 35px 15px;
+		}
+		ul.charge-list:nth-child(2) li.charge-head{
+			background-color: #f44336;
+			/*padding: 55px 15px;*/
+		}
+		ul.charge-list li.money h2{
+			margin-top: 5px;
+			margin-bottom: 15px;
+			font-size: 3rem;
+			font-weight: normal;
+		}
+		ul.charge-list li.money p{
+			margin: 0;
+		}
+		ul.charge-list li.sign-up{
+			background-color: #f1f1f1;
+		}
+		ul.charge-list li.sign-up button{
+			background-color: black;
+			color: white;
+			border: none;
+			padding: 14px 22px;
+			font-size: 1.5rem;
+			cursor: pointer;
+		}
+		ul.charge-list li.sign-up button span{
+			display: inline-block;
+			border: 1px solid white;
+			padding: 4px 3px;
+			margin-right: 2px;
+		}
+		ul.charge-list li.sign-up button:hover{
+			background-color: lightgrey;
+			color: black;
+		}
+		ul.charge-list li.sign-up button:hover span{
+			border-color: black;
+		}
+		section.footer{
+			margin-top: 100px;
+			padding: 60px 0;
+			text-align: center;
+			background-color: #f1f1f1;
+		}
+		section.footer div.icont{
+			/*border: 1px solid red;*/
+			margin-bottom: 20px;
+		}
+		section.footer div.icont span{
+			border: 1px solid black;
+			padding: 6px 5px;
+			margin-right: 10px;
+			display: inline-block;
+		}
+		section.footer p{
+			color: black;
+			font-size: 1.6rem;
+			margin: 0;
+		}
+		@media screen and (max-width: 650px){
+			section.hero button.top-btn{
+				display: block;
+			}
+			section.hero div.photo{
+				display: none;
+			}
+			section.hero button.tour{
+				width: 100%;
+				left: 0;
+				bottom: 0;	
+				transform: initial;	
+				top: initial;
+				padding: 0.6rem;		
+			}
+			section.app div.left-side{
+				width: 100%;
+			}
+			section.app div.right-side{
+				width: 100%;
+			}
+			section.clarity div.left-side{
+				width: 100%;
+				display: none;
+			}
+			section.clarity div.right-side{
+				width: 100%;
+			}
+			div.charge-cont ul.charge-list{
+				width: 100%;
+				margin-bottom: 30px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<section class="hero">
+		<img src="images/third.jpg">
+		<button class="top-btn">Download <span></span><span></span><span></span></button>
+		<div class="photo">
+			<h1>Take photos with our app</h1>
+			<hr>
+			<p>Super simple installment: free of charge</p>
+			<button>Download <span></span><span></span><span></span></button>
+		</div>
+		<button class="tour">Take Tour <span></span></button>
+	</section>
+	<section class="app">
+		<div class="left-side">
+			<h1>The App</h1>
+			<h2>Why buy it?</h2>
+			<p>
+				<span class="big-text">Take photos like a pro</span>. You should buy this app because Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+			<button><span></span> Download Application</button>
+			<p>Available for <span class="box"></span><span class="box"></span><span class="box"></span></p>
+		</div>
+		<div class="right-side">
+			<img src="images/third.jpg">
+		</div>
+	</section>
+	<section class="clarity">
+		<div class="left-side">
+			<img src="images/third.jpg">
+		</div>
+		<div class="right-side">
+			<h1>Clarity</h1>
+			<h2>Pixels, who?</h2>
+			<p>
+				<span class="big-text">A revolution in resolution</span>. Sharp and clear photos with the world's best phot engine consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+			<button><span></span> Download Application</button>
+			<p>Available for <span class="box"></span><span class="box"></span><span class="box"></span></p>
+		</div>
+	</section>
+	<section class="features">
+		<h1>Features</h1>
+		<h4>This app is just so lorem ipsum</h4>
+		<div class="feature-cont">
+			<div class="feature-box">
+				<span style="border-color: orange;"></span>
+				<p>Fast</p>
+			</div>
+			<div class="feature-box">
+				<span style="border-color: red;"></span>
+				<p>Loved</p>
+			</div>
+			<div class="feature-box">
+				<span style="border-color: yellow;"></span>
+				<p>Clarity</p>
+			</div>
+			<div class="feature-box">
+				<span style="border-color: lightgreen;"></span>
+				<p>Power</p>
+			</div>
+			<div class="feature-box">
+				<span></span>
+				<p>Sharp</p>
+			</div>
+			<div class="feature-box">
+				<span style="border-color: blue;"></span>
+				<p>Cloud</p>
+			</div>
+			<div class="feature-box">
+				<span style="border-color: cyan;"></span>
+				<p>Global</p>
+			</div>
+			<div class="feature-box">
+				<span style="border-color: cornflowerblue;"></span>
+				<p>Storage</p>
+			</div>
+			<div class="feature-box">
+				<span style="border-color: white;"></span>
+				<p>Safe</p>
+			</div>
+			<div class="feature-box">
+				<span style="border-color: darkorange;"></span>
+				<p>Stabile</p>
+			</div>
+			<div class="feature-box">
+				<span style="border-color: lightgrey;"></span>
+				<p>Connected</p>
+			</div>
+			<div class="feature-box">
+				<span style="border-color: pink;"></span>
+				<p>HD</p>
+			</div>
+		</div>
+	</section>
+	<section class="pricing">
+		<h1>Pricing</h1>
+		<h4>Choose a pricing plan that fits your needs</h4>
+		<div class="charge-cont">
+			<ul class="charge-list">
+				<li class="charge-head">
+					Basic
+				</li>
+				<li><strong>250</strong> Photos</li>
+				<li><strong>10</strong> Features</li>
+				<li><strong>No</strong> Ads</li>
+				<li><strong>Office hours</strong> Support</li>
+				<li class="money">
+					<h2>$ 25</h2>
+					<!-- <p>per month</p> -->
+				</li>
+				<li class="sign-up">
+					<button><span></span> Download</button>
+				</li>
+			</ul>
+			<ul class="charge-list">
+				<li class="charge-head">
+					Premium
+				</li>
+				<li><strong>1000</strong> Photos</li>
+				<li><strong>50</strong> Features</li>
+				<li><strong>No</strong> Ads</li>
+				<li><strong>Endless</strong> Support</li>
+				<li class="money">
+					<h2>$ 99</h2>
+					<!-- <p>per month</p> -->
+				</li>
+				<li class="sign-up">
+					<button><span></span> Download</button>
+				</li>
+			</ul>
+		</div>
+	</section>
+	<section class="footer">
+		<div class="icont">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+		<p>Powered by <ins>shaw</ins></p>
+	</section>
+</body>
+</html>

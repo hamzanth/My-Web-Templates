@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mail</title>
+	<style type="text/css">
+		*{
+			box-sizing: border-box;
+		}
+		html, body{
+			font-size: 10px;
+			margin: 0;
+			padding: 0;
+			/*height: 100%;*/
+		}
+		/*body{
+			background-color: #ffdddd;
+		}*/
+		a{
+			text-decoration: none;
+			color: black;
+		}
+		ul{
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+		}
+		img{
+			width: 100%;
+		}
+		div.overlay{
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0,0,0,0.5);
+			z-index: 20;
+			display: none;
+			animation: blurUp 0.5s;
+		}
+		@keyframes blurUp{
+			from{
+				opacity: 0;
+			}
+			to{
+				opacity: 1;
+			}
+		}
+		aside{
+			position: fixed;
+			overflow-y: scroll;
+			top: 0;
+			left: 0;
+			width: 25%;
+			height: 100%;
+			z-index: 30;
+			background-color: white;
+			animation: asideRight 0.5s;
+		}
+		@keyframes asideRight{
+			from{
+				left: -100%;
+			}
+			to{
+				left: 0;
+			}
+		}
+		nav{
+			padding: 20px 15px;
+			display: none;
+		}
+		nav ul.nav-list{
+			display: flex;
+			justify-content: space-between;
+		}
+		nav ul.nav-list li{
+			cursor: pointer;
+			padding: 12px 19px;
+			cursor: pointer;
+		}
+		nav ul.nav-list li span{
+			display: inline-block;
+			border: 1px solid grey;
+			padding: 4px 3px;
+		}
+		nav ul.nav-list li.logo span{
+			padding: 6px 5px;
+			border-color: grey;
+		}
+		nav ul.nav-list li.toggler{
+			background-color: #f44336;
+			padding-top: 14px;
+		}
+		nav ul.nav-list li.toggler span{
+			border-color: white;
+		}
+		nav ul.nav-list li:hover{
+			background-color: lightgrey;
+		}
+		nav ul.nav-list li:hover span{
+			border-color: black;
+		}
+		aside>h1{
+			font-size: 2.1rem;
+			margin: 0;
+			padding: 17px 15px;
+			cursor: pointer;
+			border-bottom: 1px solid lightgrey;
+		}
+		aside>h1 span{
+			color: lightgreen;
+		}
+		aside>h1:hover{
+			background-color: lightgrey;
+		}
+		aside button{
+			font-size: 1.8rem;
+			border: none;
+			text-align: left;
+			padding: 19px 15px;
+			width: 100%;
+			cursor: pointer;
+		}
+		aside button span{
+			display: inline-block;
+			border: 1px solid black;
+			padding: 5px 4px;
+		}
+		aside button.close{
+			background-color: white;
+			display: none;
+		}
+		aside button.close:hover{
+			background-color: lightgrey;
+		}
+		aside button.message{
+			background-color: rgba(0,0,0,0.7);
+			color: white;
+			font-size: 1.4rem;
+			padding: 22px 15px;
+		}
+		aside button.message:hover{
+			background-color: rgba(0,0,0,1);
+		}
+		aside button.message span{
+			padding: 4px 3px;
+			border-color: white;
+			margin-left: 20px
+		}
+		aside button.inbox{
+			background-color: #f44336;
+			color: white;
+			font-size: 1.4rem;
+		}
+		aside button.inbox:hover{
+			background-color: lightgrey;
+			color: black;
+		}
+		aside button.inbox span{
+			padding: 4px 3px;
+			border-color: white;
+		}
+		aside button.inbox:hover span{
+			border-color: black;
+		}
+		aside button.inbox span:first-child{
+			margin-right: 20px;
+		}
+		aside button.inbox span:last-child{
+			margin-left: 20px;
+		}
+		aside ul.inbox-list{
+			position: relative;
+			animation: slideRight 0.5s;
+		}
+		@keyframes slideRight{
+			from{
+				right: 100%;
+			}
+			to{
+				right: 0%;
+			}
+		}
+		aside ul.inbox-list.tog{
+			display: none;
+		}
+		aside ul.inbox-list li{
+			padding: 15px 30px 20px;
+			cursor: pointer;
+			border-bottom: 1px solid lightgrey;
+		}
+		aside ul.inbox-list li:hover{
+			background-color: #f1f1f1;
+		}
+		aside ul.inbox-list li:first-child{
+			background-color: #f1f1f1;
+		}
+		aside ul.inbox-list li div.inbox-head{
+			display: flex;
+			align-items: center;
+		}
+		aside ul.inbox-list li div.inbox-head img{
+			width: 40px;
+			height: 40px;
+			border-radius: 6px;
+		}
+		aside ul.inbox-list li div.inbox-head h1{
+			margin: 0;
+			margin-left: 20px;
+			color: grey;
+			font-size: 2rem;
+		}
+		aside ul.inbox-list li h2{
+			font-weight: normal;
+			font-size: 1.6rem;
+			line-height: 22px;
+		}
+		aside ul.inbox-list li p{
+			font-size: 1.6rem;
+			line-height: 20px;
+		}
+		aside ul.menu-list li{
+			display: flex;
+			font-size: 1.6rem;
+			padding: 20px 15px;
+			align-items: center;
+			cursor: pointer;
+		}
+		aside ul.menu-list li:hover{
+			background-color: lightgrey;
+		}
+		aside ul.menu-list li span{
+			display: inline-block;
+			border: 1px solid black;
+			padding: 4px 3px;
+			margin-right: 20px;
+		}
+		div.modal{
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 50;
+			display: none;
+			background-color: rgba(0,0,0,0.4);
+		}
+		div.modal div.modal-content{
+			margin: 7% auto;
+			background-color: white;
+			width: 70%;
+			animation: scaleUp 0.5s;
+		}
+		@keyframes scaleUp{
+			from{
+				transform: scale(0)
+			}
+			to{
+				transform: scale(1)
+			}
+		}
+		div.modal-content div.modal-head{
+			display: flex;
+			justify-content: space-between;
+			background-color: #f44336;
+			padding: 15px 15px;
+		}
+		div.modal-head h1{
+			margin: 0;
+			color: white;
+			font-size: 3rem;
+			padding: 18px 0;
+			font-weight: normal;
+		}
+		div.modal-head div.icont{
+			padding: 18px 18px;
+			cursor: pointer;
+		}
+		div.modal-head div.icont:hover{
+			background-color: lightgrey;
+		}
+		div.modal-head div.icont span{
+			display: inline-block;
+			border: 1px solid white;
+			padding: 11px 9px;
+		}
+		div.modal-body{
+			padding: 15px;
+		}
+		div.modal-body form label{
+			font-size: 1.6rem;
+		}
+		div.modal-body form input{
+			width: 100%;
+			font-size: 1.7rem;
+			border: 1px solid lightgrey;
+			padding: 8px 14px;
+			margin: 5px 0 13px;
+		}
+		div.modal-body form textarea{
+			width: 100%;
+			font-size: 1.7rem;
+			text-align: left;
+			align-items: center;
+			color: grey;
+			border: 1px solid lightgrey;
+			margin-bottom: 13px;
+		}
+		div.modal-body form div.buttons{
+			display: flex;
+			justify-content: space-between;
+		}
+		div.modal-body form div.buttons button{
+			font-size: 1.5rem;
+			border: none;
+			padding: 10px 16px;
+			cursor: pointer;
+		}
+		div.modal-body form div.buttons button.cancel{
+			background-color: #f44336;
+			color: white;
+		}
+		div.modal-body form div.buttons button span{
+			display: inline-block;
+			border: 1px solid black;
+			padding: 4px 3px;
+			margin-left: 7px;
+		}
+		div.modal-body form div.buttons button:hover{
+			background-color: lightgrey;
+		}
+		div.modal-body form div.buttons button.cancel span{
+			border-color: white;
+		}
+		div.modal-body form div.buttons button:hover span{
+			border-color: black;
+		}
+		div.modal-body form div.buttons button.cancel:hover{
+			color: black;
+		}
+		main{
+			margin-left: 25%;
+			padding: 15px;
+			/*border: 1px solid teal;*/
+		}
+		main img{
+			width: 190px;
+			max-height: 190px;
+			border-radius: 5px;
+		}
+		main h2{
+			color: grey;
+			font-size: 2rem;
+			font-weight: normal;
+		}
+		main h1{
+			font-size: 2.2rem;
+			font-weight: normal;
+		}
+		main h1 span{
+			display: inline-block;
+			border: 1px solid black;
+			padding: 5px 4px;
+		}
+		main div.buttons button{
+			border: none;
+			font-size: 1.5rem;
+			padding: 9px 16px;
+			cursor: pointer;
+		}
+		main div.buttons button:hover{
+			background-color: lightgrey;
+		}
+		main div.buttons button span{
+			display: inline-block;
+			border: 1px solid black;
+			padding: 4px 3px;
+			margin-left: 15px;
+		}
+		main hr{
+			opacity: 0.2;
+			margin: 20px 0 10px;
+		}
+		main p{
+			font-size: 1.6rem;
+			line-height: 22px;
+		}
+		main h3{
+			font-size: 1.7rem;
+			line-height: 25px;
+			font-weight: normal;
+			margin-bottom: 2px;
+		}
+		@media screen and (max-width: 1000px){
+			aside button.close{
+				display: inline;
+			}
+			nav{
+				display: block;
+			}
+			aside{
+				display: none;
+				width: 50%;
+			}
+			main{
+				margin-left: 0%;
+				margin-top: 0px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="overlay">
+		
+	</div>
+	<nav>
+		<ul class="nav-list">
+			<li class="logo" onclick="openSide()">
+				<span></span>
+			</li>
+			<li class="toggler" onclick="openModal()">
+				<span></span>
+			</li>
+		</ul>
+	</nav>
+	<div class="modal">
+		<div class="modal-content">
+			<div class="modal-head">
+				<h1>Send Mail</h1>
+				<div class="icont" onclick="closeModal()">
+					<span></span>
+				</div>
+			</div>
+			<div class="modal-body">
+				<form>
+					<label for="to">To</label>
+					<input type="text" name="to" id="to">
+					<label for="from">From</label>
+					<input type="text" name="from" id="from">
+					<label for="subject">Subject</label>
+					<input type="text" name="subject" id="subject">
+					<textarea rows="7">
+						What's on your mind?
+					</textarea>
+					<div class="buttons">
+						<button class="cancel" onclick="closeModal()">Cancel <span></span></button>
+						<button class="send"> Send <span></span></button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<aside>
+		<h1>w3schools.<span>com</span></h1>
+		<button class="close" onclick="closeSide()">Close <span></span></button>
+		<button class="message" onclick="openModal()">New Message <span></span></button>
+		<button class="inbox" onclick="toggleInbox()"><span></span> Inbox (3) <span></span></button>
+		<ul class="inbox-list">
+			<li>
+				<div class="inbox-head">
+					<img src="images/jenny.jpg">
+					<h1>Borge Resnes</h1>
+				</div>
+				<h2>Subject: Remember Me</h2>
+				<p>
+					Hello, i just wanted to let you know that i'll be home at...
+				</p>
+			</li>
+			<li>
+				<div class="inbox-head">
+					<img src="images/mark.jpg">
+					<h1>Borge Resnes</h1>
+				</div>
+				<h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</h2>
+			</li>
+			<li>
+				<div class="inbox-head">
+					<img src="images/kyle.jpg">
+					<h1>Borge Resnes</h1>
+				</div>
+				<h2>Welcome!</h2>
+			</li>
+		</ul>
+		<ul class="menu-list">
+			<li>
+				<span></span> Sent
+			</li>
+			<li>
+				<span></span> Draft
+			</li>
+			<li>
+				<span></span> Trash
+			</li>
+		</ul>
+	</aside>
+	<main>
+		<img src="images/jenny.jpg">
+		<h2>Subject: Remember Me</h2>
+		<h1><span></span> From Borge Refsnes, sep 27, 2015.</h1>
+		<div class="buttons">
+			<button>Reply <span></span></button>
+			<button>Forward <span></span></button>
+		</div>
+		<hr>
+		<p>
+			Hello, i just wanted to let you know that i'll be home at Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+			<br><br>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</p>
+		<h3>Best Regards, <br> Borge Refsnes</h3>
+	</main>
+
+	<script type="text/javascript">
+		function toggleInbox(){
+			let inbox = document.querySelector("aside ul.inbox-list")
+			inbox.classList.toggle("tog")
+		}
+		let aside = document.querySelector("aside")
+		let overlay = document.querySelector("div.overlay")
+		function openSide(){
+			aside.style.display = "block";
+			overlay.style.display = "block";
+		}
+		function closeSide(){
+			aside.style.display = "none";
+			overlay.style.display = "none";
+		}
+		let modal = document.querySelector("div.modal")
+		function openModal(){
+			modal.style.display = "block"
+		}
+		function closeModal(e){
+			modal.style.display = "none"
+		}
+		let cancel = document.querySelector("div.modal-body form div.buttons button.cancel")
+		cancel.onclick = function(e){
+			e.preventDefault()
+			modal.style.display = "none"
+		}
+		window.onclick = function(e){
+			if(e.target == modal){
+				modal.style.display = "none"
+			}
+		}
+		let inputs = document.querySelectorAll("div.modal-body form input")
+		firstInput = inputs[0]
+		console.log(firstInput)
+		firstInput.addEventListener("keypress", function(e){
+			// console.log(e.which)
+			if (e.which == 13){
+				console.log("you pressed the enter button")
+			}
+		})
+	</script>
+</body>
+</html>

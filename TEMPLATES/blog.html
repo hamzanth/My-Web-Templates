@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Blog</title>
+	<style type="text/css">
+		*{
+			box-sizing: border-box;
+		}
+		html, body{
+			font-size: 10px;
+			margin: 0;
+			padding: 0;
+			height: 100%;
+		}
+		a{
+			text-decoration: none;
+			color: black;
+		}
+		ul{
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+		}
+		img{
+			width: 100%;
+		}
+		section.header{
+			text-align: center;
+			padding: 40px;
+		}
+		section.header h1{
+			font-size: 3.5rem;
+			text-transform: uppercase;
+			margin-bottom: 3px;
+		}
+		section.header p{
+			font-size: 1.7rem;
+		}
+		section.header p span.dark{
+			color: white;
+			background-color: black;
+			padding: 2px 8px;
+		}
+		section.splitter{
+			width: 98%;
+			margin: 0 auto;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+		}
+		section.splitter div.split-left{
+			width: 65%;
+		}
+		section.splitter div.split-right{
+			width: 32%;
+		}
+		div.head-card img, div.blog-card img{
+			height: 37vh;
+		}
+		div.name-card img{
+			height: 35vh;
+		}
+		div.posts h1{
+			font-size: 2.2rem;
+			background-color: #f1f1f1;
+			margin: 0;
+			padding: 2.2rem 2rem;
+			font-weight: normal;
+		}
+		ul.post-lists li{
+			display: flex;
+			border-bottom: 1px solid lightgrey;
+			align-items: center;
+			padding: 10px 0;
+		}
+		ul.post-lists li:hover{
+			background-color: lightgrey;
+		}
+		ul.post-lists li img{
+			width: 50px;
+			height: 50px;
+		}
+		ul.post-lists li div.stack{
+			margin-left: 10px;
+		}
+		div.stack h2, div.stack p{
+			margin: 0;
+		}
+		div.stack h2{
+			font-size: 1.9rem;
+			margin-bottom: 5px;
+		}
+		div.stack p{
+			font-size: 1.5rem;
+		}
+		div.tags{
+			padding-bottom: 15px;
+		}
+		div.tags h1{
+			font-size: 2.2rem;
+			background-color: #f1f1f1;
+			margin: 0;
+			padding: 2.2rem 1.7rem;
+			font-weight: normal;
+		}
+		div.tag-detail{
+			padding: 0 8px;
+		}
+		div.tag-detail span{
+			display: inline-block;
+			background-color: #f1f1f1;
+			font-size: 1.3rem;
+			padding: 2px 8px;
+			margin: 10px 3px;
+		}
+		div.tag-detail span.active{
+			color: white;
+			background-color: black;
+			font-size: 1.5rem;
+		}
+		div.head-card{
+			padding-bottom: 10px;
+		}
+		div.head-card div.head-detail{
+			padding: 0 12px;
+		}
+		div.head-detail h1{
+			font-size: 2.3rem;
+
+		}
+		div.head-detail h2{
+			font-size: 1.9rem;
+		}
+		div.head-detail h2 span.grey-text{
+			color: grey;
+		}
+		div.head-detail p{
+			font-size: 1.6rem;
+			line-height: 20px;
+		}
+		div.head-detail div.head-bottom{
+			display: flex;
+			justify-content: space-between;
+		}
+		div.head-bottom button.read-more{
+			border: none;
+			font-size: 1.5rem;
+			background-color: white;
+			color: black;
+			padding: 12px 20px;
+			border: 1px solid grey;
+			font-weight: bold
+		}
+		div.head-bottom p{
+			margin: 0;
+			font-size: 1.7rem;
+			font-weight: bold;
+		}
+		div.head-bottom p span.dark{
+			display: inline-block;
+			background-color: black;
+			color: white;
+			padding: 0px 5px;
+			margin-left: 10px;
+		}
+		div.blog-card{
+			padding-bottom: 10px;
+		}
+		div.blog-card div.blog-detail{
+			padding: 0 12px;
+		}
+		div.blog-detail h1{
+			font-size: 2.3rem;
+		}
+		div.blog-detail h2{
+			font-size: 1.9rem;
+		}
+		div.blog-detail h2 span.grey-text{
+			color: grey;
+		}
+		div.blog-detail p{
+			font-size: 1.6rem;
+			line-height: 20px;
+		}
+		div.blog-detail div.blog-bottom{
+			display: flex;
+			justify-content: space-between;
+		}
+		div.blog-bottom button.read-more{
+			border: none;
+			font-size: 1.5rem;
+			background-color: white;
+			color: black;
+			padding: 12px 20px;
+			border: 1px solid grey;
+			font-weight: bold
+		}
+		div.blog-bottom p{
+			margin: 0;
+			font-size: 1.7rem;
+			font-weight: bold;
+		}
+		div.blog-bottom p span.dark{
+			display: inline-block;
+			background-color: black;
+			color: white;
+			padding: 0px 5px;
+			margin-left: 10px;
+		}
+		section.footer{
+			padding: 50px 20px;
+			background-color: grey;
+			margin-top: 10px;
+		}
+		section.footer button{
+			border: none;
+			font-size: 1.5rem;
+			padding: 1.5rem 2.3rem;
+			display: inline-block;
+		}
+		section.footer button.prev{
+			background-color: darkgrey;
+			color: grey;
+			cursor: not-allowed;
+			margin-right: 3px;
+		}
+		section.footer button.next{
+			background-color: black;
+			color: white;
+			cursor: pointer;
+		}
+		section.footer button.next:hover{
+			color: black;
+			background-color: lightgrey;
+		}
+		section.footer p{
+			font-size: 1.7rem;
+			color: white;
+			margin-top: 24px;
+			margin-bottom: 0;
+		}
+		div.head-card, div.blog-card, div.name-card, div.tags, div.posts{
+			box-shadow: 2px 2px 4px 5px rgba(0,0,0,0.2);
+			margin-bottom: 40px;
+		}
+		div.name-card div.card-detail{
+			padding: 0px 15px;
+		}
+		div.name-card{
+			padding-bottom: 8px;
+		}
+		div.name-card div.card-detail h1{
+			font-size: 2.1rem;
+		}
+		div.name-card div.card-detail p{
+			font-size: 1.5rem;
+		}
+		@media screen and (max-width: 1000px){
+			section.splitter div.split-left, section.splitter div.split-right{
+				width: 100%;
+			}
+			div.name-card img{
+				height: 70vh;
+			}
+		}
+		@media screen and (max-width: 800px){
+			div.name-card img{
+				height: 60vh;
+			}
+		}
+		@media screen and (max-width: 600px){
+			div.name-card img{
+				height: 40vh;
+			}
+		}
+	</style>
+</head>
+<body>
+	<section class="header">
+		<h1>My Blog</h1>
+		<p>Welcome to the blog of <span class="dark">unknown</span></p>
+	</section>
+	<section class="splitter">
+		<div class="split-left">
+			<div class="head-card">
+				<img src="images/boys.jpg">
+				<div class="head-detail">
+					<h1>TITLE HEADING</h1>
+					<h2>Title description, <span class="grey-text">April 7, 2014</span></h2>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+					<div class="head-bottom">
+						<button class="read-more">READ MORE &raquo;</button>
+						<p>comments <span class="dark">0</span></p>
+					</div>
+				</div>
+			</div>
+			<div class="blog-card">
+				<img src="images/kids.jpg">
+				<div class="blog-detail">
+					<h1>BLOG ENTRY</h1>
+					<h2>Title description, <span class="grey-text">April 2, 2014</span></h2>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+					<div class="blog-bottom">
+						<button class="read-more">READ MORE &raquo;</button>
+						<p>comments <span class="dark">2</span></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="split-right">
+			<div class="name-card">
+				<img src="images/jenny.jpg">
+				<div class="card-detail">
+					<h1>MY NAME</h1>
+					<P>
+						Just me, myself and I, exploring the universe of unknownment. I have a heart of love and an interest of lorem ipsum and mauris neque quam blog. I want to share my world with you.
+					</P>
+				</div>
+			</div>
+			<div class="posts">
+				<h1>Popular Posts</h1>
+				<ul class="post-lists">
+					<li>
+						<img src="images/geometry.jpg">
+						<div class="stack">
+							<h2>Lorem</h2>
+							<p>sed manthis nunc</p>
+						</div>
+					</li>
+					<li>
+						<img src="images/geometry.jpg">
+						<div class="stack">
+							<h2>Lorem</h2>
+							<p>sed manthis nunc</p>
+						</div>
+					</li>
+					<li>
+						<img src="images/geometry.jpg">
+						<div class="stack">
+							<h2>Lorem</h2>
+							<p>sed manthis nunc</p>
+						</div>
+					</li>
+					<li>
+						<img src="images/geometry.jpg">
+						<div class="stack">
+							<h2>Lorem</h2>
+							<p>sed manthis nunc</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="tags">
+				<h1>Tags</h1>
+				<div class="tag-detail">
+						<span class="active">Travel</span>
+						<span>New Yor</span>
+						<span>London</span>
+						<span>IKEA</span>
+						<span>NORWAY</span>
+						<span>DIY</span>
+						<span>ideas</span>
+						<span>Baby</span>
+						<span>Family</span>
+						<span>News</span>
+						<span>Clothing</span>
+						<span>Shopping</span>
+						<span>Sports</span>
+						<span>Games</span>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="footer">
+		<button class="prev">Previous</button>
+		<button class="next">Next &raquo;</button>
+		<p>Powered by Shaw</p>
+	</section>
+</body>
+</html>

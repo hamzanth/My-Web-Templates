@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Travel Agency Template 2</title>
+	<style type="text/css">
+		*{
+			box-sizing: border-box;
+		}
+		html, body{
+			font-size: 10px;
+			margin: 0;
+			padding: 0;
+			/*height: 100%;*/
+		}
+		body{
+			background-color: #f1f1f1;
+		}
+		a{
+			text-decoration: none;
+			color: black;
+		}
+		ul{
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+		}
+		section.hero{
+			position: relative;
+			margin-bottom: 30px;
+		}
+		section.hero img{
+			width: 100%;
+			max-height: 90vh;
+		}
+		section.hero div.hero-content{
+			position: absolute;
+			background-color: #ffc107;
+			width: 70%;
+			bottom: 10%;
+			left: 0;
+			padding: 17px;
+			opacity: 0.7;
+		}
+		section.hero div.hero-content:hover{
+			opacity: 1;
+		}
+		div.hero-content h1{
+			font-size: 2.9rem;
+			line-height: 45px;
+			font-weight: normal;
+			margin: 0;
+		}
+		/*hdlkd*/
+		section.cards{
+			width: 94%;
+			margin: 0 auto;
+		}
+		section.cards{
+			/*margin-top: 20px;*/
+		}
+		section.cards div.card-cont{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		div.card-cont div.card{
+			width: 49%;
+			background-color: white;
+			border-top: 6px solid #ffc107;
+			margin: 18px 0;
+		}
+		div.card img{
+			width: 100%;
+			max-height: 55vh;
+		}
+		div.card div.card-body{
+			padding-top: 15px;
+		}
+		div.card-body h1{
+			margin: 0;
+			font-size: 2.9rem;
+			font-weight: normal;
+		}
+		div.card-body p{
+			font-size: 1.7rem;
+			line-height: 22px;
+			/*margin-bottom: 20px;*/
+		}
+		@media screen and (max-width: 600px){
+			section.hero div.hero-content{
+				display: none;
+			}
+			section.cards{
+				width: 90%;
+			}
+			section.cards div.card-cont div.card{
+				width: 100%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<section class="hero">
+		<img src="images/fourth.jpg">
+		<div class="hero-content">
+			<h1>4 Good Reasons <br> For travelling with us</h1>
+		</div>
+	</section>
+	<section class="cards">
+		<div class="card-cont">
+			<div class="card">
+				<img src="images/mark.jpg">
+				<div class="card-body">
+					<h1>Smart Vacation</h1>
+					<p>
+						Full vacation control from your cell phone.
+					</p>
+				</div>
+			</div>
+			<div class="card">
+				<img src="images/rockstar.jpg">
+				<div class="card-body">
+					<h1>Super Offers</h1>
+					<p>
+						Up to 50% offers. Always 25% students offers.
+					</p>
+				</div>
+			</div>
+			<div class="card">
+				<img src="images/jenny.jpg">
+				<div class="card-body">
+					<h1>Car Rental Included</h1>
+					<p>
+						Wherever you travel our can rental in included.
+					</p>
+				</div>
+			</div>
+			<div class="card">
+				<img src="images/kyle.jpg">
+				<div class="card-body">
+					<h1>Realize Your Dreams</h1>
+					<p>
+						Don't wait until it is late.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

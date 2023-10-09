@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Apartment Rental Template</title>
+	<style type="text/css">
+		*{
+			box-sizing: border-box;
+		}
+		html, body{
+			font-size: 10px;
+			margin: 0;
+			padding: 0;
+			/*height: 100%;*/
+		}
+		/*body{
+			background-color: #ffdddd;
+		}*/
+		a{
+			text-decoration: none;
+			color: black;
+		}
+		ul{
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+		}
+		div.overlay{
+			position: fixed;
+			left: 0;
+			right: 0;
+			width: 100%;
+			height: 100%;
+			display: none;
+			background-color: rgba(0,0,0,0.4);
+			z-index: 15;
+		}
+		nav{
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			background-color: black;
+			z-index: 23;
+			display: none;
+		}
+		nav ul.nav-list{
+			display: flex;
+			justify-content: space-between;
+		}
+		nav ul.nav-list li{
+			font-size: 2.5rem;
+			color: white;
+			padding: 10px 16px;
+			font-weight: bold;
+		}
+		nav ul.nav-list li.toggler{
+			cursor: pointer;
+			display: none;
+			/*border: 1px solid green;*/
+		}
+		nav ul.nav-list li.toggler:hover{
+			background-color: darkgrey;
+		}
+		nav ul.nav-list li.toggler:hover span{
+			border-color: black;
+		}
+		nav ul.nav-list li span{
+			display: inline-block;
+			border: 1px solid white;
+			padding: 7px 6px;
+		}
+		aside{
+			/*margin-top: 41px;*/
+			border: 1px solid teal;
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 35%;
+			height: 100%;
+			z-index: 40;
+			background-color: white;
+		}
+		aside div.aside-content{
+			position: absolute;
+			top: 0;
+			right: 0;
+			height: 100%;
+			overflow-y: scroll;
+			background-color: #f1f1f1;
+			width: 63%;
+			border-left: 1px solid lightgrey;
+			padding: 20px 18px;
+		}
+		div.aside-content h1{
+			font-size: 2.5rem;
+			font-weight: normal;
+			margin: 0;
+			line-height: 40px;
+		}
+		div.aside-content>p{
+			font-size: 1.7rem;
+			margin-bottom: 50px;
+		}
+		div.aside-content form>input{
+			width: 100%;
+			padding: 0.8rem 1.4rem;
+			font-size: 1.9rem;
+			color: grey;
+			margin: 17px 0;
+			border: 1px solid lightgrey;
+		}
+		div.aside-content form label{
+			font-size: 1.5rem;
+		}
+		div.aside-content form label span{
+			margin-right: 3px;
+			display: inline-block;
+			padding: 4px 3px;
+			border: 1px solid black;
+		}
+		div.aside-content form button{
+			font-size: 1.5rem;
+			border: none;
+			background-color: #4caf50;
+			padding: 1rem 0 1rem 2rem ;
+			color: white;
+			width: 100%;
+			text-align: left;
+			cursor: pointer;
+		}
+		div.aside-content form button span{
+			margin-right: 23px;
+			display: inline-block;
+			padding: 4px 3px;
+			border: 1px solid white;
+		}
+		div.aside-content form button:hover{
+			background-color: lightgrey;
+			color: black;
+		}
+		div.aside-content form button:hover span{
+			border-collapse: black;
+		}
+		div.aside-content ul li{
+			margin: 35px 0;
+		}
+		div.aside-content ul li p{
+			font-size: 1.7rem;
+			margin: 0;
+		}
+		div.aside-content ul li p span{
+			margin-right: 3px;
+			display: inline-block;
+			padding: 4px 3px;
+			border: 1px solid black;
+		}
+		main{
+			margin-left: 35%;
+			margin-right: 12%;
+			/*margin-top: 41px;*/
+			border: 1px solid lightgrey;
+			padding: 20px;
+		}
+		section.hero h1{
+			font-weight: normal;
+			font-size: 3rem;
+			margin-top: 0;
+			color: #4caf50;
+		}
+		div.slide-show{
+			position: relative;
+		}
+		div.myslide img{
+			width: 100%;
+			max-height: 60vh;
+		}
+		div.slide-show p{
+			position: absolute;
+			left: 0;
+			bottom: 85px;
+			color: white;
+			background-color: black;
+			padding: 18px 15px;
+			font-size: 1.6rem
+		}
+		div.dots{
+			display: flex;
+			justify-content: space-between;
+			margin-top: 9px;
+		}
+		div.dots img{
+			width: 23.5%;
+			opacity: 0.7;
+			height: 12vh;
+			cursor: pointer;
+		}
+		div.dots img:hover{
+			opacity: 1;
+		}
+		div.dots img.opac{
+			opacity: 1;
+		}
+		section.space{
+
+		}
+		section.space h1{
+			font-size: 2.2rem;
+			margin-bottom: 0;
+			margin-top: 30px;
+		}
+		section.space div.space-cont{
+			display: flex;
+		}
+		div.space-cont div.left-sect, div.space-cont div.right-sect{
+			width: 50%;
+		}
+		div.space-cont ul li p{
+			font-size: 1.8rem;
+		}
+		div.space-cont ul li p span{
+			display: inline-block;
+			border: 1px solid black;
+			padding: 5px 4px;
+			margin-right: 6px;
+		}
+		section.hoz{
+			margin: 15px 0;
+		}
+		section.hoz hr{
+			opacity: 0.3;
+		}
+		/*hldhs*/
+		section.amenities{
+
+		}
+		section.amenities h1{
+			font-size: 2.2rem;
+			margin-bottom: 0;
+			margin-top: 30px;
+		}
+		section.amenities div.amenities-cont{
+			display: flex;
+		}
+		div.amenities-cont div.left-sect, div.amenities-cont div.right-sect{
+			width: 50%;
+		}
+		div.amenities-cont ul li p{
+			font-size: 1.8rem;
+		}
+		div.amenities-cont ul li p span{
+			display: inline-block;
+			border: 1px solid black;
+			padding: 5px 4px;
+			margin-right: 6px;
+		}
+		section.hoz{
+			margin: 15px 0;
+		}
+		section.hoz hr{
+			opacity: 0.3;
+		}
+		section.info h1{
+			font-size: 2rem;
+		}
+		section.info p{
+			font-size: 1.7rem;
+			line-height: 22px;
+		}
+		section.info p span{
+			border: 1px solid black;
+			padding: 5px 4px;
+			display: inline-block;
+			margin: 0 5px;
+		}
+		section.rules h1{
+			font-size: 2rem;
+		}
+		section.rules p{
+			font-size: 1.7rem;
+			line-height: 22px;
+		}
+		section.rules button{
+			border: none;
+			font-size: 1.5rem;
+			color: white;
+			background-color: #4caf50;
+			padding: 1rem;
+			width: 35%;
+		}
+		section.contact{
+			padding: 20px 0;
+		}
+		section.contact>h1{
+			font-size: 3rem;
+			margin-top: 0px;
+			color: black;
+			font-weight: normal;
+		}
+		section.contact>h2{
+			font-weight: normal;
+			font-size: 1.8rem;
+			/*margin-top: 35px;*/
+			color: black;
+		}
+		section.contact ul.contact-list{
+			
+		}
+		ul.contact-list li span{
+			display: inline-block;
+			border: 1px solid black;
+			padding: 5px 4px;
+			margin-right: 25px;
+		}
+		ul.contact-list li{
+			font-size: 1.6rem;
+			color: black;
+			display: flex;
+			align-items: center;
+			margin: 10px 0;
+		}
+		section.contact div.form-container{
+			margin-top: 20px;
+		}
+		section.contact form input{
+			width: 100%;
+			padding: 1.1rem 1.2rem;
+			font-size: 1.5rem ;
+			border: 1px solid lightgrey;
+			margin-bottom: 14px;
+		}
+		section.contact form button{
+			border: none;
+			color: white;
+			background-color: #4caf50;
+			padding: 11px 2px;
+			width: 35%;
+			font-size: 1.5rem;
+			cursor: pointer;
+		}
+		section.contact form button:hover{
+			color: black;
+			background-color: lightgrey;
+		}
+		section.contact form button:hover span{
+			border-color: black;
+		}
+		section.footer{
+			margin-top: 30px;
+			/*margin-top: 20px;*/
+		}
+		section.footer p{
+			font-size: 1.7rem;
+			margin: 0;
+		}
+		@media screen and (max-width: 1000px){
+			nav{
+				display: block;
+			}
+			nav ul.nav-list li.toggler{
+				display: block;
+			}
+			div.aside-body ul.cat-list li.close{
+				display: block;
+			}
+			main{
+				margin-left: 0%;
+				margin-top: 41px;
+				margin-right: 0;
+			}
+			aside{
+				display: none;
+				width: 43%;
+			}
+			aside div.aside-content{
+				width: 100%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="overlay">
+		
+	</div>
+	<nav>
+		<ul class="nav-list">
+			<li>
+				Rental
+			</li>
+			<li class="toggler" onclick="toggleSide()">
+				<span></span>
+			</li>
+		</ul>
+	</nav>
+	<aside>
+		<div class="aside-content">
+			<h1>Rental <br>from $99</h1>
+			<p>per night</p>
+			<form>
+				<label>
+					<span></span> Check In
+				</label>
+				<input type="date" name="check" placeholder="DD MM YYYY">
+				<label>
+					<span></span> Check Out
+				</label>
+				<input type="date" name="check" placeholder="DD MM YYYY">
+				<label>
+					<span></span> Adults
+				</label>
+				<input type="text" name="check" placeholder="1">
+				<label>
+					<span></span> Kids
+				</label>
+				<input type="text" name="check" placeholder="0">
+				<button><span></span> Search availability</button>
+			</form>
+			<ul>
+				<li>
+					<p><span></span> Apartment</p>
+				</li>
+				<li>
+					<p><span></span> Subscribe</p>
+				</li>
+				<li>
+					<p><span></span> Contact</p>
+				</li>
+			</ul>
+		</div>
+	</aside>
+	<main>
+		<section class="hero">
+			<h1>The Apartment</h1>
+			<div class="slide-show">
+				<div class="myslide">
+					<img src="images/fourth.jpg" alt="Living Room">
+				</div>
+				<div class="myslide">
+					<img src="images/third.jpg" alt="Dinning Room">
+				</div>
+				<div class="myslide">
+					<img src="images/sec.jpg" alt="Bed Room">
+				</div>
+				<div class="myslide">
+					<img src="images/kids.jpg" alt="Living Room11">
+				</div>
+				<p></p>
+				<div class="dots">
+					<img src="images/fourth.jpg" onclick="currentSlide(1)">
+					<img src="images/third.jpg" onclick="currentSlide(2)">
+					<img src="images/sec.jpg" onclick="currentSlide(3)">
+					<img src="images/kids.jpg" onclick="currentSlide(4)">
+				</div>
+			</div>
+		</section>
+		<section class="space">
+			<h1>The space</h1>
+			<div class="space-cont">
+				<div class="left-sect">
+					<ul>
+						<li>
+							<p><span></span> Max people: 4</p>
+						</li>
+						<li>
+							<p><span></span> Bathrooms: 2</p>
+						</li>
+						<li>
+							<p><span></span> Bedrooms: 1</p>
+						</li>
+					</ul>
+				</div>
+				<div class="right-sect">
+					<ul>
+						<li>
+							<p><span></span> Check In: After 3PM</p>
+						</li>
+						<li>
+							<p><span></span> Check Out: 12PM</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<section class="hoz">
+			<hr>
+		</section>
+		<section class="amenities">
+			<h1>Amenities</h1>
+			<div class="amenities-cont">
+				<div class="left-sect">
+					<ul>
+						<li>
+							<p><span></span> Shower</p>
+						</li>
+						<li>
+							<p><span></span> WIFI</p>
+						</li>
+						<li>
+							<p><span></span> TV</p>
+						</li>
+					</ul>
+				</div>
+				<div class="right-sect">
+					<ul>
+						<li>
+							<p><span></span> Kitchen</p>
+						</li>
+						<li>
+							<p><span></span> Heating</p>
+						</li>
+						<li>
+							<p><span></span> Accessible</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<section class="hoz">
+			<hr>
+		</section>
+		<section class="info">
+			<h1>Extra Info</h1>
+			<p>
+				Our apartment is really clean and we like to keep it that way. Enjoy the Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. <br> <br> We accept: <span></span><span></span><span></span><span></span>
+			</p>
+		</section>
+		<section class="hoz">
+			<hr>
+		</section>
+		<section class="rules">
+			<h1>Rules</h1>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. <br><br> Subscribe to receive updates on available dates and special offers
+			</p>
+			<button>Subscribe</button>
+		</section>
+		<section class="hoz">
+			<hr>
+		</section>
+		<section class="contact">
+			<h1>Contact</h1>
+			<ul class="contact-list">
+				<li>
+					<span class="box"></span> Chicago, Us
+				</li>
+				<li>
+					<span class="box"></span> Phone: +00 151515
+				</li>
+				<li>
+					<span class="box"></span> Email: mail@mail.com
+				</li>
+			</ul>
+			<h2>Questions: Go ahead, ask them</h2>
+			<div class="form-container">
+				<form>
+					<input type="text" name="name" id="name" placeholder="Name">
+					<input type="email" name="email" id="email" placeholder="Email">
+					<input type="text" name="message" id="message" placeholder="Message">
+					<button>Send a Message</button>
+				</form>	
+			</div>
+		</section>
+		<section class="footer">
+			<p>Powered by <ins>shaw</ins></p>
+		</section>
+	</main>
+	<script type="text/javascript">
+	let aside = document.querySelector("aside")
+	let overlay = document.querySelector("div.overlay")
+	let slideIndex = 1
+	slideShow(1)
+	function currentSlide(sindex){
+		slideShow(slideIndex = sindex)
+	}
+	function slideShow(slideIndex){
+		let slides = document.querySelectorAll("div.slide-show div.myslide")
+		let dots = document.querySelectorAll("div.dots img")
+		let caption = document.querySelector("div.slide-show p")
+		for(let i=0; i<slides.length; i++){
+			slides[i].style.display = "none"
+			dots[i].classList.remove("opac")
+		}
+		slides[slideIndex - 1].style.display = "block"
+		slideImg = slides[slideIndex -1].querySelector("img")
+		caption.textContent = slideImg.alt
+		dots[slideIndex - 1].classList.add("opac")
+	}
+	function toggleSide(){
+		if(aside.style.display == "block"){
+			aside.style.display = "none"
+			// aside.style.width = "0%"
+			overlay.style.display = "none"
+		}
+		else{
+			aside.style.display = "block"
+			// aside.style.width = "0%"
+			overlay.style.display = "block"
+		}
+	}
+	function closeSide(){
+		aside.style.display = "none"
+		// aside.style.width = "0%"
+		overlay.style.display = "none"
+	}
+</script>
+</body>
+</html>

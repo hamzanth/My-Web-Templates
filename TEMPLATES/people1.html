@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>People Portfolio</title>
+	<style type="text/css">
+		*{
+			box-sizing: border-box;
+		}
+		html, body{
+			font-size: 10px;
+			margin: 0;
+			padding: 0;
+			/*height: 100%;*/
+		}
+		/*body{
+			background-color: #ffdddd;
+		}*/
+		a{
+			text-decoration: none;
+			color: black;
+		}
+		ul{
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+		}
+		aside{
+			width: 300px;
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 100%;
+			z-index: 44;
+			/*border: 1px solid green;*/
+			background-color: white;
+			transition: width 0.5s;
+			overflow: hidden;
+		}
+		aside div.name{
+			margin-top: 100px;
+			margin-bottom: 70px;
+		}
+		aside div.name h1{
+			text-align: center;
+			font-size: 2.5rem;
+			line-height: 30px;
+			color: #616161;
+		}
+		aside ul.nav-list li{
+			text-align: center;
+			padding: 12px 0;
+		}
+		aside ul.nav-list li:hover{
+			background-color: lightgrey;
+		}
+		aside ul.nav-list li:hover a{
+			color: black;
+		}
+		aside ul.nav-list li a{
+			font-size: 1.5rem;
+			color: #616161;
+			font-weight: bold;
+			cursor: pointer;
+		}
+		nav{
+			display: none;
+			justify-content: space-between;
+			padding: 20px 20px;
+		}
+		nav h1{
+			font-size: 2.2rem;
+			margin-top: 10px;
+			margin-bottom: 0;
+		}
+		nav div.toggler{
+			cursor: pointer;
+			padding: 7px;
+		}
+		nav div.toggler:hover{
+			background-color: lightgrey;
+		}
+		div.toggler div.tog{
+			width: 1.8rem;
+			height: 0.2rem;
+			margin: 0.6rem;
+			background-color: black;
+		}
+		div.overlay{
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+			display: none;
+			z-index: 10;
+			background-color: rgba(0,0,0,0.6);
+		}
+		main{
+			margin-left: 300px;
+		}
+		section.image-show{
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+		}
+		section.image-show img{
+			width: 33.333%;
+			max-height: 55vh;
+			opacity: 0.9;
+		}
+		section.image-show img:hover{
+			opacity: 1;
+		}
+		section.pagination{
+			display: flex;
+			justify-content: center;
+			margin: 25px 20px 50px 20px;
+		}
+		section.pagination a{
+			display: inline-block;
+			font-size: 1.6rem;
+			padding: 8px 14px;
+			/*border: 1px solid blue;*/
+		}
+		section.pagination a.active{
+			background-color: black;
+			color: white;
+		}
+		section.pagination a:hover{
+			background-color: black;
+			color: white;
+		}
+		section.pagination a.active:hover{
+			background-color: darkgrey;
+			color: black;
+		}
+		section.about{
+			background-color: #616161;
+		}
+		section.about div.about-content{
+			width: 60%;
+			margin: 0 auto;
+			padding: 15px 0;
+		}
+		div.about-content>h1{
+			font-size: 2.2rem;
+			margin: 40px 0;
+			color: white;
+			text-align: center;
+		}
+		div.about-content>h2{
+			font-size: 2rem;
+			color: white;
+			margin-top: 40px;
+			margin-bottom: 25px;
+		}
+		div.about-content>p{
+			font-size: 1.6rem;
+			line-height: 20px;
+			color: white;
+		}
+		div.about-content img{
+			width: 100%;
+			max-height: 60vh;
+		}
+		section.skills{
+			margin: 0 20px;
+		}
+		div.skills h1{
+			font-size: 2.3rem;
+			font-weight: normal;
+			color: white;
+		}
+		ul.skill-list{
+			margin-bottom: 25px;
+		}
+		ul.skill-list li p{
+			font-size: 1.6rem;
+			color: white;
+		}
+		ul.skill-list li div.progress-bar{
+			width: 100%;
+			background-color: white;
+		}
+		ul.skill-list li div.progress{
+			padding: 12px;
+			color: white;
+			background-color: grey;
+			text-align: center;
+			font-size: 1.5rem;
+		}
+		div.skills button{
+			color: black;
+			border: none;
+			background-color: white;
+			padding: 13px 20px;
+			font-size: 1.5rem;
+		}
+		ul.skill-list li:nth-child(1) div.progress{
+			width: 95%;
+		}
+		ul.skill-list li:nth-child(2) div.progress{
+			width: 85%;
+		}
+		ul.skill-list li:nth-child(3) div.progress{
+			width: 85%;
+		}
+		section.charges div.charge-cont{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		div.charge-cont ul.charge-list{
+			width: 32%;
+		} 
+		div.charges div.charge-cont{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		div.charge-cont ul.charge-list{
+			width: 49%;
+			background-color: white;
+			border: 1px solid lightgrey;
+			opacity: 0.6;
+		} 
+		div.charge-cont ul.charge-list:hover{
+			opacity: 1;
+		} 
+		ul.charge-list li{
+			text-align: center;
+			font-size: 1.5rem;
+			padding: 20px 2px;
+			border-bottom: 1px solid lightgrey;
+		}
+		ul.charge-list li.charge-head{
+			font-size: 2.7rem;
+			color: white;
+			background-color: black;
+			padding: 35px 15px;
+		}
+		ul.charge-list li.money h2{
+			margin-top: 5px;
+			margin-bottom: 15px;
+			font-size: 3rem;
+			font-weight: normal;
+		}
+		ul.charge-list li.money p{
+			margin: 0;
+		}
+		div.charges>h1{
+			font-size: 2.2rem;
+			color: white;
+			font-weight: normal;
+			margin-bottom: 10px;
+		}
+		ul.charge-list li.sign-up{
+			background-color: #f1f1f1;
+		}
+		ul.charge-list li.sign-up button{
+			background-color: white;
+			color: black;
+			border: none;
+			padding: 14px 22px;
+			font-size: 1.5rem;
+		}
+		ul.charge-list li.sign-up button:hover{
+			background-color: lightgrey;
+		}
+		section.contact{
+			background-color: #f1f1f1;
+			padding: 20px 0px;
+		}
+		section.contact div.contact-detail{
+			width: 60%;
+			margin: 0 auto;
+		}
+		section.contact h1{
+			font-size: 2.1rem;
+			margin-top: 5px;
+			/*margin-bottom: 35px;*/
+			text-align: center;
+		}
+		section.contact p{
+			font-size: 1.6rem;
+			margin: 20px 0;
+		}
+		section.contact form input{
+			width: 100%;
+			padding: 1rem;
+			font-size: 1.5rem;
+			border: 1px solid lightgrey;
+			margin-top: 4px;
+			margin-bottom: 12px;
+		}
+		section.contact form label{
+			font-size: 1.7rem;
+		}
+		section.contact form button{
+			border: none;
+			color: white;
+			background-color: black;
+			padding: 10px 18px;
+			font-size: 1.5rem;
+			text-align: center;
+			width: 100%;
+		}
+		section.footer{
+			padding: 30px 25px;
+			background-color: darkgrey;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+		}
+		section.footer>div{
+			width: 33%;
+		}
+		div.foot h1{
+			font-size: 2.5rem;
+		}
+		div.foot p{
+			font-size: 1.5rem;
+			line-height: 2rem;
+		}
+		div.stack img{
+			height: 50px;
+			width: 50px;
+		}
+		div.stack div.rig{
+			margin-left: 9px;
+		}
+		div.rig h1, div.rig p{
+			margin: 0;
+		}
+		div.stack div.rig h1{
+			font-size: 2rem;
+		}
+		div.stack div.rig p{
+			font-size: 1.6rem;
+		}
+		div.stack{
+			display: flex;
+			align-items: center;
+			padding: 18px 10px;
+		}
+		div.stack:hover{
+			background-color: lightgrey;
+		}
+		div.hor hr{
+			margin: 0;
+			opacity: 0.4;
+		}
+		div.blog-posts>h1{
+			font-size: 2.5rem;
+		}
+		div.tags>h1{
+			font-size: 2.5rem;
+		}
+		div.var span{
+			display: inline-block;
+			font-size: 1.2rem;
+			background-color: grey;
+			padding: 1px 10px;
+			margin-bottom: 18px;
+			margin-right: 2px;
+		}
+		div.foot p span.under{
+			text-decoration: underline;
+		}
+		div.var span.active{
+			background-color: black;
+			color: white;
+			padding: 5px 15px;
+		}
+		section.copy-right{
+			background-color: black;
+			text-align: center;
+			padding: 5px;	
+		}
+		section.copy-right p{
+			color: white;
+			font-size: 1.7rem;
+		}
+		@media screen and (max-width: 1000px){
+			nav{
+				display: flex;
+			}
+			aside{
+				width: 0px;
+			}
+			main{
+				margin-left: 0;
+			}
+			section.about div.about-content{
+				width: 94.5%;
+			}
+			section.contact div.contact-detail{
+				width: 93%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="overlay">
+		
+	</div>
+	<nav>
+		<h1>SOME NAME</h1>
+		<div class="toggler" onclick="toggleNav()">
+			<div class="tog"></div>
+			<div class="tog"></div>
+			<div class="tog"></div>
+		</div>
+	</nav>
+	<aside>
+		<div class="name">
+			<h1>SOME <br> NAME</h1>
+		</div>
+		<ul class="nav-list">
+			<li>
+				<a onclick="closeNav()" class="close">CLOSE</a>
+			</li>
+			<li>
+				<a href="#">PORTFOLIO</a>
+			</li>
+			<li>
+				<a href="#">ABOUT ME</a>
+			</li>
+			<li>
+				<a href="#">CONTACT</a>
+			</li>
+		</ul>
+	</aside>
+	<main>
+		<section class="image-show">
+		<img src="images/book.jpg">
+		<img src="images/boys.jpg">
+		<img src="images/chamber.jpg">
+		<img src="images/default.jpg">
+		<img src="images/ferrari.jpg">
+		<img src="images/fourth.jpg">
+		<img src="images/geometry.jpg">
+		<img src="images/gnome.jpg">
+		<img src="images/jenny.jpg">
+		<img src="images/kids.jpg">
+		<img src="images/kyle.jpg">
+		<img src="images/mark.jpg">
+		<img src="images/mortal.jpg">
+		<img src="images/rockstar.jpg">
+		<img src="images/sec.jpg">
+		<img src="images/sour.jpg">
+		<img src="images/source.jpg">
+		<img src="images/third.jpg">
+	</section>
+	<section class="pagination">
+			<a href="#">&laquo;</a>
+			<a href="#" class="active">1</a>
+			<a href="#">2</a>
+			<a href="#">3</a>
+			<a href="#">4</a>
+			<a href="#">&raquo;</a>
+		</section>
+		<section class="about">
+			<div class="about-content">
+				<h1>About Me</h1>
+				<img src="images/mark.jpg">
+				<h2>My Name</h2>
+				<p>Some text about me. I love taking photos of PEOPLE. I am Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				<br><br>
+				mail:example@example.com
+				<br><br>
+				tel: 5353 35531  
+				</p>
+				<hr>
+				<div class="skills">
+					<h1>Technical Skills</h1>
+					<ul class="skill-list">
+						<li>
+							<p>Photography</p>
+							<div class="progress-bar">
+								<div class="progress">95%</div>
+							</div>
+						</li>
+						<li>
+							<p>Web Design</p>
+							<div class="progress-bar">
+								<div class="progress">85%</div>
+							</div>
+						</li>
+						<li>
+							<p>Photoshop</p>
+							<div class="progress-bar">
+								<div class="progress">80%</div>
+							</div>
+						</li>
+					</ul>
+					<button>Download Resume</button>
+				</div>
+				<hr>
+				<div class="charges">
+					<h1>How much I charge</h1>
+					<div class="charge-cont">
+						<ul class="charge-list">
+							<li class="charge-head">
+								Basic
+							</li>
+							<li>Web Design</li>
+							<li>Photography</li>
+							<li>1GB Storage</li>
+							<li>Mail Support</li>
+							<li class="money">
+								<h2>$ 10</h2>
+								<p>per month</p>
+							</li>
+							<li class="sign-up">
+								<button>Sign Up</button>
+							</li>
+						</ul>
+						<ul class="charge-list">
+							<li class="charge-head green-head">
+								Pro
+							</li>
+							<li>Web Design</li>
+							<li>Photography</li>
+							<li>1GB Storage</li>
+							<li>Mail Support</li>
+							<li class="money">
+								<h2>$ 25</h2>
+								<p>per month</p>
+							</li>
+							<li class="sign-up">
+								<button>Sign Up</button>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="contact">
+			<div class="contact-detail">
+				<h1>Contact Me</h1>
+				<p>
+					Do you want me to photograph you? Fill out the form and fill me in with the details :) I love meeting new people!
+				</p>
+				<form>
+					<label for="name">Name</label>
+					<input type="text" name="name" id="name">
+					<label for="email">Email</label>
+					<input type="email" name="email" id="email">
+					<label for="message">Message</label>
+					<input type="text" name="message" id="message">
+					<button>Send Message</button>
+				</form>	
+			</div>
+		</section>
+		<section class="footer">
+		<div class="foot">
+			<h1>FOOTER</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			ea commodo
+			</p>
+			<p>Powered by <span class="under">Shaw</span></p>
+		</div>
+		<div class="blog-posts">
+			<h1>BLOG POSTS</h1>
+			<div class="stack">
+				<img src="images/geometry.jpg">
+				<div class="rig">
+					<h1>Lorem</h1>
+					<p>Sed mattis nunc</p>
+				</div>
+			</div>
+			<div class="hor">
+				<hr>
+			</div>
+			<div class="stack">
+				<img src="images/geometry.jpg">
+				<div class="rig">
+					<h1>Ipsum</h1>
+					<p>Praes tinci sed</p>
+				</div>
+			</div>
+		</div>
+		<div class="tags">
+			<h1>POPULAR TAGS</h1>
+			<div class="var">
+				<span class="active">Travel</span>
+				<span>New York</span>
+				<span>Dinner</span>
+				<span>Salmon</span>
+				<span>France</span>
+				<span>Drinks</span>
+				<span>Ideas</span>
+				<span>Flavors</span>
+				<span>Fried</span>
+				<span>Chicken</span>
+				<span>Dressing</span>
+				<span>Fried</span>
+				<span>Fish</span>
+				<span>Duck</span>
+			</div>
+		</div>
+	</section>
+	<section class="copy-right">
+		<p>Powered by <ins>shaw</ins></p>
+	</section>
+	</main>
+
+	<script type="text/javascript">
+		let aside = document.querySelector("aside")
+		let overlay = document.querySelector("div.overlay")
+		function toggleNav(){
+			if(aside.style.width){
+				aside.style.width = null
+				overlay.style.display = "none"
+			}
+			else{
+				aside.style.width = "300px"
+				overlay.style.display = "block"
+			}
+		}
+		function closeNav(){
+			aside.style.width = null
+			overlay.style.display = "none"
+		}
+	</script>
+</body>
+</html>

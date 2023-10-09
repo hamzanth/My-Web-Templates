@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Photo Template</title>
+	<style type="text/css">
+		*{
+			box-sizing: border-box;
+		}
+		html, body{
+			font-size: 10px;
+			margin: 0;
+			padding: 0;
+			height: 100%;
+		}
+		/*body{
+			background-color: #ffdddd;
+		}*/
+		a{
+			text-decoration: none;
+			color: black;
+		}
+		ul{
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+		}
+		section.header{
+			text-align: center;
+			padding: 16rem 0;
+		}
+		section.header h1, section.header h2{
+			letter-spacing: 6px;
+			color: grey;
+		}
+		section.header h1{
+			font-size: 2.5rem;
+			font-weight: normal;
+			margin-bottom: 8px;
+		}
+		section.header h2{
+			font-size: 3rem;
+			font-weight: bold;
+			margin-top: 20px;
+			margin-bottom: 60px;
+		}
+		section.header div.button-group{
+			display: flex;
+			justify-content: center;
+			border: 1px solid lightgrey;
+			max-width: 30%;
+			/*min-width: 100px;*/
+			margin: 0 auto;
+		}
+		div.button-group button{
+			border: none;
+			padding: 10px 16px;
+			background-color: white;
+			font-size: 1.4rem;
+			color: grey;
+			width: 25%;
+		}
+		div.button-group button.active{
+			background-color: #f1f1f1;
+		}
+		div.button-group button:hover{
+			background-color: lightgrey;
+		}
+		section.image-show{
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			padding: 20px;
+		}
+		section.image-show img{
+			width: 32.5%;
+			margin-bottom: 15px;
+			/*height: auto;*/
+		}
+		section.footer{
+			text-align: center;
+			padding: 6rem 0;
+			margin-top: 10rem;
+			background-color: #f1f1f1;
+		}
+		section.footer p{
+			text-align: center;
+			font-size: 1.7rem;
+			color: black;
+			margin: 0;
+		}
+		section.footer div.ficon-container{
+			margin: 25px 0;
+		}
+		section.footer div.ficon{
+			display: inline-block;
+		}
+		div.ficon div.fic{
+			width: 1.5rem;
+			height: 0.3rem;
+			margin: 0.1rem;
+			background-color: grey;
+		}
+		@media screen and (max-width: 1200px){
+			section.image-show img{
+				width: 49%;
+			}
+			section.header div.button-group{
+				max-width: 35%;
+			}
+		}
+		@media screen and (max-width: 1000px){
+			section.header div.button-group{
+				max-width: 45%;
+			}
+		}
+		@media screen and (max-width: 800px){
+			section.header div.button-group{
+				max-width: 55%;
+			}
+		}
+		@media screen and (max-width: 600px){
+			section.image-show img{
+				width: 100%;
+			}
+			section.header div.button-group{
+				max-width: 68%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<section class="header">
+		<h1>PHOTOGRAPHER</h1>
+		<h2>John Doe</h2>
+		<div class="button-group">
+			<button>Home</button>
+			<button class="active">Portfolio</button>
+			<button>Contact</button>
+			<button>Weddings</button>
+		</div>
+	</section>
+	<section class="image-show">
+		<img src="images/book.jpg">
+		<img src="images/boys.jpg">
+		<img src="images/chamber.jpg">
+		<img src="images/default.jpg">
+		<img src="images/ferrari.jpg">
+		<img src="images/fourth.jpg">
+		<img src="images/geometry.jpg">
+		<img src="images/gnome.jpg">
+		<img src="images/jenny.jpg">
+		<img src="images/kids.jpg">
+		<img src="images/kyle.jpg">
+		<img src="images/mark.jpg">
+		<img src="images/mortal.jpg">
+		<img src="images/rockstar.jpg">
+		<img src="images/sec.jpg">
+		<img src="images/sour.jpg">
+		<img src="images/source.jpg">
+		<img src="images/third.jpg">
+	</section>
+	<section class="footer">
+		<div class="ficon-container">
+			<div class="ficon">
+				<div class="fic"></div>
+				<div class="fic"></div>
+				<div class="fic"></div>
+			</div>
+			<div class="ficon">
+				<div class="fic"></div>
+				<div class="fic"></div>
+				<div class="fic"></div>
+			</div>
+			<div class="ficon">
+				<div class="fic"></div>
+				<div class="fic"></div>
+				<div class="fic"></div>
+			</div>
+			<div class="ficon">
+				<div class="fic"></div>
+				<div class="fic"></div>
+				<div class="fic"></div>
+			</div>
+			<div class="ficon">
+				<div class="fic"></div>
+				<div class="fic"></div>
+				<div class="fic"></div>
+			</div>
+			<div class="ficon">
+				<div class="fic"></div>
+				<div class="fic"></div>
+				<div class="fic"></div>
+			</div>
+		</div>
+		<p>powered by <ins>Shaw</ins></p>
+	</section>
+</body>
+</html>

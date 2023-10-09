@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Kitchen Sink Final Template</title>
+	<style type="text/css">
+		*{
+			box-sizing: border-box;
+		}
+		html, body{
+			font-size: 10px;
+			margin: 0;
+			padding: 0;
+			/*height: 100%;*/
+		}
+		a{
+			text-decoration: none;
+			color: black;
+		}
+		ul{
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+		}
+		section.hero{
+			position: relative;
+			height: 45vh;
+			background-color: #009688;
+		}
+		nav{
+			display: flex;
+			padding: 7px 15px;
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+		}
+		nav div.icont span{
+			display: inline-block;
+			border: 1px solid white;
+			padding: 7px 6px;
+		}
+		nav div.icont{
+			padding: 8px 16px;
+			cursor: pointer;
+		}
+		nav div.icont:hover{
+			background-color: lightgrey;
+		}
+		nav div.icont:hover span{
+			border-color: black;
+		}
+		section.hero div.hero-cont{
+			position: absolute;
+			top: 50%;
+			left: 10%;
+			transform: translateY(-50%);
+			text-align: center;
+			border: 1px solid yellow;
+			width: 80%;
+		}
+		div.hero-cont h2, div.hero-cont h1, div.hero-cont span{
+			color: white;
+		}
+		div.hero-cont h2{
+			font-size: 2rem;
+			font-weight: normal;
+		}
+		div.hero-cont h1{
+			font-size: 4.3rem;
+			margin-bottom: 60px;
+		}
+		div.hero-cont span{
+			font-size: 1.7rem;
+			font-weight: bold;
+			font-size: 2.8rem;
+			background-color: rgba(0,0,0,0.5);
+			padding: 8px 18px;
+			cursor: pointer;
+		}
+		div.hero-cont span:hover{
+			background-color: #009688;
+			box-shadow: 0px 3px 10px 2px rgba(0,0,0,0.5)
+		}
+		div.sideMenu{
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: white;
+			z-index: 20;
+			animation: slideRight 0.5s;
+			display: none;
+		}
+		div.sideMenu div.menu-container{
+			margin-top: 10%;
+		}
+		div.sideMenu div.menu-container h1{
+			text-align: center;
+			color: #009688;
+			font-size: 5rem;
+			font-weight: normal;
+		}
+		div.sideMenu div.menu-container li{
+			text-align: center;
+			padding: 14px;
+			cursor: pointer;
+		}
+		@keyframes slideRight{
+			from{
+				width: 70%;
+			}
+			to{
+				width: 100%;
+			}
+		}
+		div.sideMenu div.menu-container li:hover{
+			background-color: lightgrey;
+		}
+		div.sideMenu div.menu-container li a{
+			font-size: 4rem;
+		}
+		div.sideMenu div.menu-container li a span{
+			display: inline-block;
+			border: 1px solid black;
+			padding: 10px 9px;
+			margin-left: 15px;
+		}
+		section.after-hero{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			margin: 20px 15px;
+		}
+		section.after-hero div.empt-card{
+			width: 32.5%;
+			box-shadow: 0px 3px 10px 2px rgba(0,0,0,0.5);
+			text-align: center;
+			padding-bottom: 60px;
+		}
+		div.empt-card h1{
+			font-size: 2.5rem;
+			font-weight: normal;
+			text-align: center;
+		}
+		div.empt-card span{
+			display: inline-block;
+			border: 2px solid #009688;
+			width: 60px;
+			height: 70px;
+			margin: 40px 0;
+		}
+		div.empt-card ul.card-list li{
+			text-align: center;
+			font-size: 1.7rem;
+			margin: 20px 0;
+		}
+		section.color-class{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			margin: 20px 15px;
+		}
+		section.color-class span{
+			width: 16.6666666%;
+			padding: 15px 25px;
+			font-size: 1.6rem;
+			color: white;
+		}
+		section.color-class span:nth-child(1){
+			background-color: #f44336;
+		}
+		section.color-class span:nth-child(2){
+			background-color: #2196f3;
+		}
+		section.color-class span:nth-child(3){
+			background-color: #607d8b;
+		}
+		section.color-class span:nth-child(4){
+			background-color: teal;
+		}
+		section.color-class span:nth-child(5){
+			background-color: yellow;
+		}
+		section.color-class span:nth-child(6){
+			background-color: orange;
+		}
+		section.responsive{
+			margin: 20px 15px;
+		}
+		section.responsive h1{
+			text-align: center;
+			font-size: 3.2rem;
+			font-weight: normal;
+		}
+		section.responsive h3{
+			text-align: center;
+			font-size: 2rem;
+			font-weight: normal;
+			margin-bottom: 40px;
+		}
+		section.responsive>div{
+			margin: 20px 0;
+			border: 1px solid lightgrey;
+		}
+		section.responsive div.half-cont{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		div.half-cont div{
+			width: 50%;
+			padding: 5px 15px;
+		}
+		div.half-cont div.left-side{
+			background-color: #2196f3;
+		}
+		div.half-cont div.left-side p{
+			font-size: 1.8rem;
+			color: white;
+		}
+		div.half-cont div.right-side p{
+			font-size: 1.7rem;
+		}
+		section.responsive div.third-cont{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		div.third-cont div{
+			width: 33.333333%;
+			padding: 5px 15px;
+		}
+		div.third-cont div p{
+			font-size: 1.8rem;
+		}
+		div.third-cont div.left-side{
+			background-color: #4caf50;
+		}
+		div.third-cont div.left-side p{
+			color: white;
+			font-size: 1.7rem;
+		}
+		section.responsive div.quarter-cont{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		div.quarter-cont div{
+			width: 25%;
+			padding: 5px 15px;
+		}
+		div.quarter-cont div p{
+			font-size: 1.8rem;
+		}
+		div.quarter-cont div.left-side{
+			background-color: #f44336;
+		}
+		div.quarter-cont div.left-side p{
+			color: white;
+			font-size: 1.7rem;
+		}
+		section.containers{
+			margin: 20px 15px;
+		}
+		section.containers>h1{
+			text-align: center;
+			font-size: 3.2rem;
+			font-weight: normal;
+		}
+		section.containers>h3{
+			text-align: center;
+			font-size: 2rem;
+			font-weight: normal;
+			/*margin-bottom: 40px;*/
+		}
+		div.cont-cont div.cont-head{
+			padding: 1px 15px;
+			background-color: #607d8b;
+		}
+		div.cont-cont div.cont-head h1{
+			color: white;
+			font-weight: normal;
+			font-size: 3.3rem;
+			margin: 15px 0;
+		}  
+		div.cont-cont div.cont-tog{
+			text-align: right;
+		}
+		div.cont-cont div.cont-tog span{
+			display: inline-block;
+			border: 1px solid black;
+			padding: 4px 3px;
+		}
+		div.cont-cont div.cont-tog div.icon-cont{
+			display: inline-block;
+			padding: 13px 16px;
+			cursor: pointer;
+		}
+		div.cont-cont div.cont-tog div.icon-cont:hover{
+			background-color: lightgrey;
+		}
+		div.cont-cont div.cont-body{
+			padding: 0 15px;
+		}
+		div.cont-cont div.cont-body.tog{
+			display: none;
+		}
+		div.cont-cont div.cont-body h1{
+			font-size: 3.3rem;
+			font-weight: normal;
+			margin: 0 0 0;
+		}
+		div.cont-cont div.cont-body p{
+			font-size: 1.7rem;
+			line-height: 24px;
+		}
+
+		div.cont-cont div.cont-foot{
+			padding: 1px 15px;
+			background-color: #607d8b;
+		}
+		div.cont-cont div.cont-foot h2{
+			color: white;
+			font-weight: normal;
+			font-size: 2rem;
+			margin-top: 10px;
+
+		}
+		div.cont-cont div.cont-foot p{
+			color: #f1f1f1;
+			font-size: 1.6rem;
+		}
+		section.color-themes{
+			margin: 20px 15px;
+		}
+		section.color-themes>h1{
+			text-align: center;
+			font-size: 3.2rem;
+			font-weight: normal;
+		}
+		section.color-themes>h2{
+			text-align: center;
+			font-size: 2rem;
+			font-weight: normal;
+		}
+		section.color-themes div.theme-cont{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		section.color-themes div.theme-cont ul.color-list{
+			width: 49%;
+			box-shadow: 0px 0px 4px rgba(0,0,0,0.5)
+		}
+		div.theme-cont ul.color-list li{
+			padding: 20px 15px;
+			border-bottom: 1px solid lightgrey;
+		}
+		div.theme-cont ul.color-list li.head{
+			font-size: 2.5rem;
+			color: white;
+			background-color: #3f51b5;
+		}
+		div.theme-cont ul.color-list li.footer{
+			font-size: 2rem;
+			color: white;
+			padding: 0 15px;
+			background-color: #3f51b5;
+			text-align: right;
+		}
+		section.color-themes div.theme-cont ul:last-child li.head{
+			background-color: #009688;
+		}
+		section.color-themes div.theme-cont ul:last-child li.after-head{
+			color: #009688;
+		}
+		section.color-themes div.theme-cont ul:last-child li.footer{
+			background-color: #009688;
+		}
+		div.theme-cont ul.color-list li.after-head{
+			font-size: 2.5rem;
+			color: #3f51b5;
+		}
+		div.theme-cont ul.color-list li h1{
+			margin: 0;
+			font-weight: normal;
+			font-size: 2.3rem;
+		}
+		div.theme-cont ul.color-list li p{
+			/*margin: 0;*/
+			font-size: 1.7rem;
+		}
+		section.cars{
+			margin: 20px 15px;
+		}
+		section.cars>h1{
+			text-align: center;
+			font-size: 2.5rem;
+			margin-bottom: 10px;
+			font-weight: normal;
+		}
+		section.cars div.card-cont{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		section.cars div.card-cont div.car-card{
+			width: 32.5%;
+			box-shadow: 0px 0px 6px rgba(0,0,5,0.5);
+		}
+		section.cars div.card-cont div.car-card img{
+			width: 100%;
+			max-height: 45vh;
+		}
+		section.cars div.card-cont div.car-card p{
+			margin: 12px 15px;
+			font-size: 1.7rem;
+		}
+		section.tables{
+			margin: 20px 15px;
+		}
+		section.tables>h1{
+			text-align: center;
+			font-size: 3.2rem;
+			font-weight: normal;
+		}
+		section.tables>h3{
+			text-align: center;
+			font-size: 2rem;
+			font-weight: normal;
+		}
+		section.tables table{
+			width: 100%;
+			border-collapse: collapse;
+			box-shadow: 0px 6px 12px rgba(0,0,5,0.4);
+		}
+		section.tables table tr{
+			border: 1px solid lightgrey;
+		}
+		section.tables table tr:first-child{
+			background-color: #009688;
+			border: 1px solid teal;
+		}
+		section.tables table tr th{
+			text-align: left;
+			font-size: 1.7rem;
+			color: white;
+			padding: 10px 15px;
+		}
+		section.tables table tr td{
+			font-size: 1.7rem;
+			padding: 10px 15px;
+		}
+		section.form-list{
+			margin: 20px 15px;
+		}
+		section.form-list>h1{
+			text-align: center;
+			font-size: 3.2rem;
+			font-weight: normal;
+		}
+		section.form-list div.fl-cont{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		div.fl-cont div.form, div.fl-cont div.list{
+			width: 49%;
+			box-shadow: 0px 6px 12px rgba(0,0,5,0.4);
+			padding: 15px 15px;
+		}
+		div.fl-cont div.form h2{
+			font-weight: normal;
+			font-size: 2.6rem;
+			margin-top: 0;
+		}
+		div.fl-cont div.form form input[type=text], div.fl-cont div.form form input[type=email]{
+			width: 100%;
+			border: none;
+			border-bottom: 1px solid lightgrey;
+			font-size: 1.1rem;
+			padding: 17px 16px;
+		}
+		div.fl-cont div.form form label{
+			font-size: 1.9rem;
+		}
+		div.fl-cont div.form form div.multiple{
+			margin-top: 20px;
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		div.multiple div.left-side, div.multiple div.right-side{
+			width: 50%;
+		}
+		div.multiple label{
+			display: block;
+		}
+		div.multiple p{
+			font-size: 1.7rem;
+			margin-top: 0;
+		}
+		div.fl-cont div.list h1{
+			font-weight: normal;
+			font-size: 2.6rem;
+			margin-top: 0;
+		}
+		div.fl-cont div.list{
+			padding: 15px 15px;
+		}
+		div.list ul.top-list li{
+			font-size: 1.8rem;
+			border-bottom: 1px solid lightgrey;
+			padding: 8px 10px;
+		} 
+		div.list ul.bot-list{
+			border: 1px solid lightgrey;
+			margin-top: 60px;
+		}
+		div.list ul.bot-list li{
+			font-size: 1.8rem;
+			border-bottom: 1px solid lightgrey;
+			padding: 8px 14px;
+		}
+		div.list ul.bot-list li:first-child{
+			background-color: #009688;
+			color: white;
+		}
+		section.progress-bars{
+			margin: 20px 15px;
+		}
+		section.progress-bars>h1{
+			text-align: center;
+			font-size: 3.2rem;
+			font-weight: normal;
+		}
+		section.progress-bars div.progress{
+			background-color: #f1f1f1;
+			margin-bottom: 22px;
+		}
+		div.progress div.bar{
+			background-color: #009688;
+			padding: 10px 12px;
+			width: 5%;
+			color: white;
+			font-size: 1.6rem;
+			text-align: center;
+		}
+		section.progress-bars button{
+			border: none;
+			color: white;
+			font-size: 1.5rem;
+			background-color: #009688;
+			padding: 8px 15px;
+			cursor: pointer;
+		}
+		section.progress-bars button:hover{
+			box-shadow: 0px 6px 12px rgba(0,0,5,0.4);
+		}
+		section.slide-show{
+			position: relative;
+			width: 60%;
+			margin: 20px auto;
+		}
+		section.slide-show>h1{
+			text-align: center;
+			font-size: 3.2rem;
+			font-weight: normal;
+		}
+		section.slide-show img{
+			width: 100%;
+			height: 70vh;
+		}
+		section.slide-show button{
+			font-size: 2.8rem;
+			position: absolute;
+			top: 50%;
+			border: none;
+			background-color: rgba(0,0,0,0);
+			color: black;
+			cursor: pointer;
+			padding: 1px 12px;
+			border-radius: 50%;
+			cursor: pointer;
+		}
+		section.slide-show button:hover{
+			background-color: black;
+			color: white;
+		}
+		section.slide-show button.prev{
+			left: 5px;
+		}
+		section.slide-show button.next{
+			right: 5px;
+		}
+		section.navigation{
+			margin: 20px 15px;
+		}
+		section.navigation>h1{
+			text-align: center;
+			font-size: 3.2rem;
+			font-weight: normal;
+		}
+		section.navigation ul.navgtion-list{
+			display: flex;
+			background-color: #009688;
+		}
+		ul.navgtion-list li{
+			padding: 14px 16px;
+			border: 1px solid teal;
+		}
+		ul.navgtion-list li:hover{
+			background-color: lightgrey;
+		}
+		ul.navgtion-list li>a{
+			font-size: 1.7rem;
+			color: white;
+		}
+		ul.navgtion-list li:hover a{
+			color: black;
+		}
+		ul.navgtion-list li.dropdown{
+			position: relative;
+		}
+		ul.navgtion-list li.dropdown:hover button{
+			background-color: lightgrey;
+			color: black;
+		}
+		ul.navgtion-list li.dropdown:hover div.drop-content{
+			display: block;
+		}
+		ul.navgtion-list li button{
+			border: none;
+			color: white;
+			background-color: #009688;
+			font-size: 1.7rem;
+		}
+		ul.navgtion-list li div.drop-content{
+			position: absolute;
+			min-width: 160px;
+			top: 100%;
+			left: 0;
+			box-shadow: 0px 6px 12px rgba(0,0,5,0.4);
+			display: none;
+		}
+		div.drop-content a{
+			font-size: 1.6rem;
+			display: block;
+			padding: 7px 12px;
+		}
+		div.drop-content a:hover{
+			background-color: lightgrey;
+		}
+		section.accordions{
+			margin: 20px 15px;
+		}
+		section.accordions>h1{
+			text-align: center;
+			font-size: 3.2rem;
+			font-weight: normal;
+		}
+		section.accordions button{
+			border: none;
+			padding: 17px 20px;
+			color: white;
+			background-color: #009688;
+			text-align: left;
+			font-size: 1.5rem;
+			width: 100%;
+			cursor: pointer;
+		}
+		section.accordions button:hover{
+			background-color: lightgrey;
+			color: black;
+		}
+		section.accordions div.acc{
+			display: none;
+		}
+		section.accordions div.acc.acc-text{
+			font-size: 1.6rem;
+			line-height: 25px;
+			padding: 5px 20px;
+		}
+		div.acc ul.acc-list li{
+			padding: 13px 14px;
+			font-size: 1.5rem;
+		}
+		div.acc ul.acc-list li:hover{
+			background-color: lightgrey;
+		}
+		section.accordions div.acc.acc-img{
+			background-color: black;
+			padding: 5px 15px;
+		}
+		div.acc.acc-img p{
+			color: white;
+			font-size: 1.6rem;
+		}
+		div.acc.acc-img img{
+			width: 30%;
+			max-height: 40vh;
+			animation: scaleUp 0.5s;
+		}
+		@keyframes scaleUp{
+			from{
+				transform: scale(0);
+			}
+			to{
+				transform: scale(1)
+			}
+		}
+		section.tabs{
+			margin: 20px 15px;
+		}
+		section.tabs>h1{
+			text-align: center;
+			font-size: 3.2rem;
+			font-weight: normal;
+		}
+		section.tabs ul.tab-list{
+			display: flex;
+			background-color: #009688;
+		}
+		ul.tab-list li{
+			padding: 14px 16px;
+			color: white;
+			font-size: 1.7rem;
+			cursor: pointer;
+		}
+		ul.tab-list li.active{
+			background-color: #004a43;
+		}
+		ul.tab-list li:hover{
+			background-color: lightgrey;
+			color: black;
+		}
+		section.tabs div.tab-body{
+			border: 1px solid lightgrey;
+			padding: 15px 20px;
+		}
+		section.tabs div.tab-body h1{
+			font-size: 3.2rem;
+			font-weight: normal;
+			margin-top: 0;
+		}
+		section.tabs div.tab-body p{
+			font-size: 1.6rem;
+		}
+		section.buttons{
+			text-align: center;
+			margin: 20px 15px;
+		}
+		section.buttons>h1{
+			text-align: center;
+			font-size: 3.2rem;
+			font-weight: normal;
+		}
+		section.buttons>div{
+			margin-bottom: 20px;
+		}
+		section.buttons div.rect-buttons{
+			text-align: center;
+		}
+		div.rect-buttons button{
+			color: white;
+			border: none;
+			padding: 12px 18px;
+			font-size: 1.6rem;
+			background-color: #009688;
+			margin: 0 2px;
+			cursor: pointer;
+		}
+		div.rect-buttons button:hover{
+			color: black;
+			background-color: lightgrey;
+		}
+		div.rect-buttons button.disable{
+			cursor: not-allowed;
+			opacity: 0.5;
+		}
+		div.circ-buttons button{
+			color: white;
+			border: none;
+			padding: 15px 18px;
+			border-radius: 50%;
+			background-color: #009688;
+			margin: 0 3px;
+			cursor: pointer;
+		}
+		div.circ-buttons button:first-child{
+			background-color: black;
+		}
+		div.circ-buttons button:last-child{
+			background-color: white;
+			box-shadow: 0px 6px 12px rgba(0,0,5,0.4);
+		}
+		div.circ-buttons button:last-child span{
+			border-color: black;
+		}
+		div.circ-buttons button span{
+			display: inline-block;
+			border: 1px solid white;
+			padding: 5px 4px;
+		}
+		div.circ-buttons button:hover{
+			background-color: lightgrey;
+		}
+		div.circ-buttons button:hover span{
+			border-color: black;
+		}
+		div.drop-buttons div.dropdown{
+			display: inline-block;
+			position: relative;
+		}
+		div.drop-buttons div.dropdown:hover div.drop-content{
+			display: block;
+		}
+		div.drop-buttons div.dropdown button{
+			color: white;
+			border: none;
+			padding: 12px 18px;
+			font-size: 1.5rem;
+			background-color: #009688;
+			cursor: pointer;
+		}
+		div.drop-buttons div.dropdown button span{
+			display: inline-block;
+			border: 1px solid white;
+			padding: 4px 3px;
+			margin-left: 4px;
+		}
+		div.drop-buttons div.dropdown div.drop-content{
+			position: absolute;
+			min-width: 160px;
+			background-color: white;
+			display: none;
+		}
+		div.drop-buttons div.dropdown div.drop-content a{
+			display: block;
+			text-align: left;
+		}
+		div.drop-buttons div.dropdown div.drop-content a:hover{
+			background-color: lightgrey;
+		}
+		section.pagination{
+			text-align: center;
+			margin: 20px 15px;
+		}
+		section.pagination>h1{
+			text-align: center;
+			font-size: 3.2rem;
+			font-weight: normal;
+		}
+		section.pagination a{
+			font-size: 1.6rem;
+			padding: 12px 18px;
+			cursor: pointer;
+		}
+		section.pagination a.active{
+			color: white;
+			background-color: #009688;
+		}
+		section.pagination a:hover{
+			color: white;
+			background-color: #009688;
+		}
+		section.footer{
+			background-color: #004a43;
+			padding: 20px;
+			margin-top: 60px;
+		}
+		section.footer h1{
+			color: white;
+			font-weight: normal;
+			font-size: 2.5rem;
+			margin-top: 0;
+		}
+		section.footer div.horz-foot{
+			display: flex;
+			justify-content: space-between;
+			/*margin: 15px 0;*/
+		}
+		div.horz-foot>p{
+			color: white;
+			font-size: 1.7rem;
+			margin: 0;
+		}
+		div.horz-foot div.drop-left{
+			display: flex;
+			position: relative;
+		}
+		div.horz-foot div.drop-left:hover p{
+			display: block;
+		}
+		div.drop-left p{
+			display: none;
+			position: absolute;
+			width: 120px;
+			top: -90%;
+			right: 100%;
+		}
+		div.drop-left p a{
+			color: white;
+			font-size: 1.7rem;
+			display: inline-block;
+			background-color: #009688;
+			padding: 7px 18px;
+		}
+		div.drop-left button{
+			border: none;
+			background-color: #004a43;
+		}
+		div.drop-left button span{
+			display: inline-block;
+			border: 1px solid white;
+			padding: 7px 6px;
+		}
+		section.footer>p{
+			color: white;
+			font-size: 1.8rem;
+			margin: 20px 0 0;
+
+		}
+		section.footer>p span{
+			background-color: #009688;
+			padding: 8px 20px;
+			margin-left: 7px;
+		}
+		@media screen and (max-width: 600px){
+			section.after-hero div.empt-card{
+				width: 100%;
+			}
+			section.color-class span{
+				width: 100%;
+			}
+			div.half-cont div, div.quarter-cont div, div.third-cont div{
+				width: 100%;
+			}
+			section.color-themes div.theme-cont ul.color-list{
+				width: 100%;
+			}
+			section.cars div.card-cont div.car-card{
+				width: 100%;
+			}
+			section.cars div.card-cont div.car-card img{
+				max-height: 60vh;
+			}
+			div.fl-cont div.form, div.fl-cont div.list{
+				width: 100%;
+			}
+			section.slide-show{
+				width: 100%;
+				margin: 20px 15px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<section class="hero" id="top">
+		<nav>
+			<div class="icont" onclick="openMenu()">
+				<span></span>
+			</div>
+		</nav>
+		<div class="hero-cont">
+			<h2>BEAUTIFUL RESPONSIVE WEBSITE</h2>
+			<h1>BUILT WITH W3.CSS</h1>
+			<span>LEARN W3.CSS</span>
+		</div>
+	</section>
+	<div class="sideMenu">
+		<div class="menu-container">
+			<h1>Side Navigation</h1>
+			<ul class="menu-list">
+				<li onclick="closeMenu()">
+					<a>Close <span></span></a>
+				</li>
+				<li>
+					<a href="#">Link 1</a>
+				</li>
+				<li>
+					<a href="#">Link 2</a>
+				</li>
+				<li>
+					<a href="#">Link 3</a>
+				</li>
+				<li>
+					<a href="#">Link 4</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<section class="after-hero">
+		<div class="empt-card">
+			<h1>Responsive</h1>
+			<span class="box"></span>
+			<ul class="card-list">
+				<li>Built-in responsiveness</li>
+				<li>Mobile first fluid grid</li>
+				<li>Fits any screen sizes</li>
+				<li>Pc Tablet and Mobile</li>
+			</ul>
+		</div>
+		<div class="empt-card">
+			<h1>Standard CSS</h1>
+			<span class="box"></span>
+			<ul class="card-list">
+				<li>Standard CSS only</li>
+				<li>Easy to learn</li>
+				<li>No need for jQuery</li>
+				<li>No JavaScript library</li>
+			</ul>
+		</div>
+		<div class="empt-card">
+			<h1>Design</h1>
+			<span class="box"></span>
+			<ul class="card-list">
+				<li>Paper like design</li>
+				<li>Bold colors and shadows</li>
+				<li>Equal across platforms</li>
+				<li>Equal across devices</li>
+			</ul>
+		</div>
+	</section>
+	<section class="color-class">
+		<span>Red</span>
+		<span>Blue</span>
+		<span>Blue Grey</span>
+		<span>Teal</span>
+		<span>Yellow</span>
+		<span>Orange</span>
+	</section>
+	<section class="responsive">
+		<h1>Built-In Responsiveness</h1>
+		<h3>Resize the page to see the effect</h3>
+		<div class="half-cont">
+			<div class="left-side">
+				<p>
+					w3-half
+					<br><br>
+					The we-half class uses half (50%) of the screen window.
+					<br><br>
+					On small screens (max 600 pixels) it automatically resizes to full screen width.
+				</p>
+			</div>
+			<div class="right-side">
+				<p>
+					w3-half
+				</p>
+			</div>
+		</div>
+		<div class="third-cont">
+			<div class="left-side">
+				<p>
+					w3-half
+					<br><br>
+					The we-half class uses half (50%) of the screen window.
+					<br><br>
+					On small screens (max 600 pixels) it automatically resizes to full screen width.
+				</p>
+			</div>
+			<div class="middle-side">
+				<p>
+					w3-third
+				</p>
+			</div>
+			<div class="right-side">
+				<p>
+					w3-third
+				</p>
+			</div>
+		</div>
+		<div class="quarter-cont">
+			<div class="left-side">
+				<p>
+					w3-half
+					<br><br>
+					The we-half class uses half (50%) of the screen window.
+					<br><br>
+					On small screens (max 600 pixels) it automatically resizes to full screen width.
+				</p>
+			</div>
+			<div class="middle-side">
+				<p>
+					w3-third
+				</p>
+			</div>
+			<div class="middle-side">
+				<p>
+					w3-third
+				</p>
+			</div>
+			<div class="right-side">
+				<p>
+					w3-third
+				</p>
+			</div>
+		</div>
+	</section>
+	<section class="containers">
+		<h1>Containers</h1>
+		<h3>Use containers to create headers, sections and footers.</h3>
+		<div class="cont-cont">
+			<div class="cont-head">
+				<h1>Header</h1>
+			</div>
+			<div class="cont-tog" onclick="toggleCont()">
+				<div class="icon-cont"><span></span></div>
+			</div>
+			<div class="cont-body">
+				<h1>London</h1>
+				<p>
+					London is the capital city of England. It is the most populous city in the United Kingdom, with a metroplolitan area of over 13 million inhabitants.
+					<br><br>
+					Standing on the River Thames, London has been a major settlement for two millennia, its history going back to its founding by the Romans, who named it Londinium.
+					<br><br>
+					By the way, you can add a close icon to all containers if you want the ability to hide them. Look to your right!
+				</p>
+			</div>
+			<div class="cont-foot">
+				<h2>Footer</h2>
+				<p>Footer information goes here</p>
+			</div>
+		</div>
+	</section>
+	<section class="color-themes">
+		<h1>Color Themes</h1>
+		<h2>The color themes have been designed to work harmoniously with each other</h2>
+		<div class="theme-cont">
+			<ul class="color-list">
+				<li class="head">Theme Indigo</li>
+				<li class="after-head">Movies 2014</li>
+				<li>
+					<h1>Frozen</h1>
+					<p>The response to the animations was ridiculous</p>
+				</li>
+				<li>
+					<h1>The Fault in Our Stars</h1>
+					<p>Touching, gripping and genuinely well made</p>
+				</li>
+				<li>
+					<h1>The Avengers</h1>
+					<p>A huge success for Marvel and Disney</p>
+				</li>
+				<li class="footer">
+					Next
+				</li>
+			</ul>
+			<ul class="color-list">
+				<li class="head">Theme Indigo</li>
+				<li class="after-head">Movies 2014</li>
+				<li>
+					<h1>Frozen</h1>
+					<p>The response to the animations was ridiculous</p>
+				</li>
+				<li>
+					<h1>The Fault in Our Stars</h1>
+					<p>Touching, gripping and genuinely well made</p>
+				</li>
+				<li>
+					<h1>The Avengers</h1>
+					<p>A huge success for Marvel and Disney</p>
+				</li>
+				<li class="footer">
+					Next
+				</li>
+			</ul>
+		</div>
+	</section>
+	<section class="cars">
+		<h1>Paper-like Cards with Shadows</h1>
+		<div class="card-cont">
+			<div class="car-card">
+				<img src="images/ferrari.jpg">
+				<p>w3.card</p>
+			</div>
+			<div class="car-card">
+				<img src="images/ferrari.jpg">
+				<p>w3.card</p>
+			</div>
+			<div class="car-card">
+				<img src="images/ferrari.jpg">
+				<p>w3.card</p>
+			</div>
+		</div>
+	</section>
+	<section class="tables">
+		<h1>Tables</h1>
+		<h3>Dont worry. W3.CSS takes care of your tables</h3>
+		<table>
+			<tr>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Points</th>
+			</tr>
+			<tr>
+				<td>Jill</td>
+				<td>Smith</td>
+				<td>50</td>
+			</tr>
+			<tr>
+				<td>Eve</td>
+				<td>Jackson</td>
+				<td>94</td>
+			</tr>
+			<tr>
+				<td>Adam</td>
+				<td>Johnson</td>
+				<td>67</td>
+			</tr>
+		</table>
+	</section>
+	<section class="form-list">
+		<h1>Forms and Lists</h1>
+		<div class="fl-cont">
+			<div class="form">
+				<h2>Input Form</h2>
+				<form>
+					<input type="text" name="name" id="name">
+					<label for="name">Name</label>
+					<input type="email" name="email" id="email">
+					<label for="email">Email</label>
+					<input type="text" name="subject" id="subject">
+					<label for="subject">Subject</label>
+					<div class="multiple">
+						<div class="left-side">
+							<label>
+								<input type="checkbox" name="choice" checked> Milk	
+							</label>
+							<label>
+								<input type="checkbox" name="choice"> Sugar	
+							</label>
+							<label>
+							<label>
+								<input type="checkbox" name="choice"> Lemon	
+							</label>
+							<p>(Disabled)</p>
+						</div>
+						<div class="right-side">
+							<label>
+								<input type="radio" name="choice" checked> Male	
+							</label>
+							<label>
+								<input type="radio" name="choice"> Female	
+							</label>
+							<label>
+								<input type="radio" name="choice"> Don't Know	
+							</label>
+							<p>(Disabled)</p>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="list">
+				<h1>Lists</h1>
+				<ul class="top-list">
+					<li>Jill</li>
+					<li>Eve</li>
+					<li>Adam</li>
+				</ul>
+				<ul class="bot-list">
+					<li>Jill</li>
+					<li>Eve</li>
+					<li>Adam</li>
+					<li>Steve</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	<section class="progress-bars">
+		<h1>Progress Bars</h1>
+		<div class="progress">
+			<div class="bar">0%</div>
+		</div>
+		<button onclick="progress()">Click Me</button>
+	</section>
+	<section class="slide-show">
+		<h1>Slideshows</h1>
+		<img src="images/kids.jpg">
+		<img src="images/sec.jpg">
+		<img src="images/third.jpg">
+		<img src="images/fourth.jpg">
+		<button class="prev" onclick="plusSlide(-1)">&#8249;</button>
+		<button class="next" onclick="plusSlide(1)">&#8250;</button>
+	</section>
+	<section class="navigation">
+		<h1>Navigation</h1>
+		<ul class="navgtion-list">
+			<li><a href="#">Home</a></li>
+			<li><a href="#">Link 1</a></li>
+			<li class="dropdown">
+				<button href="#">Dropdown <span></span></button>
+				<div class="drop-content">
+					<a href="#">Link 1</a>
+					<a href="#">Link 2</a>
+					<a href="#">Link 3</a>
+				</div>
+			</li>
+		</ul>
+	</section>
+	<section class="accordions">
+		<h1>Accordions</h1>
+		<button>Open Section 1</button>
+		<div class="acc acc-text">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</div>
+		<button>Open Section 2</button>
+		<div class="acc">
+			<ul class="acc-list">
+				<li>Link 1</li>
+				<li>Link 2</li>
+				<li>Link 3</li>
+			</ul>
+		</div>
+		<button>Open Section 3</button>
+		<div class="acc acc-img">
+			<p>Accordion with Images:</p>
+			<img src="images/boys.jpg">
+			<p>Cute Little Boys</p>
+		</div>
+	</section>
+	<section class="tabs">
+		<h1>Tabs</h1>
+		<ul class="tab-list">
+			<li onclick="dispTab(this, 'london')">London</li>
+			<li onclick="dispTab(this, 'paris')">Paris</li>
+			<li onclick="dispTab(this, 'tokyo')">Tokyo</li>
+		</ul>
+		<div class="tab-body">
+			<div class="london">
+				<h1>London</h1>
+				<p>
+					London is the capital of England. 
+					<br><br>
+					It is the most populous city in the United Kingdom, with a metropolitan area of over 13million inhabitants.
+				</p>
+			</div>
+			<div class="paris">
+				<h1>Paris</h1>
+				<p>
+					Paris is the capital of France.
+					<br><br>
+					The Paris area is one of the largest population centers in Europe, with more than 12 million inhabitants.
+				</p>
+			</div>
+			<div class="tokyo">
+				<h1>Tokyo</h1>
+				<p>
+					Tokyo is the capital of Japan. 
+					<br><br>
+					It is the center of the Greater Tokyo Area, and the most populous metropolitan area in the world.
+				</p>
+			</div>
+		</div>
+	</section>
+	<section class="buttons">
+		<h1>Buttons</h1>
+		<div class="rect-buttons">
+			<button>Button</button>
+			<button>Button</button>
+			<button class="disable">Button</button>
+		</div>
+		<div class="circ-buttons">
+			<button><span></span></button>
+			<button><span></span></button>
+			<button><span></span></button>
+		</div>
+		<div class="drop-buttons">
+			<div class="dropdown">
+				<button>Dropdown <span></span></button>
+				<div class="drop-content">
+					<a href="">Link 1</a>
+					<a href="">Link 2</a>
+					<a href="">Link 3</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="pagination">
+		<h1>Pagination</h1>
+		<a class="prev">&laquo;</a>
+		<a class="active">1</a>
+		<a>2</a>
+		<a>3</a>
+		<a>4</a>
+		<a>5</a>
+		<a class="next">&raquo;</a>
+	</section>
+	<section class="footer">
+		<h1>Footer</h1>
+		<div class="horz-foot">
+			<p>Powered by <ins>shaw</ins></p>
+			<div class="drop-left">
+				<p><a href="#top">Go To Top</a></p>
+				<button><span></span></button>
+			</div>
+		</div>
+		<p>Remember to check out our <span>w3.CSS.Reference</span></p>
+	</section>
+
+	<script type="text/javascript">
+		let sideMenu = document.querySelector("div.sideMenu")
+		function openMenu(){
+			sideMenu.style.display = "block"
+		}
+		function closeMenu(){
+			sideMenu.style.display = "none"
+		}
+		function toggleCont(){
+			let contBody = document.querySelector("div.cont-cont div.cont-body")
+			contBody.classList.toggle("tog")
+		}
+		function progress(){
+			let bar = document.querySelector("section.progress-bars div.progress div.bar")
+			let width = 1
+			tid = setInterval(function(){
+				bar.style.width = width + "%"
+				bar.textContent = width + "%"
+				width++
+				if(width > 100){
+					clearInterval(tid)
+				}
+			}, 10)
+		}
+		let slideIndex = 1
+		let images = document.querySelectorAll("section.slide-show img")
+		showSlide(slideIndex)
+		function plusSlide(sindex){
+			showSlide(slideIndex += sindex)
+		}
+		function showSlide(n){
+			if(n>images.length){
+				slideIndex = 1
+			}
+			if(n<1){
+				slideIndex = images.length
+			}
+			for(let i=0; i<images.length; i++){
+				images[i].style.display = "none"
+			}
+			images[slideIndex - 1].style.display = "block"
+		}
+		let accBtns = document.querySelectorAll("section.accordions button")
+		for(let i=0; i<accBtns.length; i++){
+			accBtns[i].onclick = function(){
+				acc = this.nextElementSibling
+				if(acc.style.display == "block"){
+					acc.style.display = "none"
+				}
+				else{
+					acc.style.display = "block"
+				}
+			}
+		}
+		let lonBtn = document.querySelector("section.tabs ul.tab-list li:first-child")
+		lonBtn.click()
+		function dispTab(elmt, country){
+			let tabs = document.querySelectorAll("section.tabs ul.tab-list li")
+			let tabContent = document.querySelectorAll("section.tabs div.tab-body div")
+			for(let i=0; i<tabs.length; i++){
+				tabContent[i].style.display = "none"
+				tabs[i].classList.remove("active")
+			}
+			let showTab = document.querySelector("div.tab-body div." + country)
+			showTab.style.display = "block"
+			elmt.classList.add("active")
+		}
+		let pages = document.querySelectorAll("section.pagination a")
+		function removeActive(){
+			for(let i=1; i<pages.length; i++){
+				pages[i].classList.remove("active")
+			}
+		}
+		for(let i=1; i<pages.length-1; i++){
+			pages[i].onclick = function(){
+				removeActive()
+				this.classList.add("active")
+			}
+		}
+		function getCurrentNum(){
+			let activeBtn = document.querySelector("section.pagination a.active")
+			let currentNum = Number(activeBtn.textContent)
+			return currentNum
+		}
+		let nextBtn = document.querySelector("section.pagination a.next")
+		let prevBtn = document.querySelector("section.pagination a.prev")
+		nextBtn.onclick = function(){
+			currentNum = getCurrentNum()
+			let nextNum = currentNum + 1
+			if (nextNum > 5){
+				nextNum = 1
+			}
+			removeActive()
+			pages[nextNum].classList.add("active")
+		}
+		prevBtn.onclick = function(){
+			currentNum = getCurrentNum()
+			let prevNum = currentNum - 1
+			if (prevNum < 1){
+				prevNum = pages.length -2
+			}
+			removeActive()
+			pages[prevNum].classList.add("active")
+		}
+	</script>
+</body>
+</html>

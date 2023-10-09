@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Market/Website Template</title>
+	<style type="text/css">
+		*{
+			box-sizing: border-box;
+		}
+		html, body{
+			font-size: 10px;
+			margin: 0;
+			padding: 0;
+			/*height: 100%;*/
+		}
+		/*body{
+			background-color: #ffdddd;
+		}*/
+		a{
+			text-decoration: none;
+			color: black;
+		}
+		ul{
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+		}
+		nav{
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			/*border: 1px solid blue;*/
+			background-color: black;
+			z-index: 22;
+		}
+		nav ul.nav-list{
+			display: flex;
+		}
+		nav ul.nav-list li{
+			padding: 9px 17px;
+			/*border: 1px solid yellow;*/
+		}
+		nav ul.nav-list li:hover{
+			background-color: white;
+		}
+		nav ul.nav-list li:hover a{
+			color: black;
+		}
+		nav ul.nav-list li>a{
+			font-size: 1.7rem;
+			color: white;
+		}
+		nav ul.nav-list li.active{
+			background-color: #009688;
+		}
+		nav ul.nav-list li.active:hover{
+			background-color: lightgrey;
+		}
+		nav ul.nav-list li.active a span{
+			display: inline-block;
+			border: 1px solid white;
+			padding: 4px 3px;
+			margin-right: 12px;
+		}
+		nav ul.nav-list li.active:hover span{
+			border-color: black;
+		}
+		nav div.toggler{
+			cursor: pointer;
+			padding: 12px 14px;
+		}
+		nav div.toggler:hover{
+			background-color: #009688;
+		}
+		nav div.toggler span{
+			display: inline-block;
+			border: 1px solid white;
+			padding: 5px 4px;
+		}
+		nav ul.nav-list li.drop-down{
+			position: relative;
+		}
+		nav ul.nav-list li.drop-down:hover{
+			background-color: lightgrey;
+		}
+		nav ul.nav-list li.drop-down a span{
+			display: inline-block;
+			border: 1px solid white;
+			padding: 4px 3px;
+			margin-left: 4px;
+		}
+		nav ul.nav-list li.drop-down:hover span{
+			border-color: black;
+		}
+		nav ul.nav-list li.drop-down:hover div.drop-content{
+			display: block;
+		}
+		li.drop-down div.drop-content{
+			position: absolute;
+			background-color: #f1f1f1;
+			/*width: 120%;*/
+			display: none;
+			min-width: 160px;
+			top: 100%;
+			left: 0;
+			box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+		}
+		div.drop-content a{
+			display: block;
+			font-size: 1.7rem;
+			padding: 12px 15px;
+		}
+		div.drop-content a:hover{
+			background-color: lightgrey;
+		}
+		section.hero{
+			position: relative;
+		}
+		section.hero img{
+			width: 100%;
+			max-height: 90vh;
+		}
+		section.hero h1{
+			position: absolute;
+			bottom: 0px;
+			left: 20px;
+			color: white;
+			background-color: black;
+			font-size: 2.7rem;
+			padding: 13px 20px;
+			font-weight: normal;
+		}
+		section.team{
+			margin: 80px 20px;
+		}
+		section.team>h1{
+			font-size: 3rem;
+			text-align: center;
+			font-weight: normal;
+		}
+		section.team>h2{
+			font-weight: normal;
+			font-size: 1.8rem;
+			text-align: center;
+			/*margin-top: 35px;*/
+			margin-bottom: 35px;
+		}
+		section.team div.cards div.card-cont{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		section.team div.card-cont div.card{
+			width: 24%;
+			background-color: white;
+			text-align: center;
+		}
+		section.team div.card img{
+			max-width: 170px;
+			max-height: 200px;
+			border-radius: 50%;
+		}
+		section.team div.card div.card-body{
+			margin-top: 20px;
+		}
+		section.team div.card-body h1{
+			margin: 0;
+			font-size: 2.6rem;
+			font-weight: normal;
+			/*text-align: left;*/
+		}
+		section.team div.card-body h2{
+			font-size: 1.7rem;
+			font-weight: normal;
+			/*color: grey;*/
+			margin: 20px 0;
+		}
+		section.work{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			background-color: rgba(0,0,0,0.8);
+			padding: 50px 20px;
+			position: relative;
+		}
+		section.work div.write-up{
+			width: 25%;
+			padding-right:15px;
+			/*border: 1px solid green;*/
+		}
+		section.work div.write-up h1{
+			color: white;
+			font-size: 2.6rem;
+		}
+		section.work div.write-up p{
+			color: white;
+			font-size: 1.8rem;
+			line-height: 24px;
+		}
+		section.work div.cards{
+			width: 75%;
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		section.work div.cards div.card{
+			width: 31%;
+		}
+		section.work div.cards div.card img{
+			width: 100%;
+			max-height: 30vh;
+			display: block;
+		}
+		section.work div.cards div.card div.card-body{
+			padding: 20px 20px 2px;
+			background-color: white;
+		}
+		section.work div.cards div.card div.card-body h2{
+			font-size: 2.4rem;
+			font-weight: normal;
+			margin: 0;
+		}
+		section.work div.cards div.card div.card-body ul li{
+			font-size: 1.7rem;
+			margin: 14px 0;
+		}
+		section.work span.plus-btn{
+			position: absolute;
+			font-size: 2.9rem;
+			font-weight: bold;
+			right: 20px;
+			bottom: -30px;
+			display: inline-block;
+			color: white;
+			background-color: #009688;
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			padding: 10px 16px;
+		}
+		section.pricing{
+			margin: 70px 20px;
+		}
+		section.pricing>h1{
+			font-size: 3rem;
+			text-align: center;
+			font-weight: normal;
+			/*margin-bottom: 20px;*/
+		}
+		section.pricing>h2{
+			font-weight: normal;
+			font-size: 1.8rem;
+			text-align: center;
+			margin-top: 15px;
+		}
+		section.pricing div.charge-cont{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			margin-top: 45px;
+		}
+		div.charge-cont ul.charge-list{
+			width: 31.5%;
+			background-color: white;
+			/*border: 1px solid lightgrey;*/
+			box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
+		} 
+		div.charge-cont ul.charge-list:hover{
+			box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.6);
+		} 
+		ul.charge-list li{
+			text-align: center;
+			font-size: 1.8rem;
+			padding: 20px 2px;
+			border-bottom: 1px solid lightgrey;
+		}
+		ul.charge-list li.charge-head{
+			font-size: 2.7rem;
+			color: white;
+			background-color: black;
+			padding: 35px 15px;
+		}
+		ul.charge-list:nth-child(2) li.charge-head{
+			background-color: #616161;
+		}
+		ul.charge-list li.money h2{
+			margin-top: 5px;
+			margin-bottom: 15px;
+			font-size: 3rem;
+			font-weight: normal;
+		}
+		ul.charge-list li.money p{
+			margin: 0;
+		}
+		ul.charge-list li.sign-up{
+			background-color: #f1f1f1;
+		}
+		ul.charge-list li.sign-up button{
+			background-color: #009688;
+			color: white;
+			border: none;
+			padding: 14px 22px;
+			font-size: 1.5rem;
+			cursor: pointer;
+		}
+		ul.charge-list li.sign-up button span{
+			display: inline-block;
+			border: 1px solid white;
+			padding: 4px 3px;
+			margin-right: 5px;
+		}
+		ul.charge-list li.sign-up button:hover{
+			background-color: lightgrey;
+			color: black;
+		}
+		ul.charge-list li.sign-up button:hover span{
+			border-color: black;
+		}
+		section.contact{
+			padding: 70px 20px;
+			background-color: #f1f1f1;
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		section.contact div.left-side{
+			width: 35%;
+		}
+		section.contact div.right-side{
+			width: 60%;
+		}
+		section.contact div.left-side h1{
+			font-size: 2.5rem;
+			color: black;
+			font-weight: normal;
+		}
+		section.contact div.left-side h1 span{
+			padding-bottom: 2px;
+			letter-spacing: 1px;
+			border-bottom: 6px solid #009688;
+		}
+		section.contact div.left-side h2{
+			font-weight: normal;
+			font-size: 2.4rem;
+			margin-top: 35px;
+			color: black;
+		}
+		section.contact ul.contact-list{
+			padding-left: 8px;
+			margin-top: 50px;
+		}
+		ul.contact-list li span{
+			display: inline-block;
+			border: 1px solid #009688;
+			padding: 7px 6px;
+			margin-right: 29px;
+		}
+		ul.contact-list li{
+			font-size: 1.6rem;
+			color: black;
+			/*line-height: 38px;*/
+			display: flex;
+			align-items: center;
+			margin: 20px 0;
+		}
+		section.contact img{
+			width: 100%;
+			max-height: 60vh;
+		}
+		section.contact form{
+			box-shadow: 0px 2px 9px 0px rgba(0,0,0,0.5);
+			background-color: white;
+			padding: 25px 25px;
+		}
+		section.contact form label{
+			font-size: 1.7rem;
+		}
+		section.contact form input{
+			width: 100%;
+			padding: 1rem 1.2rem;
+			font-size: 1.5rem;
+			border: none;
+			border-bottom: 1px solid lightgrey;
+			margin-bottom: 14px;
+			margin-top: 5px;
+		}
+		section.contact form button{
+			border: none;
+			color: white;
+			background-color: black;
+			padding: 9px 22px;
+			font-size: 1.5rem;
+		}
+		section.contact form button:hover{
+			color: black;
+			background-color: lightgrey;
+		}
+		form label.container{
+			display: inline-block;
+			position: relative;
+			padding-left: 35px;
+			cursor: pointer;
+		}
+		form label.container input{
+			position: absolute;
+			height: 0;
+			width: 0;
+			opacity: 0;
+			cursor: pointer;
+		}
+		form label.container span.checkmark{
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 25px;
+			width: 25px;
+			background-color: lightgrey;
+		}
+		form label.container:hover input + span.checkmark{
+			background-color: grey;
+		}
+		form label.container input:checked + span.checkmark{
+			background-color: #2196f3;
+		}
+		form label.container span.checkmark:after{
+			content: "";
+			position: absolute;
+			display: none;
+		}
+		form label.container input:checked + span.checkmark:after{
+			display: block;
+		}
+		form label.container span.checkmark:after{
+			left: 9px;
+			top: 5px;
+			width: 5px;
+			height: 10px;
+			border: 1px solid white;
+			border-width: 0 3px 3px 0;
+			transform: rotate(45deg)
+		}
+		form div.buttons{
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+		section.img-bottom img{
+			width: 100%;
+			max-height: 95vh;
+			display: block;
+		}
+		section.footer{
+			/*margin-top: 150px;*/
+			padding: 50px 0;
+			text-align: center;
+			background-color: black
+		}
+		section.footer div.icont{
+			/*border: 1px solid red;*/
+			margin: 15px 0;
+		}
+		section.footer div.icont div.ic{
+			display: inline-block;
+			padding: 11px 17px;
+			background-color: #009688;
+			margin: 0 1px;
+		}
+		section.footer div.icont span{
+			border: 1px solid white;
+			padding: 5px 4px;
+			/*margin-right: 10px;*/
+			display: inline-block;
+		}
+		section.footer p{
+			color: white;
+			font-size: 1.6rem;
+			margin: 0;
+		}
+		section.footer p:first-child{
+			font-size: 2rem;
+		}
+		section.footer a{
+			color: black;
+			font-size: 1.6rem;
+			background-color: #f1f1f1;
+			padding: 1.2rem 1.6rem;
+			display: inline-block;
+		}
+		section.footer a:hover{
+			background-color: lightgrey;
+		}
+		section.footer a span{
+			display: inline-block;
+			border: 1px solid black;
+			padding: 4px 3px;
+			margin-right: 8px;
+		}
+		@media screen and (max-width: 1000px){
+			section.team div.card img{
+				max-width: 90px;
+				max-height: 120px;
+			}
+		}
+		@media screen and (max-width: 600px){
+			section.team div.card-cont div.card{
+				width: 100%;
+			}
+			section.team div.card img{
+				max-width: 250px;
+				max-height: 320px;
+			}
+			nav ul.nav-list li:not(li.active){
+				display: none;
+			}
+			section.work div.write-up{
+				width: 100%;
+				padding: 0 15px;
+				/*border: 1px solid green;*/
+			}
+			section.work div.cards{
+				width: 100%;
+			}
+			section.work div.cards div.card{
+				width: 100%;
+			}
+			section.work div.cards div.card img{
+				max-height: 70vh;
+			}
+			div.charge-cont ul.charge-list{
+				width: 100%;
+				margin-bottom: 15px;
+			}
+			section.contact div.left-side{
+				width: 100%;
+			}
+			section.contact div.right-side{
+				width: 100%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<ul class="nav-list">
+			<li class="active">
+				<a href="#"><span></span> Logo</a>
+			</li>
+			<li>
+				<a href="#">Team</a>
+			</li>
+			<li>
+				<a href="#">Work</a>
+			</li>
+			<li>
+				<a href="#">Price</a>
+			</li>
+			<li>
+				<a href="#">Contact</a>
+			</li>
+			<li class="drop-down">
+				<a href="#" class="drop-btn">Dropdown <span></span></a>
+				<div class="drop-content">
+					<a href="#">Link</a>
+					<a href="#">Link</a>
+					<a href="#">Link</a>
+				</div>
+			</li>
+		</ul>
+		<div class="toggler">
+			<span class="tog"></span>
+		</div>
+	</nav>
+	<section class="hero">
+		<img src="images/fourth.jpg">
+		<h1>LEARN W3.CSS</h1>
+	</section>
+	<section class="team">
+		<h1>OUR TEAM</h1>
+		<h2>Meet the team - our office rats</h2>
+		<div class="cards">
+			<div class="card-cont">
+				<div class="card">
+					<img src="images/mark.jpg">
+					<div class="card-body">
+						<h1>Johnny Walker</h1>
+						<h2>Web Designer</h2>
+					</div>
+				</div>
+				<div class="card">
+					<img src="images/jenny.jpg">
+					<div class="card-body">
+						<h1>Rebecca Flex</h1>
+						<h2>Support</h2>
+					</div>
+				</div>
+				<div class="card">
+					<img src="images/kyle.jpg">
+					<div class="card-body">
+						<h1>Jan Ringo</h1>
+						<h2>Boss man</h2>
+					</div>
+				</div>
+				<div class="card">
+					<img src="images/rockstar.jpg">
+					<div class="card-body">
+						<h1>Kai Ringo</h1>
+						<h2>Fixer</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="work">
+		<div class="write-up">
+			<h1>Our Work</h1>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+		</div>
+		<div class="cards">
+			<div class="card">
+				<img src="images/boys.jpg">
+				<div class="card-body">
+					<h2>Customer 1</h2>
+					<ul>
+						<li>Trade</li>
+						<li>Blablabla</li>
+						<li>Blablabla</li>
+						<li>Blablabla</li>
+						<li>Blablabla</li>
+					</ul>
+				</div>	
+			</div>
+			<div class="card">
+				<img src="images/fourth.jpg">
+				<div class="card-body">
+					<h2>Customer 2</h2>
+					<ul>
+						<li>Trade</li>
+						<li>Blablabla</li>
+						<li>Blablabla</li>
+						<li>Blablabla</li>
+						<li>Blablabla</li>
+					</ul>
+				</div>	
+			</div>
+			<div class="card">
+				<img src="images/kids.jpg">
+				<div class="card-body">
+					<h2>Customer 3</h2>
+					<ul>
+						<li>Trade</li>
+						<li>Blablabla</li>
+						<li>Blablabla</li>
+						<li>Blablabla</li>
+						<li>Blablabla</li>
+					</ul>
+				</div>	
+			</div>
+		</div>
+		<span class="plus-btn">+</span>
+	</section>
+	<section class="pricing">
+		<h1>PRICING</h1>
+		<h2>Choose a price plan that fits your needs</h2>
+		<div class="charge-cont">
+			<ul class="charge-list">
+				<li class="charge-head">
+					Basic
+				</li>
+				<li><strong>10GB</strong> Storage</li>
+				<li><strong>10</strong> Emails</li>
+				<li><strong>10</strong> Domains</li>
+				<li><strong>Endless</strong> Support</li>
+				<li class="money">
+					<h2>$ 10</h2>
+					<p>per month</p>
+				</li>
+				<li class="sign-up">
+					<button><span></span> Sign Up</button>
+				</li>
+			</ul>
+			<ul class="charge-list">
+				<li class="charge-head">
+					Pro
+				</li>
+				<li><strong>10GB</strong> Storage</li>
+				<li><strong>10</strong> Emails</li>
+				<li><strong>10</strong> Domains</li>
+				<li><strong>Endless</strong> Support</li>
+				<li class="money">
+					<h2>$ 10</h2>
+					<p>per month</p>
+				</li>
+				<li class="sign-up">
+					<button><span></span> Sign Up</button>
+				</li>
+			</ul>
+			<ul class="charge-list">
+				<li class="charge-head">
+					Premium
+				</li>
+				<li><strong>10GB</strong> Storage</li>
+				<li><strong>10</strong> Emails</li>
+				<li><strong>10</strong> Domains</li>
+				<li><strong>Endless</strong> Support</li>
+				<li class="money">
+					<h2>$ 10</h2>
+					<p>per month</p>
+				</li>
+				<li class="sign-up">
+					<button><span></span> Sign Up</button>
+				</li>
+			</ul>
+		</div>
+	</section>
+	<section class="contact">
+		<div class="left-side">
+			<h1><span>Contact Us</span></h1>
+			<h2>Address</h2>
+			<ul class="contact-list">
+				<li>
+					<span class="box"></span> Chicago, Us
+				</li>
+				<li>
+					<span class="box"></span> Phone: +00 151515
+				</li>
+				<li>
+					<span class="box"></span> Email: mail@mail.com
+				</li>
+			</ul>
+		</div>
+		<div class="right-side">
+			<form>
+				<label for="name">Name</label>
+				<input type="text" name="name" id="name">
+				<label for="email">Email</label>
+				<input type="email" name="email" id="email">
+				<label for="message">Message</label>
+				<input type="text" name="message" id="message">
+				<div class="buttons">
+					<label class="container">I Like It!<input type="checkbox" name="like" checked>
+					<span class="checkmark"></span>
+					</label>
+					<button>Send</button>
+				</div>
+			</form>	
+		</div>
+	</section>
+	<section class="img-bottom">
+		<img src="images/fourth.jpg">
+	</section>
+	<section class="footer">
+		<p>Follow Us</p>
+		<div class="icont">
+			<div class="ic">
+				<span></span>
+			</div>
+			<div class="ic">
+				<span></span>
+			</div>
+			<div class="ic">
+				<span></span>
+			</div>
+			<div class="ic">
+				<span></span>
+			</div>
+			<div class="ic">
+				<span></span>
+			</div>
+			<div class="ic">
+				<span></span>
+			</div>
+		</div>
+		<p>Powered by <ins>shaw</ins></p>
+	</section>
+</body>
+</html>

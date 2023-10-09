@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CV TEMPLATE</title>
+	<style type="text/css">
+		*{
+			box-sizing: border-box;
+		}
+		html, body{
+			font-size: 10px;
+			margin: 0;
+			padding: 0;
+			height: 100%;
+		}
+		body{
+			background-color: #f1f1f1;
+		}
+		a{
+			text-decoration: none;
+			color: black;
+		}
+		ul{
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+		}
+		section.splitter{
+			margin: 20px 20px; 
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		section.splitter div.left-split{
+			width: 33%;
+		}
+		section.splitter div.right-split{
+			width: 65%;
+		}
+		div.left-split div.img-cont{
+			position: relative;
+		}
+		div.img-cont img{
+			width: 100%;
+			max-height: 40vh; 
+		}
+		div.img-cont h1{
+			position: absolute;
+			left: 10px;
+			color: white;
+			margin: 0;
+			bottom: 20px;
+			font-size: 2.9rem;
+			font-weight: bold;
+		}
+		div.left-split div.img-body{
+			background-color: white;
+			padding: 20px;
+		}
+		div.img-body ul.topsec{
+			
+		}
+		ul.topsec li div.icont div.ic{
+			width: 1.4rem;
+			height: 0.2rem;
+			margin: 0.2rem;
+			background-color: grey;
+		}
+		ul.topsec li{
+			margin: 25px 0;
+		}
+		ul.topsec li:first-child{
+			margin-top: 0px;
+		}
+		ul.topsec li div.icont{
+			display: inline-block;
+		}
+		ul.topsec li span.grey-text{
+			color: grey;
+			display: inline-block;
+			font-size: 1.6rem;
+			margin-left: 20px;
+		}
+		div.img-body hr{
+			opacity: 0.3;
+		}
+		div.skills div.icont{
+			display: inline-block;
+		}
+		div.skills div.icont div.ic{
+			width: 1.4rem;
+			height: 0.2rem;
+			margin: 0.2rem;
+			background-color: grey;
+		}
+		div.skills span.grey-text{
+			color: black;
+			display: inline-block;
+			font-size: 1.9rem;
+			margin-left: 20px;
+			font-weight: bold;
+		}
+		ul.midsec li h2{
+			font-size: 1.6rem;
+			color: grey;
+		}
+		ul.midsec li div.progress-bar{
+			width: 100%;
+			background-color: #f1f1f1;
+			border-radius: 18px;
+		}
+		ul.midsec li div.progress-bar div.progress{
+			padding: 1px 16px;
+			background-color: #009688;
+			border-radius: 18px;
+			text-align: center;
+			color: white;
+			font-size: 1.5rem;
+		}
+		ul.midsec li.photoshop div.progress{
+			width: 90%;
+		}
+		ul.midsec li.photography div.progress{
+			width: 80%;
+		}
+		ul.midsec li.illustrator div.progress{
+			width: 75%;
+		}
+		ul.midsec li.media div.progress{
+			width: 50%;
+		}
+		ul.botsec li div.progress-bar{
+			width: 100%;
+			background-color: #f1f1f1;
+			border-radius: 18px;
+		}
+		ul.botsec li div.progress-bar div.progress{
+			padding: 14px 16px;
+			background-color: #009688;
+			border-radius: 18px;
+			text-align: center;
+			color: white;
+			font-size: 1.5rem;
+		}
+		ul.botsec li h2{
+			font-size: 1.6rem;
+			color: grey;
+		}
+		ul.botsec li:nth-child(1) div.progress-bar div.progress{
+			width: 80%;
+		}
+		ul.botsec li:nth-child(2) div.progress-bar div.progress{
+			width: 60%;
+		}
+		ul.botsec li:nth-child(3) div.progress-bar div.progress{
+			width: 40%;
+		}
+		div.top-skill{
+			margin: 25px 0;
+		}
+		div.work{
+			margin-bottom: 15px;
+			background-color: white;
+			padding: 5px 18px;
+			padding-bottom: 18px;
+		}
+		div.work h1{
+			font-size: 3rem;
+			color: grey;
+		}
+		div.work hr{
+			opacity: 0.2;
+		}
+		div.front-end h2{
+			color: grey;
+			font-size: 1.8rem;
+		}
+		div.front-end h3{
+			color: #009688;
+			font-size: 1.8rem;
+		}
+		div.front-end h3 span.green-text{
+			background-color: #009688;
+			color: white;
+			border-radius: 4px;
+			padding: 3px 5px;
+		}
+		div.front-end p{
+			font-size: 1.6rem;
+			line-height: 23px;
+		}
+		div.web-dev h2{
+			color: grey;
+			font-size: 1.8rem;
+		}
+		div.web-dev h3{
+			color: #009688;
+			font-size: 1.8rem;
+		}
+		div.web-dev h3 span.green-text{
+			background-color: #009688;
+			color: white;
+			border-radius: 4px;
+			padding: 1px 5px;
+		}
+		div.web-dev p{
+			font-size: 1.6rem;
+			line-height: 23px;
+		}
+		/*dhdk*/
+		div.graphics h2{
+			color: grey;
+			font-size: 1.8rem;
+		}
+		div.graphics h3{
+			color: #009688;
+			font-size: 1.8rem;
+		}
+		div.graphics h3 span.green-text{
+			background-color: #009688;
+			color: white;
+			border-radius: 4px;
+			padding: 1px 5px;
+		}
+		div.graphics p{
+			font-size: 1.6rem;
+			line-height: 23px;
+		}
+		div.education{
+			margin-bottom: 15px;
+			background-color: white;
+			padding: 5px 18px;
+			padding-bottom: 18px;
+		}
+		div.education h1{
+			font-size: 3rem;
+			color: grey;
+		}
+		div.education ul hr{
+			opacity: 0.2;
+		}
+		div.education ul li h2{
+			color: grey;
+			font-size: 1.8rem;
+		}
+		div.education ul li h3{
+			color: #009688;
+			font-size: 1.8rem;
+		}
+		div.education ul li p{
+			font-size: 1.6rem;
+			line-height: 23px;
+		}
+		section.footer{
+			text-align: center;
+			background-color: #009688;
+			padding: 1.3rem;
+		}
+		section.footer p{
+			text-align: center;
+			font-size: 1.7rem;
+			color: white;
+			margin: 0;
+		}
+		section.footer div.ficon-container{
+			margin: 25px 0;
+		}
+		section.footer div.ficon{
+			display: inline-block;
+		}
+		div.ficon div.fic{
+			width: 1.5rem;
+			height: 0.3rem;
+			margin: 0.1rem;
+			background-color: white;
+		}
+		@media screen and (max-width: 600px){
+			section.splitter div.left-split{
+				width: 100%;
+			}
+			section.splitter div.right-split{
+				width: 100%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<section class="splitter">
+		<div class="left-split">
+			<div class="img-cont">
+				<img src="images/jenny.jpg">
+				<h1>Jane Doe</h1>
+			</div>
+			<div class="img-body">
+				<ul class="topsec">
+					<li>
+						<div class="icont">
+							<div class="ic"></div>
+							<div class="ic"></div>
+							<div class="ic"></div>
+						</div>
+						<span class="grey-text">Designer</span>
+					</li>
+					<li>
+						<div class="icont">
+							<div class="ic"></div>
+							<div class="ic"></div>
+							<div class="ic"></div>
+						</div>
+						<span class="grey-text">London, UK</span>
+					</li>
+					<li>
+						<div class="icont">
+							<div class="ic"></div>
+							<div class="ic"></div>
+							<div class="ic"></div>
+						</div>
+						<span class="grey-text">ex@mail.com</span>
+					</li>
+					<li>
+						<div class="icont">
+							<div class="ic"></div>
+							<div class="ic"></div>
+							<div class="ic"></div>
+						</div>
+						<span class="grey-text">1224435534</span>
+					</li>
+				</ul>
+				<hr>
+				<div class="skills top-skill">
+					<div class="icont">
+						<div class="ic"></div>
+						<div class="ic"></div>
+						<div class="ic"></div>
+					</div>
+					<span class="grey-text">Skills</span>
+					<ul class="midsec">
+						<li class="photoshop">
+							<h2>Adobe Photoshop</h2>
+							<div class="progress-bar">
+								<div class="progress">90%</div>
+							</div>
+						</li>
+						<li class="photography">
+							<h2>Photography</h2>
+							<div class="progress-bar">
+								<div class="progress">80%</div>
+							</div>
+						</li>
+						<li class="illustrator">
+							<h2>Illustrator</h2>
+							<div class="progress-bar">
+								<div class="progress">75%</div>
+							</div>
+						</li>
+						<li class="media">
+							<h2>Media</h2>
+							<div class="progress-bar">
+								<div class="progress">50%</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="skills">
+					<div class="icont">
+						<div class="ic"></div>
+						<div class="ic"></div>
+						<div class="ic"></div>
+					</div>
+					<span class="grey-text">Language</span>
+					<ul class="botsec">
+						<li>
+							<h2>English</h2>
+							<div class="progress-bar">
+								<div class="progress"></div>
+							</div>
+						</li>
+						<li>
+							<h2>Spanish</h2>
+							<div class="progress-bar">
+								<div class="progress"></div>
+							</div>
+						</li>
+						<li>
+							<h2>German</h2>
+							<div class="progress-bar">
+								<div class="progress"></div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>	
+		</div>
+		<div class="right-split">
+			<div class="work">
+				<h1>Work Experience</h1>
+				<div class="front-end">
+					<h2>Front End Developer /w3schools.com</h2>
+					<h3>Jan 2015 - <span class="green-text">Current</span></h3>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat.
+					</p>
+				</div>
+
+				<hr>
+
+				<div class="web-dev">
+					<h2>Web Developer / something.com</h2>
+					<h3>Mar 2012 - Dec 2014</h3>
+					<p>
+						 consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat.
+					</p>
+				</div>
+
+				<hr>
+
+				<div class="graphics">
+					<h2>Graphic Designer / designsomething.com</h2>
+					<h3>Jun 2010 - Mar 2012</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+				</div>
+			</div>
+			<div class="education">
+				<h1>Education</h1>
+				<ul>
+					<li>
+						<h2>W3Schools.com</h2>
+						<h3>Forever</h3>
+						<p>Web Development! All i need to know in one place</p>
+					</li>
+					<hr>
+					<li>
+						<h2>London Business School</h2>
+						<h3>2013 - 2015</h3>
+						<p>Master Degree</p>
+					</li>
+					<hr>
+					<li>
+						<h2>School of Coding</h2>
+						<h3>2010 - 2013</h3>
+						<p>Bachelor Degree</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	<section class="footer">
+		<p>Find me on social media</p>
+		<div class="ficon-container">
+			<div class="ficon">
+				<div class="fic"></div>
+				<div class="fic"></div>
+				<div class="fic"></div>
+			</div>
+			<div class="ficon">
+				<div class="fic"></div>
+				<div class="fic"></div>
+				<div class="fic"></div>
+			</div>
+			<div class="ficon">
+				<div class="fic"></div>
+				<div class="fic"></div>
+				<div class="fic"></div>
+			</div>
+			<div class="ficon">
+				<div class="fic"></div>
+				<div class="fic"></div>
+				<div class="fic"></div>
+			</div>
+			<div class="ficon">
+				<div class="fic"></div>
+				<div class="fic"></div>
+				<div class="fic"></div>
+			</div>
+			<div class="ficon">
+				<div class="fic"></div>
+				<div class="fic"></div>
+				<div class="fic"></div>
+			</div>
+		</div>
+		<p>powered by <ins>Shaw</ins></p>
+	</section>
+</body>
+</html>

@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Travel Agency Template</title>
+	<style type="text/css">
+		*{
+			box-sizing: border-box;
+		}
+		html, body{
+			font-size: 10px;
+			margin: 0;
+			padding: 0;
+			/*height: 100%;*/
+		}
+		body{
+			background-color: #f1f1f1;
+		}
+		a{
+			text-decoration: none;
+			color: black;
+		}
+		ul{
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+		}
+		nav{
+			background-color: white;
+		}
+		nav ul.nav-list{
+			display: flex;
+			justify-content: space-between;
+		}
+		nav ul.nav-list li{
+			color: black;
+			padding: 8px 16px;
+			cursor: pointer;
+		}
+		nav ul.nav-list li.toggler{
+			padding-top: 12px;
+		}
+		nav ul.nav-list li span{
+			display: inline-block;
+			border: 1px solid black;
+			padding: 6px 5px;
+		}
+		nav ul.nav-list li.active{
+			color: #f44336;
+			font-weight: bold;
+			font-size: 2.3rem;
+		}
+		nav ul.nav-list li.active span{
+			border-color: #f44336;
+			margin-right: 20px;
+		}
+		nav ul.nav-list li.active:hover{
+			color: white;
+			background-color: #f44336;
+		}
+		nav ul.nav-list li.active:hover span{
+			border-color: white;
+		}
+		nav ul.nav-list li.toggler:hover{
+			background-color: #f44336;
+		}
+		nav ul.nav-list li.toggler:hover span{
+			border-color: white;
+		}
+		section.hero{
+			position: relative;
+		}
+		section.hero img{
+			width: 100%;
+			max-height: 90vh;
+		}
+		section.hero div.book-hotel{
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%) rotate(0.7deg);
+			background-color: white;
+			width: 70%;
+		}
+		div.book-hotel ul.cate{
+			display: flex;
+			background-color: black;
+			margin-bottom: 13px;
+		}
+		ul.cate li{
+			cursor: pointer;
+			padding: 10px 18px;
+			font-size: 1.7rem;
+			color: white;
+		}
+		ul.cate li.active{
+			background-color: #f44336;
+		}
+		ul.cate li span{
+			display: inline-block;
+			border: 1px solid white;
+			padding: 4px 3px;
+			margin-right: 10px;
+		}
+		ul.cate li:hover{
+			background-color: lightgrey;
+			color: black;
+		}
+		ul.cate li:hover span{
+			border-color: black;
+		}
+		div.book-hotel h1{
+			margin: 0;
+			padding: 16px 18px;
+			font-size: 2.5rem;
+			font-weight: normal;
+		}
+		div.book-hotel form{
+			padding: 0 15px 25px;
+			/*padding-top: 20px;*/
+		}
+		div.book-hotel form div.check-cont{
+			display: flex;
+			justify-content: space-between;
+		}
+		div.book-hotel form button{
+			border: none;
+			color: white;
+			background-color: #616161;
+			padding: 1rem 1.9rem;
+			font-size: 1.5rem;
+			cursor: pointer;
+		}
+		div.book-hotel form button:hover{
+			background-color: lightgrey;
+			color: black;
+		}
+		div.check-cont div.left-check, div.check-cont div.right-check{
+			width: 49%;
+		}
+		div.check-cont div input{
+			width: 100%;
+			font-size: 1.6rem;
+			padding: 1rem 1.4rem;
+			margin-bottom: 20px;
+			margin-top: 5px;
+			border: 1px solid lightgrey;
+		}
+		div.check-cont div label{
+			font-size: 1.6rem;
+			padding-left: 2px;
+		}
+		section.hotels{
+			width: 85%;
+			margin: 20px auto 80px;
+			padding: 1px 0;
+		}
+		section.hotels h1{
+			margin-top: 12px;
+			font-size: 2.5rem;
+			font-weight: normal;
+		}
+		section.hotels h3{
+			font-weight: normal;
+			font-size: 1.7rem;
+		}
+		section.hotels div.img-cont{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		div.img-cont div.left-side{
+			width: 49%;
+		}
+		div.img-cont div.left-side img{
+			width: 100%;
+		}
+		div.img-cont div.right-side{
+			width: 49%;
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		div.img-cont div.right-side img{
+			width: 49%;
+		}
+		div.img-cont div.right-side img:nth-child(1){
+			margin-bottom: 15px;
+		}
+		div.img-cont div.right-side img:nth-child(2){
+			margin-bottom: 15px;
+		}
+		section.nature{
+			width: 85%;
+			margin: 0 auto;
+		}
+		section.nature div.cards{
+			margin-top: 20px;
+		}
+		div.cards div.card-cont{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		div.card-cont div.card{
+			width: 49%;
+			background-color: white;
+		}
+		div.card img{
+			width: 100%;
+			max-height: 36vh;
+		}
+		div.card div.card-body{
+			padding: 15px 15px;
+			/*background-color: #f1f1f1;*/
+		}
+		div.card-body h1{
+			margin: 0;
+			font-size: 2.6rem;
+			font-weight: normal;
+		}
+		div.card-body h2{
+			font-size: 1.7rem;
+			font-weight: normal;
+			color: grey;
+			margin: 20px 0;
+		}
+		div.card-body p{
+			font-size: 1.7rem;
+			line-height: 22px;
+			margin-bottom: 20px;
+		}
+		div.card-body p span.grey-text{
+			color: grey;
+			display: inline-block;
+			margin-bottom: 13px;
+		}
+		div.card-body div.icont{
+			margin-bottom: 20px;
+		}
+		div.card-body div.icont span{
+			display: inline-block;
+			border: 1px solid black;
+			padding: 5px 4px;
+			margin-right: 6px;
+		}
+		div.card-body button{
+			border: none;
+			text-align: center;
+			background-color: white;
+			color: black;
+			padding: 8px 14px;
+			font-size: 1.5rem;
+			cursor: pointer;
+		}
+		div.card-body button:hover{
+			background-color: lightgrey;
+			color: black;
+		}
+		section.subscribe{
+			width: 85%;
+			margin: 30px auto;
+			padding: 20px 15px 30px;
+			background-color: black;
+			opacity: 0.6;
+		}
+		section.subscribe:hover{
+			opacity: 1;
+		}
+		section.subscribe h1{
+			color: white;
+			font-size: 3.5rem;
+			font-weight: normal;
+		}
+		section.subscribe h4{
+			font-weight: normal;
+			font-size: 1.7rem;
+			color: white;
+		}
+		section.subscribe form label{
+			color: white;
+			font-size: 1.6rem;
+		}
+		section.subscribe form input{
+			width: 100%;
+			font-size: 1.6rem;
+			padding: 1rem 1.4rem;
+			margin-bottom: 20px;
+			border: 1px solid lightgrey;
+		}
+		section.subscribe form button{
+			border: none;
+			color: white;
+			background-color: #f44336;
+			padding: 0.8rem 1.9rem;
+			font-size: 1.5rem;
+			cursor: pointer;
+		}
+		section.contact{
+			padding: 1px 0px 35px;
+			width: 85%;
+			margin: 0 auto;
+			/*background-color: #f1f1f1;*/
+		}
+		section.contact>h1{
+			font-size: 3rem;
+			font-weight: normal;
+			color: black;
+		}
+		section.contact>h2{
+			font-weight: normal;
+			font-size: 1.8rem;
+			/*margin-top: 35px;*/
+			color: black;
+		}
+		section.contact ul.contact-list{
+			/*margin-top: 50px;*/
+		}
+		ul.contact-list li span{
+			display: inline-block;
+			border: 1px solid #f44336;
+			padding: 4px 3px;
+			margin-right: 29px;
+		}
+		ul.contact-list li{
+			font-size: 1.6rem;
+			color: black;
+			/*line-height: 38px;*/
+			display: flex;
+			align-items: center;
+			margin: 5px 0;
+		}
+		section.contact form input{
+			width: 100%;
+			padding: 1.6rem 1.2rem;
+			font-size: 1.5rem ;
+			border: 1px solid lightgrey;
+			margin-bottom: 14px;
+		}
+		section.contact form button{
+			border: none;
+			color: white;
+			background-color: black;
+			padding: 14px 22px;
+			font-size: 1.5rem;
+			text-transform: uppercase;
+		}
+		section.contact form button:hover{
+			color: black;
+			background-color: lightgrey;
+		}
+		section.contact div.form-container{
+			margin-top: 15px;
+		}
+		section.footer{
+			/*margin-top: 150px;*/
+			padding: 20px 0 50px;
+			text-align: center;
+		}
+		section.footer div.icont{
+			/*border: 1px solid red;*/
+			margin: 48px 0;
+		}
+		section.footer div.icont span{
+			border: 1px solid grey;
+			padding: 6px 5px;
+			margin-right: 10px;
+			display: inline-block;
+		}
+		section.footer p{
+			color: grey;
+			font-size: 1.6rem;
+			margin: 0;
+		}
+		section.footer h1{
+			color: grey;
+			font-size: 1.9rem;
+			margin: 0;
+		}
+		@media screen and (max-width: 1000px){
+			section.hotels, section.subscribe, section.nature, section.contact{
+				width: 95%;
+			}
+		}
+		@media screen and (max-width: 600px){
+			div.card-cont div.card{
+				width: 100%;
+				margin-bottom: 15px;
+			}
+			div.card img{
+				max-height: 55vh;
+			}
+			div.about-head div.left-side{
+				width: 100%;
+			}
+			div.about-head div.right-side{
+				width: 100%;
+			}
+			div.about-body ul li{
+				width: 100%;
+				margin-bottom: 5px;
+			}
+			div.img-cont div.left-side{
+				width: 100%;
+				margin-bottom: 15px;
+			}
+			div.img-cont div.right-side{
+				width: 100%;
+			}
+			div.img-cont div.right-side img{
+				width: 100%;
+				height: 55vh;
+			}
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<ul class="nav-list">
+			<li class="active">
+				<span></span>Logo
+			</li>
+			<li class="toggler">
+				<span></span>
+			</li>
+		</ul>
+	</nav>
+	<section class="hero">
+		<img src="images/fourth.jpg">
+		<div class="book-hotel">
+			<ul class="cate">
+				<li class="active"><span></span> Flight</li>
+				<li><span></span> Hotel</li>
+				<li><span></span> Rental</li>
+			</ul>
+			<h1>Travel the world with us</h1>
+			<form>
+				<div class="check-cont">
+					<div class="left-check">
+						<label>From</label>
+						<input type="text" name="from" placeholder="Departing from">
+					</div>
+					<div class="right-check">
+						<label>To</label>
+						<input type="text" name="to" placeholder="Arriving at">
+					</div>
+				</div>
+				<button>Search and find dates</button>
+			</form>
+		</div>
+	</section>
+	<section class="hotels">
+		<h1>Good Offers Right Now</h1>
+		<h3>Up to <strong>50%</strong> discount</h3>
+		<div class="img-cont">
+			<div class="left-side">
+				<img src="images/kids.jpg">
+			</div>
+			<div class="right-side">
+				<img src="images/sec.jpg">
+				<img src="images/third.jpg">
+				<img src="images/fourth.jpg">
+				<img src="images/boys.jpg">
+			</div>
+		</div>
+	</section>
+	<section class="nature">
+		<div class="cards">
+			<div class="card-cont">
+				<div class="card">
+					<img src="images/mark.jpg">
+					<div class="card-body">
+						<h1>West Coast, Norway</h1>
+						<p>
+							<span class="grey-text">Roundtrip from $79</span>
+							<br>
+							Praesent tincidunt sed tellus ut rutrum sed vitae justo.
+						</p>
+						<button>Buy Tickets</button>
+					</div>
+				</div>
+				<div class="card">
+					<img src="images/jenny.jpg">
+					<div class="card-body">
+						<h1>Mountains, Austria</h1>
+						<p>
+							<span class="grey-text">One-way from $39</span>
+							<br>
+							Praesent tincidunt sed tellus ut rutrum sed vitae justo.
+						</p>
+						<button>Buy Tickets</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="subscribe">
+		<h1>Get the best offers first!</h1>
+		<h4>Join our newsletter</h4>
+		<form>
+			<label for="email">E-mail</label>
+			<input type="text" name="email" id="email" placeholder="Your Email address">
+			<button>Subscribe</button>
+		</form>
+	</section>
+	<section class="contact">
+		<h1>Contact</h1>
+		<h2>If you have any questions, do not hesitate to ask them:</h2>
+		<ul class="contact-list">
+			<li>
+				<span class="box"></span> Chicago, Us
+			</li>
+			<li>
+				<span class="box"></span> Phone: +00 151515
+			</li>
+			<li>
+				<span class="box"></span> Email: mail@mail.com
+			</li>
+		</ul>
+		<div class="form-container">
+			<form>
+				<input type="text" name="name" id="name" placeholder="Name">
+				<input type="email" name="email" id="email" placeholder="Email">
+				<input type="text" name="message" id="message" placeholder="Message">
+				<button>Send Message</button>
+			</form>	
+		</div>
+	</section>
+	<section class="footer">
+		<h1>Find Us On</h1>
+		<div class="icont">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+		<p>Powered by <ins>shaw</ins></p>
+	</section>
+</body>
+</html>

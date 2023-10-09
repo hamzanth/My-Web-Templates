@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Clothing Shop</title>
+	<style type="text/css">
+		*{
+			box-sizing: border-box;
+		}
+		html, body{
+			font-size: 10px;
+			margin: 0;
+			padding: 0;
+			height: 100%;
+		}
+		a{
+			text-decoration: none;
+			color: black;
+		}
+		ul{
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+		}
+		nav{
+			display: none;
+			justify-content: space-between;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			background-color: black;
+			z-index: 35;
+			/*align-items: center;*/
+		}
+		nav h1{
+			color: white;
+			font-size: 2.5rem;
+			margin-left: 30px;
+			font-weight: normal;
+			letter-spacing: 5px;
+			/*margin-top: 20px;*/
+		}
+		nav div.toggler{
+			padding: 2.2rem 1rem;
+			cursor: pointer;
+		}
+		nav div.toggler:hover{
+			background-color: lightgrey;
+		}
+		nav div.toggler:hover div.tog{
+			background-color: black;
+		}
+		div.toggler div.tog{
+			width: 1.8rem;
+			height: 0.3rem;
+			margin: 0.2rem;
+			background-color: white;
+		}
+		ul.dresses li div.drop-content a{
+			display: block;
+		}
+		aside.menu{
+			width: 230px;
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 100%;
+			/*border: 1px solid green;*/
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			/*align-items: center;*/
+			padding-left: 60px;
+			z-index: 46;
+			background-color: white;
+
+		}
+		aside.menu h1{
+			font-size: 2.4rem;
+			letter-spacing: 5px;
+		}
+		ul.dresses li{
+			font-size: 1.9rem;
+			margin: 20px;
+		}
+		ul.dresses li button{
+			font-size: 1.9rem;
+			border: none;
+			background-color: white;
+			padding-left: 0;
+			font-weight: bold;
+		}
+		li.drop-down div.drop-content{
+			padding: 0 10px;
+			overflow: hidden;
+			transition: height 0.5s;
+		}
+		li.drop-down div.drop-content a{
+			/*border: 1px solid yellow;*/
+			font-size: 1.5rem;
+			padding: 8px 10px;
+			font-weight: bold;
+			color: grey;
+			cursor: pointer;
+		}
+		li.drop-down div.drop-content a.active{
+			background-color: #f1f1f1;
+			color: black; 
+		}
+		li.drop-down div.drop-content a:hover{
+			background-color: lightgrey;
+			color: black;
+		}
+		aside.menu div.bottom ul li{
+			margin: 12px 0;
+		}
+		aside.menu div.bottom ul li a{
+			font-size: 1.9rem;
+		}
+		main{
+			margin-left: 300px;
+			/*padding-left: 18px;*/
+			padding-right: 45px;
+		}
+		section.head{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 0 20px;
+			/*border: 1px solid red;*/
+		}
+		section.head h1{
+			font-size: 2.7rem;
+			font-weight: normal;
+		}
+		div.icon-container div.icont{
+			display: inline-block;
+		}
+		div.icon-container div.icont div.ic{
+			width: 1.6rem;
+			height: 0.3rem;
+			margin: 0.2rem;
+			background-color: black;
+		}
+		section.top-image{
+			position: relative;
+			/*border: 2px solid red;*/
+			margin: 0 20px;
+		}
+		section.top-image img{
+			/*padding: 1px 30px;*/
+			max-height: 90vh;
+			width: 100%;
+			/*margin: 0 20px;*/
+		}
+		section.top-image div.img-content{
+			position: absolute;
+			top: 0px;
+			left: 27px;
+		}
+		section.top-image h1{
+			font-size: 6rem;
+			color: white;
+			margin: 30px 0;
+		}
+		section.top-image p{
+			font-size: 3.5rem;
+			color: white;
+			margin: 19px 0;
+		}
+		section.top-image button{
+			border: none;
+			color: white;
+			background-color: black;
+			font-size: 1.8rem;
+			padding: 1.3rem 1.7rem;
+		}
+		section.cards{
+			padding: 20px;
+		}
+		section.cards h2{
+			color: grey;
+		}
+		section.cards div.card-cont{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		div.card-cont div.card{
+			width: 23%;
+		}
+		div.card img{
+			max-height: 40vh;
+			width: 100%;
+		}
+		div.card p{
+			font-size: 1.6rem;
+			margin: 10px 0;
+		}
+		div.card p span.dark{
+			font-weight: bold;
+		}
+		div.card div.overlay{
+			position: relative;
+		}
+		div.overlay>p{
+			position: absolute;
+			top: 0;
+			left: 0;
+			margin: 0;
+			color: white;
+			background-color: black;
+			padding: 2px 6px;
+		}
+		div.overlay>button{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			border: none;
+			color: white;
+			background-color: black;
+			font-size: 1.6rem;
+			padding: 7px 13px;
+			display: none;
+		}
+		div.card div.overlay:hover button.buy-now{
+			display: block;
+		}
+		section.subscribe{
+			background-color: black;
+			padding: 20px;
+		}
+		section.subscribe h1{
+			color: white;
+			font-size: 2.8rem;
+		}
+		section.subscribe p{
+			font-size: 1.6rem;
+			color: white;
+		}
+		section.subscribe form input{
+			font-size: 1.5rem;
+			padding: 1.4rem;
+			width: 100%;
+		}
+		section.subscribe form button{
+			font-size: 1.5rem;
+			padding: 1rem 1.9rem; 
+			color: white;
+			background-color: green;
+			border: none;
+			margin: 15px 0;
+		}
+		section.main-bottom{
+			display: flex;
+			padding: 60px 20px;
+			padding-bottom: 80px;
+			background-color: #f1f1f1;
+			/*border: 1px solid blue;*/
+		}
+		section.main-bottom div.contact, section.main-bottom div.about, section.main-bottom div.store{
+			width: 30%;
+			margin: 0 15px;
+		}
+		section.main-bottom div.contact{
+			margin-left: 0;
+		}
+		div.contact form input{
+			padding: 1rem;
+			font-size: 1.2rem;
+			width: 100%;
+			margin-bottom: 12px;
+			border: 1px solid lightgrey;
+		}
+		div.contact h1{
+			font-size: 2.1rem;
+			text-align: center;
+			font-weight: normal;
+		}
+		div.contact h3{
+			font-size: 1.4rem;
+			text-align: center;
+			font-weight: normal;
+		}
+		div.contact form button{
+			padding: 1rem;
+			font-size: 1.2rem;
+			width: 100%;
+			border: none;
+			background-color: black;
+			color: white;
+		}
+		div.about h1{
+			font-size: 2.1rem;
+			text-align: center;
+			font-weight: normal;
+		}
+		div.about ul li{
+			margin: 13px 0;
+			text-align: center;
+			font-size: 1.3rem;
+		}
+		div.topsec h1{
+			font-size: 2.1rem;
+			font-weight: normal;
+		}
+		div.topsec ul{
+			padding: 0 8px;
+		}
+		div.topsec ul li{
+			font-size: 1.5rem;
+			margin: 13px 0;
+		}
+		div.midsec h1{
+			font-size: 2.1rem;
+			font-weight: normal;
+		}
+		div.midsec ul{
+			padding: 0 8px;
+		}
+		div.midsec ul li{
+			font-size: 1.5rem;
+			margin: 13px 0;
+		}
+		div.botsec{
+			margin-top: 25px;
+		}
+		div.botsec div.icont{
+			display: inline-block;
+		}
+		div.botsec div.icont div.ic{
+			width: 1.2rem;
+			height: 0.2rem;
+			margin: 0.2rem;
+			background-color: grey;
+		}
+		section.footer{
+			background-color: black;
+			text-align: center;
+			padding: 5px;
+		}
+		section.footer p{
+			font-size: 1.7rem;
+			color: white;
+		}
+		li.drop-down button{
+			cursor: pointer;
+		}
+		ul.dresses li.drop-down div.drop-content.tog{
+			display: none;
+		}
+		@media screen and (max-width: 1250px){
+			aside.menu{
+				/*display: none;*/
+				width: 230px;
+				padding-left: 20px;
+			}
+			main{
+				margin-left: 230px;
+				padding-right: 0;
+			}
+		}
+		@media screen and (max-width: 1000px){
+			nav{
+				display: flex;
+			}
+			aside.menu{
+				display: none;
+				/*width: 230px;*/
+				/*padding-left: 20px;*/
+			}
+			main{
+				margin-left: 0;
+				padding-right: 0;
+			}
+			section.head{
+				margin-top: 70px;
+			}
+			div.card-cont div.card{
+				width: 48%;
+			}
+		}
+		@media screen and (max-width: 600px){
+			ul.dresses li{
+				margin-left: 0px;
+				/*border-right: 2px solid red;*/
+			}
+			section.top-image img{
+				height: 40vh;
+			}
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<h1>LOGO</h1>
+		<div class="toggler" onclick="openSide()">
+			<div class="tog"></div>
+			<div class="tog"></div>
+			<div class="tog"></div>
+		</div>
+	</nav>
+	<aside class="menu">
+		<h1 class="logo">LOGOS</h1>
+		<div class="wares">
+			<ul class="dresses">
+				<li>Shirts</li>
+				<li>Dresses</li>
+				<li class="drop-down">
+					<button onclick="openDrop(this)">Jean</button>
+					<div class="drop-content">
+						<a class="active">Skinny</a>
+						<a>Relaxed</a>
+						<a>Bootcut</a>
+						<a>straight</a>
+					</div>
+				</li>
+				<li>Jackets</li>
+				<li>Gymwear</li>
+				<li>Blazers</li>
+				<li>Shoes</li>
+			</ul>
+		</div>
+		<div class="bottom">
+			<ul>
+				<li>
+					<a href="#">Contact</a>
+				</li>
+				<li>
+					<a href="#">Newsletter</a>
+				</li>
+				<li>
+					<a href="#">Subscribe</a>
+				</li>
+			</ul>
+		</div>
+	</aside>
+	<main>
+		<!-- <div class="main-overlay"> -->
+			
+		
+		<section class="head">
+			<h1>Jeans</h1>
+			<div class="icon-container">
+				<div class="icont">
+					<div class="ic"></div>
+					<div class="ic"></div>
+					<div class="ic"></div>
+				</div>
+				<div class="icont">
+					<div class="ic"></div>
+					<div class="ic"></div>
+					<div class="ic"></div>
+				</div>
+			</div>
+		</section>
+		<section class="top-image">
+			<img src="images/fourth.jpg">
+			<div class="img-content">
+				<h1>New arrivals</h1>
+				<p>COLLECTION 2016</p>
+				<button>SHOP NOW</button>
+			</div>
+		</section>
+		<section class="cards">
+			<h2>8 items</h2>
+			<div class="card-cont">
+				<div class="card">
+					<img src="images/jenny.jpg">
+					<p>
+						Ripped Skinny Jeans <br> <span class="dark">$24.99</span>
+					</p>
+				</div>
+				<div class="card">
+					<div class="overlay">
+						<img src="images/jenny.jpg">
+						<p class="top-right">New</p>
+						<button class="buy-now">Buy Now</button>
+					</div>
+					<p>
+						Ripped Skinny Jeans <br> <span class="dark">$24.99</span>
+					</p>
+				</div>
+				<div class="card">
+					<img src="images/jenny.jpg">
+					<p>
+						Ripped Skinny Jeans <br> <span class="dark">$24.99</span>
+					</p>
+				</div>
+				<div class="card">
+					<img src="images/jenny.jpg">
+					<p>
+						Ripped Skinny Jeans <br> <span class="dark">$24.99</span>
+					</p>
+				</div>
+				<div class="card">
+					<img src="images/jenny.jpg">
+					<p>
+						Ripped Skinny Jeans <br> <span class="dark">$24.99</span>
+					</p>
+				</div>
+				<div class="card">
+					<img src="images/jenny.jpg">
+					<p>
+						Ripped Skinny Jeans <br> <span class="dark">$24.99</span>
+					</p>
+				</div>
+				<div class="card">
+					<div class="overlay">
+						<img src="images/jenny.jpg">
+						<p class="top-right">Sale</p>
+						<button class="buy-now">Buy Now</button>
+					</div>
+					<p>
+						Ripped Skinny Jeans <br> <span class="dark">$24.99</span>
+					</p>
+				</div>
+				<div class="card">
+					<img src="images/jenny.jpg">
+					<p>
+						Ripped Skinny Jeans <br> <span class="dark">$24.99</span>
+					</p>
+				</div>
+			</div>
+		</section>
+		<section class="subscribe">
+			<h1>Subscribe</h1>
+			<p>To get special offers and VIP treatment</p>
+			<form>
+				<input type="email" name="email" placeholder="Enter e-mail">
+				<button>Subscribe</button>
+			</form>
+		</section>
+		<section class="main-bottom">
+			<div class="contact">
+				<h1>Contact</h1>
+				<h3>Questios? Go ahead.</h3>
+				<form>
+					<input type="text" name="name" placeholder="Name">
+					<input type="email" name="email" placeholder="Email">
+					<input type="text" name="subject" placeholder="Subject">
+					<input type="text" name="message" placeholder="Message">
+					<button>send</button>
+				</form>
+			</div>
+			<div class="about">
+				<h1>About</h1>
+				<ul>
+					<li>
+						<a href="#"><ins>About us</ins></a>
+					</li>
+					<li>
+						<a href="#"><ins>We're hiring</ins></a>
+					</li>
+					<li>
+						<a href="#"><ins>Support</ins></a>
+					</li>
+					<li>
+						<a href="#"><ins>Find store</ins></a>
+					</li>
+					<li>
+						<a href="#"><ins>Shipment</ins></a>
+					</li>
+					<li>
+						<a href="#"><ins>Payment</ins></a>
+					</li>
+					<li>
+						<a href="#"><ins>Gift card</ins></a>
+					</li>
+					<li>
+						<a href="#"><ins>Return</ins></a>
+					</li>
+					<li>
+						<a href="#"><ins>help</ins></a>
+					</li>
+				</ul>
+			</div>
+			<div class="store">
+				<div class="topsec">
+					<h1>Store</h1>
+					<ul class="str">
+						<li>company Name</li>
+						<li>0044123123</li>
+						<li>ex@mail.com</li>
+					</ul>
+				</div>
+				<div class="midsec">
+					<h1>We accept</h1>
+					<ul class="str">
+						<li>Amex</li>
+						<li>Credit Card</li>
+					</ul>
+				</div>
+				<div class="botsec">
+					<div class="icont">
+						<div class="ic"></div>
+						<div class="ic"></div>
+						<div class="ic"></div>
+					</div>
+					<div class="icont">
+						<div class="ic"></div>
+						<div class="ic"></div>
+						<div class="ic"></div>
+					</div>
+					<div class="icont">
+						<div class="ic"></div>
+						<div class="ic"></div>
+						<div class="ic"></div>
+					</div>
+					<div class="icont">
+						<div class="ic"></div>
+						<div class="ic"></div>
+						<div class="ic"></div>
+					</div>
+					<div class="icont">
+						<div class="ic"></div>
+						<div class="ic"></div>
+						<div class="ic"></div>
+					</div>
+					<div class="icont">
+						<div class="ic"></div>
+						<div class="ic"></div>
+						<div class="ic"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="footer">
+			<p>Powered by <ins>shaw</ins></p>
+		</section>
+
+		<!-- </div> -->
+	</main>
+
+	<script type="text/javascript">
+		let sidebar = document.querySelector("aside.menu")
+		let disp = "none"
+		function openSide(){
+			if(disp == "none"){
+				sidebar.style.display = "flex"
+				disp = ""
+			}
+			else{
+				console.log("whatever")
+				sidebar.style.display = "none"
+				disp = "none"
+			}
+		}
+		let isBlue = false
+		function openDrop(elmt){
+			let dropContent = document.querySelector("li.drop-down div.drop-content")
+				dropContent.classList.toggle("tog")
+				if (isBlue){
+					dropContent.style.height = dropContent.scrollHeight + "px";
+					elmt.style.color = "black"
+					isBlue = false
+				}
+				else{
+					dropContent.style.height = "0px"
+					elmt.style.color = "blue"
+					isBlue = true
+				}
+			}
+	</script>
+</body>
+</html>

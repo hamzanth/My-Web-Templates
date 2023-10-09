@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Black and White People Portfolio</title>
+	<style type="text/css">
+		*{
+			box-sizing: border-box;
+		}
+		html, body{
+			font-size: 10px;
+			margin: 0;
+			padding: 0;
+			/*height: 100%;*/
+		}
+		/*body{
+			background-color: #ffdddd;
+		}*/
+		a{
+			text-decoration: none;
+			color: black;
+		}
+		ul{
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+		}
+		nav{
+			text-align: right;
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100%;
+		}
+		nav div.toggler{
+			display: inline-block;
+			padding: 20px 18px;
+			background-color: white;
+			cursor: pointer;
+		}
+		nav div.toggler:hover{
+			background-color: lightgrey;
+		}
+		nav div.toggler span.tog{
+			border: 1px solid grey;
+			padding: 11px 9px;
+			display: inline-block;
+		}
+		aside{
+			width: 40%;
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 100%;
+		}
+		aside img{
+			width: 100%;
+			height: 100%;
+		}
+		main{
+			margin-left: 40%;
+			padding: 0 20px;
+		}
+		div.side-menu{
+			position: fixed;
+			top: 0;
+			right: 0;
+			width: 0%;
+			height: 100%;
+			background-color: black;
+			transition: width 0.5s;
+			overflow: hidden;
+			z-index: 5;
+		}
+		div.side-menu ul.nav-list{
+			margin-top: 170px;
+		}
+		div.side-menu ul.nav-list li a{
+			color: grey;
+			font-size: 3.9rem;
+		}
+		div.side-menu ul.nav-list li{
+			text-align: center;
+			margin: 22px;
+		}
+		div.side-menu div.toggler{
+			padding: 20px 18px;
+			position: absolute;
+			top: 0;
+			right: 0;
+			cursor: pointer;
+		}
+		div.side-menu div.toggler:hover{
+			background-color: lightgrey;
+		}
+		div.side-menu div.toggler span.tog{
+			border: 1px solid grey;
+			padding: 11px 9px;
+			display: inline-block;
+		}
+		section.header{
+			margin-top: 120px;
+			margin-bottom: 100px;
+			text-align: center;
+		}
+		section.header img{
+			width: 50%;
+			height: 70vh;
+			display: none;
+			border-radius: 5px;
+		}
+		section.header h1{
+			font-size: 6.5rem;
+			margin-bottom: 25px;
+			font-weight: bolder;
+		}
+		section.header p{
+			font-size: 1.6rem;
+		}
+		section.header div.button{
+			margin: 15px 0;
+		}
+		section.header div.button button{
+			color: black;
+			font-size: 1.5rem;
+			background-color: #f1f1f1;
+			padding: 12px 20px;
+			border: none;
+		}
+		section.header div.button button span{
+			border: 1px solid black;
+			padding: 4px 3px;
+			display: inline-block;
+			margin-right: 3px;
+		}
+		section.portfolio h1{
+			font-size: 3.3rem;
+			color: #616161;
+			font-weight: normal;
+		}
+		section hr{
+			opacity: 0.3;
+		}
+		section.portfolio div.image-cont{
+			margin: 15px 0;
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		section.portfolio div.image-cont img{
+			width: 49%;
+			max-height: 65vh;
+			margin-bottom: 15px;
+		}
+		section.name h1{
+			color: #616161;
+			font-size: 2.9rem;
+			font-weight: normal;
+			margin-bottom: 12px;
+		}
+		section.name hr{
+			opacity: 0.3;
+		}
+		section.name p{
+			color: #616161;
+			font-size: 1.6rem;
+			line-height: 22px;
+		}
+		section.skills{
+			margin-top: 32px;
+		}
+		section.skills h1{
+			font-size: 2.3rem;
+			font-weight: normal;
+			color: #616161;
+		}
+		ul.skill-list{
+			margin-bottom: 25px;
+		}
+		ul.skill-list li p{
+			letter-spacing: 3px;
+			font-size: 1.7rem;
+			color: #616161;
+		}
+		ul.skill-list li div.progress-bar{
+			width: 100%;
+			background-color: #f1f1f1;
+		}
+		ul.skill-list li div.progress{
+			padding: 7px;
+			color: white;
+			background-color: #616161;
+			text-align: center;
+			font-size: 1.5rem;
+		}
+		section.skills button{
+			color: black;
+			border: none;
+			background-color: #f1f1f1;
+			padding: 13px 20px;
+			font-size: 1.5rem;
+			margin: 30px 0;
+		}
+		section.skills button span{
+			border: 1px solid black;
+			padding: 4px 2px;
+			display: inline-block;
+			margin-right: 12px;
+		}
+		ul.skill-list li:nth-child(1) div.progress{
+			width: 95%;
+		}
+		ul.skill-list li:nth-child(2) div.progress{
+			width: 85%;
+		}
+		ul.skill-list li:nth-child(3) div.progress{
+			width: 80%;
+		}
+		section.skills div.sect-cont{
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+		}
+		div.sect-cont div.sect{
+			width: 25%;
+			background-color: #616161;
+			padding: 25px;
+			text-align: center;
+		}
+		div.sect span{
+			font-size: 2.5rem;
+			color: white;
+		}
+		div.sect p{
+			font-size: 1.7rem;
+			color: white;
+			margin-bottom: 0
+		}
+		section.charges{
+			margin-bottom: 50px;
+			margin-top: 20px;
+		}
+		section.charges div.charge-cont{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		/*div.charge-cont div.charge-list{
+			width: 32%;
+		}*/ 
+		section.charges div.charge-cont{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		div.charge-cont ul.charge-list{
+			width: 49%;
+			background-color: white;
+			border: 1px solid lightgrey;
+			box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
+		} 
+		div.charge-cont ul.charge-list:hover{
+			box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.6);
+		} 
+		ul.charge-list li{
+			text-align: center;
+			font-size: 1.5rem;
+			padding: 20px 2px;
+			border-bottom: 1px solid lightgrey;
+		}
+		ul.charge-list li.charge-head{
+			font-size: 2.7rem;
+			color: white;
+			background-color: grey;
+			padding: 35px 15px;
+		}
+		ul.charge-list:last-child li.charge-head{
+			background-color: black;
+		}
+		ul.charge-list li.money h2{
+			margin-top: 5px;
+			margin-bottom: 15px;
+			font-size: 3rem;
+			font-weight: normal;
+		}
+		ul.charge-list li.money p{
+			margin: 0;
+		}
+		section.charges>h1{
+			color: white;
+			font-size: 2.2rem;
+			font-weight: normal;
+			/*margin-top: 0;*/
+			margin-bottom: 10px;
+		}
+		ul.charge-list li.sign-up{
+			background-color: #f1f1f1;
+		}
+		ul.charge-list li.sign-up button{
+			background-color: white;
+			color: black;
+			border: none;
+			padding: 14px 22px;
+			font-size: 1.5rem;
+		}
+		ul.charge-list li.sign-up button:hover{
+			background-color: black;
+			color: white;
+		}
+		section.reputation{
+			margin-bottom: 100px;
+		}
+		section.reputation>h1{
+			color: #616161;
+			font-weight: normal;
+			font-size: 2.4rem;
+		}
+		section.reputation ul.stack-list li{
+			display: flex;
+			align-items: center;
+		}
+		ul.stack-list li{
+			margin: 20px 0;
+		}
+		ul.stack-list li img{
+			width: 80px;
+			height: 80px;
+			border-radius: 50%;
+		}
+		ul.stack-list li div.rsta{
+			margin-left: 20px;
+		}
+		ul.stack-list li div.rsta h2{
+			color: #616161;
+			font-weight: normal;
+			font-size: 1.7rem;
+		}
+		ul.stack-list li div.rsta h2 span.post{
+			margin-left: 20px;
+		}
+		ul.stack-list li div.rsta h2 span.dark-text{
+			color: black;
+		}
+		ul.stack-list li div.rsta p{
+			color: #616161;
+			font-size: 1.7rem;
+		}
+		section.contact{
+			padding-bottom: 3px;
+			margin-top: 120px;
+		}
+		section.contact h1{
+			font-size: 3.2rem;
+			color: #616161;
+			font-weight: normal;
+		}
+		section.contact hr{
+			opacity: 0.2;
+		}
+		section.contact ul.contact-list{
+			padding-left: 8px;
+		}
+		ul.contact-list li span{
+			display: inline-block;
+			border: 1px solid #616161;
+			padding: 11px 9px;
+			margin-right: 29px;
+		}
+		ul.contact-list li{
+			font-size: 1.6rem;
+			color: #616161;
+			/*line-height: 38px;*/
+			display: flex;
+			align-items: center;
+			margin: 20px 0;
+		}
+		section.contact p{
+			color: #616161;
+			font-size: 1.7rem;
+		}
+		section.contact img{
+			width: 100%;
+			max-height: 60vh;
+		}
+		section.contact form input{
+			width: 100%;
+			padding: 1.6rem 1.2rem;
+			font-size: 1.5rem ;
+			border: 1px solid lightgrey;
+			margin-bottom: 14px;
+		}
+		section.contact form button{
+			border: none;
+			color: black;
+			background-color: #f1f1f1;
+			padding: 14px 22px;
+			font-size: 1.7rem;
+		}
+		section.contact form button span{
+			border: 1px solid black;
+			padding: 4px 3px;
+			display: inline-block;
+			margin-right: 10px;
+		}
+		section.contact div.form-container{
+			margin-top: 60px;
+		}
+		section.footer{
+			margin-top: 150px;
+			padding-bottom: 70px;
+			text-align: center;
+		}
+		section.footer div.icont span{
+			border: 1px solid #616161;
+			padding: 6px 5px;
+			margin-right: 10px;
+			display: inline-block;
+		}
+		section.footer p{
+			color: #616161;
+			font-size: 1.6rem;
+		}
+		@media screen and (max-width: 1000px){
+			aside{
+				display: none;
+			}
+			main{
+				margin-left: 0px;
+			}
+			section.header img{
+				display: inline;
+				width: 70%;
+				/*height: 60vh;*/
+			}
+		}
+		@media screen and (max-width: 600px){
+			section.portfolio div.image-cont img{
+				width: 100%;
+			}
+			div.sect-cont div.sect{
+				width: 100%;
+			}
+			div.charge-cont ul.charge-list{
+				width: 100%;
+				margin-bottom: 15px;
+			}
+			section.header img{
+				width: 100%;
+				height: 70vh;
+			}
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<div class="toggler" onclick="openSide()">
+			<span class="tog"></span>
+		</div>
+	</nav>
+	<div class="side-menu">
+		<ul class="nav-list">
+			<li>
+				<a href="#">Home</a>
+			</li>
+			<li>
+				<a href="#">Portfolio</a>
+			</li>
+			<li>
+				<a href="#">About</a>
+			</li>
+			<li>
+				<a href="#">Contact</a>
+			</li>			
+		</ul>
+		<div class="toggler" onclick="closeSide()">
+			<span class="tog"></span>
+		</div>
+	</div>
+	<aside>
+		<img src="images/jenny.jpg">
+	</aside>
+	<main>
+		<section class="header">
+			<h1>Jane Doe</h1>
+			<p>Photographer and Web Designer</p>
+			<img src="images/jenny.jpg">
+			<div class="button">
+				<button><span></span> Download Resume</button>
+			</div>
+		</section>
+		<section class="portfolio">
+			<h1>My Portfolio</h1>
+			<hr>
+			<div class="image-cont">
+				<img src="images/book.jpg">
+				<img src="images/boys.jpg">
+				<img src="images/chamber.jpg">
+				<img src="images/default.jpg">
+				<img src="images/ferrari.jpg">
+				<img src="images/fourth.jpg">
+			</div>
+		</section>
+		<section class="name">
+			<h1>About</h1>
+			<hr>
+			<p>
+				Some text about me. Some text about me. I am Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+		</section>
+		<section class="skills">
+			<h1>My Skills</h1>
+			<ul class="skill-list">
+				<li>
+					<p>Photography</p>
+					<div class="progress-bar">
+						<div class="progress">95%</div>
+					</div>
+				</li>
+				<li>
+					<p>Web Design</p>
+					<div class="progress-bar">
+						<div class="progress">85%</div>
+					</div>
+				</li>
+				<li>
+					<p>Photoshop</p>
+					<div class="progress-bar">
+						<div class="progress">80%</div>
+					</div>
+				</li>
+			</ul>
+			<div class="sect-cont">
+				<div class="sect">
+					<span>11+</span>
+					<p>Partners</p>
+				</div>
+				<div class="sect green">
+					<span>55+</span>
+					<p>Project Done</p>
+				</div>
+				<div class="sect">
+					<span>89+</span>
+					<p>Happy Clients</p>
+				</div>
+				<div class="sect">
+					<span>150+</span>
+					<p>Meetings+</p>
+				</div>
+			</div>
+			<button><span></span> Download Resume</button>
+		</section>
+		<section class="reputation">
+			<h1>My Reputation</h1>
+			<ul class="stack-list">
+				<li>
+					<img src="images/mark.jpg">
+					<div class="rsta">
+						<h2><span class="dark-text">Chandler Bing</span>. <span class="post">Web Designer</span> at Mighty Schools</h2>
+						<p>John Doe saved us from a web disaster</p>
+					</div>
+				</li>
+				<li>
+					<img src="images/jenny.jpg">
+					<div class="rsta">
+						<h2><span class="dark-text">Chris Fox</span>. <span class="post">CEO at Mighty School</span> at Mighty Schools</h2>
+						<p>John Doe saved us from a web disaster</p>
+					</div>
+				</li>
+				<li>
+					<img src="images/kyle.jpg">
+					<div class="rsta">
+						<h2><span class="dark-text">Rebecca Flex</span>. <span class="post">CEO at Company</span> at Mighty Schools</h2>
+						<p>John Doe saved us from a web disaster</p>
+					</div>
+				</li>
+			</ul>
+		</section>
+		<section class="charges">
+			<h1>My Price</h1>
+			<div class="charge-cont">
+				<ul class="charge-list">
+					<li class="charge-head">
+						Basic
+					</li>
+					<li>Web Design</li>
+					<li>Photography</li>
+					<li>1GB Storage</li>
+					<li>Mail Support</li>
+					<li class="money">
+						<h2>$ 10</h2>
+						<p>per month</p>
+					</li>
+					<li class="sign-up">
+						<button>Sign Up</button>
+					</li>
+				</ul>
+				<ul class="charge-list">
+					<li class="charge-head">
+						Pro
+					</li>
+					<li>Web Design</li>
+					<li>Photography</li>
+					<li>1GB Storage</li>
+					<li>Mail Support</li>
+					<li class="money">
+						<h2>$ 25</h2>
+						<p>per month</p>
+					</li>
+					<li class="sign-up">
+						<button>Sign Up</button>
+					</li>
+				</ul>
+			</div>
+		</section>
+		<section class="contact">
+			<h1>Contact Me</h1>
+			<hr>
+			<ul class="contact-list">
+				<li>
+					<span class="box"></span> Chicago, Us
+				</li>
+				<li>
+					<span class="box"></span> Phone: +00 151515
+				</li>
+				<li>
+					<span class="box"></span> Email: mail@mail.com
+				</li>
+			</ul>
+			<img src="images/fourth.jpg">
+			<div class="form-container">
+				<p>Lets get in touch. Send me a message</p>
+				<form>
+					<input type="text" name="name" id="name" placeholder="Name">
+					<input type="email" name="email" id="email" placeholder="Email">
+					<input type="text" name="message" id="message" placeholder="Message">
+					<button><span></span> Send Message</button>
+				</form>	
+			</div>
+		</section>
+		<section class="footer">
+			<div class="icont">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+			<p>Powered by <ins>shaw</ins></p>
+		</section>
+	</main>
+
+	<script type="text/javascript">
+		let sideMenu = document.querySelector("div.side-menu")
+		function openSide(){
+			sideMenu.style.width = "60%"
+			
+		}
+		function closeSide(){
+			sideMenu.style.width = "0%"
+		}
+	</script>
+</body>
+</html>

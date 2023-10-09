@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Social Media Template</title>
+	<style type="text/css">
+		*{
+			box-sizing: border-box;
+		}
+		html, body{
+			font-size: 10px;
+			margin: 0;
+			padding: 0;
+			/*height: 100%;*/
+		}
+		/*body{
+			background-color: #ffdddd;
+		}*/
+		a{
+			text-decoration: none;
+			color: black;
+		}
+		ul{
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+		}
+		nav{
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100%;
+			
+			/*border: 1px solid blue;*/
+			background-color: #4d636f;
+			z-index: 22;
+		}
+		nav div.nav-container{
+			display: flex;
+			justify-content: space-between;
+		}
+		nav ul.nav-list{
+			display: flex;
+		}
+		nav ul.nav-list li{
+			padding: 8px 21px;
+			padding-top: 18px;
+			/*border: 1px solid yellow;*/
+		}
+		nav ul.nav-list li:hover{
+			background-color: white;
+		}
+		nav ul.nav-list li:hover span.box{
+			border-color: black;
+		}
+		nav ul.nav-list li span.box{
+			display: inline-block;
+			border: 1px solid white;
+			padding: 6px 5px;
+		}
+		nav ul.nav-list li.active{
+			background-color: #3a4b53;
+			padding-top: 10px;
+		}
+		nav ul.nav-list li.active:hover{
+			background-color: lightgrey;
+		}
+		nav ul.nav-list li.active:hover a{
+			color: black;
+		}
+		nav ul.nav-list li.active a{
+			color: white;
+			font-size: 2rem;
+		}
+		nav ul.nav-list li.active a span{
+			display: inline-block;
+			border: 1px solid white;
+			padding: 6px 5px;
+			margin-right: 12px;
+		}
+		nav ul.nav-list li.active:hover span{
+			border-color: black;
+		}
+		nav div.toggler{
+			cursor: pointer;
+			padding: 8px 14px;
+		}
+		nav div.toggler:hover{
+			background-color: white;
+		}
+		nav div.toggler img{
+			display: inline-block;
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+		}
+		nav ul.nav-list li.drop-down{
+			position: relative;
+		}
+		nav ul.nav-list li.drop-down:hover{
+			background-color: lightgrey;
+		}
+		nav ul.nav-list li.drop-down a span{
+			display: inline-block;
+			border: 1px solid white;
+			padding: 7px 6px;
+			margin-left: 4px;
+			position: relative;
+		}
+		nav ul.nav-list li.drop-down a span:after{
+			content: "3";
+			position: absolute;
+			background-color: #4caf50;
+			color: white;
+			top: -8px;
+			right: -25px;
+			font-size: 1.3rem;
+			border-radius: 50%;
+			padding: 0px 8px;
+		}
+		nav ul.nav-list li.drop-down:hover span{
+			border-color: black;
+		}
+		nav ul.nav-list li.drop-down:hover div.drop-content{
+			display: block;
+		}
+		nav div.box-toggler{
+			padding: 16px 24px;
+			position: absolute;
+			z-index: 5;
+			top: 0;
+			right: 0;
+			cursor: pointer;
+			display: none;
+		}
+		nav div.box-toggler:hover{
+			background-color: white;
+		}
+		nav div.box-toggler:hover span{
+			border-color: black;
+		}
+		nav div.box-toggler span{
+			display: inline-block;
+			border: 1px solid white;
+			padding: 5px 4px;
+		}
+		li.drop-down div.drop-content{
+			position: absolute;
+			background-color: #f1f1f1;
+			/*width: 120%;*/
+			display: none;
+			min-width: 270px;
+			top: 100%;
+			left: 0;
+			box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+		}
+		div.drop-content a{
+			display: block;
+			font-size: 2rem;
+			padding: 12px 15px;
+		}
+		div.drop-content a:hover{
+			background-color: lightgrey;
+		}
+		div.menu{
+			margin-top: 48px;
+			background-color: #4d636f;
+			display: none;
+		}
+		div.menu.tog{
+			display: block;
+		}
+		div.menu ul.menu-list li{
+			padding: 17px 20px;
+			cursor: pointer;
+		}
+		div.menu ul.menu-list li:hover{
+			background-color: lightgrey;
+		}
+		div.menu ul.menu-list li:hover a{
+			color: black;
+		}
+		div.menu ul.menu-list li a{
+			font-size: 1.9rem;
+			color: white;
+		}
+		section.main-content{
+			margin: 75px 15px 20px;
+		}
+		div.splitter{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		div.splitter>div{
+			/*border: 1px solid green;*/
+		}
+		div.splitter div.split-left{
+			width: 25%;
+		}
+		div.splitter div.split-middle{
+			width: 57%;
+		}
+		div.splitter div.split-right{
+			width: 16%;
+		}
+		div.profile-card{
+			padding: 2px 20px;
+			margin-bottom: 20px;
+			box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5)
+		}
+		div.profile-card div.card-head{
+			text-align: center;
+			margin-bottom: 15px;
+		}
+		div.profile-card div.card-head h1{
+			font-size: 2.4rem;
+			font-weight: normal;
+		}
+		div.profile-card div.card-head img{
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+		}
+		div.profile-card hr{
+			opacity: 0.3;
+		}
+		div.profile-card ul.contact-list li span{
+			display: inline-block;
+			border: 1px solid black;
+			padding: 4px 3px;
+			margin-right: 29px;
+		}
+		div.profile-card ul.contact-list li{
+			font-size: 1.6rem;
+			color: black;
+			/*line-height: 38px;*/
+			display: flex;
+			align-items: center;
+			margin: 25px 0;
+		}
+		div.group-card{
+			box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
+			margin-bottom: 20px;
+		}
+		div.group-card ul.contact-list li span{
+			display: inline-block;
+			border: 1px solid white;
+			padding: 4px 3px;
+			margin-right: 29px;
+		}
+		div.group-card ul.contact-list li{
+			font-size: 1.6rem;
+			color: white;
+			background-color: #7d97a5;
+			display: flex;
+			align-items: center;
+			padding: 12px 25px;
+			cursor: pointer;
+		}
+		div.group-card ul.contact-list li:hover{
+			background-color: lightgrey;
+			color: black;
+		}
+		div.group-card ul.contact-list li:hover span{
+			border-color: black;
+		}
+		div.interest-card{
+			padding: 16px 20px;
+			margin-bottom: 20px;
+			box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5)
+		}
+		div.interest-card h2{
+			font-size: 1.6rem;
+			font-weight: normal;
+			margin-top: 0;
+		}
+		div.interest-card span{
+			background-color: #3a4b53;
+			font-size: 1.2rem;
+			padding: 3px 10px;
+			color: white;
+			display: inline-block;
+			margin-right: 3px;
+			margin-bottom: 5px;
+		}
+		div.find{
+			padding: 16px 20px;
+			/*margin-bottom: 20px;*/
+			position: relative;
+			background-color: #dfe5e8;
+		}
+		div.find h2{
+			font-size: 1.8rem;
+			margin-top: 0;
+		}
+		div.find p{
+			font-size: 1.7rem;
+			/*margin-top: 0;*/
+		}
+		div.find div.icont{
+			position: absolute;
+			top: 0;
+			right: 0;
+			padding: 14px 18px;
+			background-color: #b3cbd2;
+			cursor: pointer;
+		}
+		div.find div.icont:hover{
+			background-color: lightgrey;
+		}
+		div.find div.icont span{
+			display: inline-block;
+			border: 1px solid black;
+			padding: 4px 3px;
+		}
+		div.event-card{
+			padding: 16px 20px;
+			margin-bottom: 20px;
+			/*background-color: rgba(0,0,0,0.3);*/
+			box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
+		}
+		div.event-card img{
+			width: 100%;
+		}
+		div.event-card h1{
+			font-size: 1.8rem;
+			margin-top: 0;
+			text-align: center;
+			font-weight: normal;
+		}
+		div.event-card div.card-body{
+			text-align: center;
+		}
+		div.event-card div.card-body h2{
+			font-size: 1.7rem;
+		}
+		div.event-card div.card-body p{
+			font-size: 1.6rem;
+		}
+		div.event-card div.card-body button{
+			font-size: 1.5rem;
+			background-color: #dfe5e8;
+			border: none;
+			width: 100%;
+			padding: 1rem 0.9rem;
+			cursor: pointer;
+		}
+		div.event-card div.card-body button:hover{
+			background-color: lightgrey;
+		}
+		div.friend-req{
+			padding: 16px 20px;
+			text-align: center;
+			margin-bottom: 20px;
+			/*background-color: rgba(0,0,0,0.3);*/
+			box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
+		}
+		div.friend-req img{
+			width: 55%;
+		}
+		div.friend-req h1{
+			font-size: 1.8rem;
+			margin-top: 0;
+			text-align: center;
+			font-weight: normal;
+		}
+		div.friend-req div.card-body{
+			text-align: center;
+		}
+		div.friend-req div.card-body h2{
+			font-size: 2rem;
+			font-weight: normal;
+			margin-top: 2px;
+		}
+		div.friend-req div.card-body div.buttons{
+			display: flex;
+		}
+		div.friend-req div.card-body button{
+			background-color: lightgrey;
+			border: none;
+			width: 50%;
+			padding: 1.3rem 0.9rem;
+			cursor: pointer;
+			opacity: 0.4;
+		}
+		div.friend-req div.card-body button:first-child{
+			background-color: green;
+		}
+		div.friend-req div.card-body button:last-child{
+			background-color: red;
+		}
+		div.friend-req div.card-body button span{
+			display: inline-block;
+			border: 1px solid black;
+			padding: 4px 3px;
+		}
+		div.friend-req div.card-body button:hover{
+			background-color: lightgrey;
+		}
+		div.ads{
+			padding: 30px 20px;
+			text-align: center;
+			margin-bottom: 20px;
+			/*background-color: rgba(0,0,0,0.3);*/
+			box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
+		}
+		div.ads span{
+			font-size: 1.8rem;
+		}
+		div.box{
+			padding: 50px 20px;
+			text-align: center;
+			margin-bottom: 20px;
+			/*background-color: rgba(0,0,0,0.3);*/
+			box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
+		}
+		div.box span{
+			display: inline-block;
+			padding: 12px 10px;
+			border: 1px solid black;
+		}
+		div.status{
+			padding: 20px 20px 10px;
+			margin-bottom: 20px;
+			/*background-color: rgba(0,0,0,0.3);*/
+			box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
+		}
+		div.status h1{
+			margin: 0;
+			font-weight: normal;
+			font-size: 1.8rem;
+			color: grey;
+		}
+		div.status input{
+			color: black;
+			margin: 18px 0;
+			padding: 1rem 1.4rem;
+			font-size: 1.4rem;
+			width: 100%;
+			color: black;
+			border: 1px solid lightgrey;
+		}
+		div.status button{
+			border: none;
+			font-size: 1.5rem;
+			padding: 10px 15px;
+			background-color: #4d636f;
+			color: white;
+		}
+		div.status button span{
+			display: inline-block;
+			border: 1px solid white;
+			padding: 4px 3px;
+			margin-right: 7px;
+		}
+		div.name-card{
+			padding: 20px 20px;
+			margin-bottom: 20px;
+			/*background-color: rgba(0,0,0,0.3);*/
+			box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
+		}
+		div.name-card div.card-head{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		div.name-card div.card-head div.snackbar{
+			display: flex;
+			align-items: center;
+		}
+		div.name-card div.card-head div.snackbar img{
+			width: 55px;
+			height: 55px;
+			border-radius: 50%;
+		}
+		div.name-card div.card-head div.snackbar h1{
+			margin: 0;
+			margin-left: 20px;
+			font-weight: normal;
+			font-size: 2.2rem;
+		}
+		div.name-card div.card-head p{
+			font-size: 1.7rem;
+			color: grey;
+			margin: 0;
+		}
+		div.name-card div.card-body{
+			margin-top: 35px;
+		}
+		div.name-card div.card-body hr{
+			opacity: 0.3;
+		}
+		div.name-card div.card-body p{
+			font-size: 1.6rem;
+			line-height: 23px;
+		}
+		div.name-card div.card-image{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		div.name-card div.card-image img{
+			width: 49%;
+		}
+		div.name-card div.card-image.whole img{
+			width: 100%;
+		}
+		div.name-card div.buttons{
+			margin-top: 15px;
+		}
+		div.name-card div.buttons button{
+			border: none;
+			font-size: 1.5rem;
+			padding: 10px 15px;
+			background-color: #4d636f;
+			color: white;
+		}
+		div.name-card div.buttons button span{
+			display: inline-block;
+			border: 1px solid white;
+			padding: 4px 3px;
+			margin-right: 7px;
+		}
+		section.footer{
+			background-color: #4d636f;
+			padding: 4px 20px;
+		}
+		section.footer p{
+			color: white;
+			font-size: 2rem;
+		}
+		section.copy-right{
+			background-color: #3a4b53;
+			padding: 1px 20px;
+		}
+		section.copy-right p{
+			color: white;
+			font-size: 1.7rem;
+		}
+		section.bottom{
+			border: 1px solid red;
+			position: relative;
+		}
+		@media screen and (max-width: 600px){
+			div.splitter div.split-left, div.splitter div.split-middle, div.splitter div.split-right{
+				width: 100%;
+				margin-bottom: 40px;
+			}
+			div.splitter div.split-middle, div.splitter div.split-right{
+				margin: 0 20px;
+			}
+			div.interest-card{
+				display: none;
+			}
+			div.find{
+				display: none;
+			}
+			div.name-card div.card-image img{
+				width: 100%;
+				height: 45vh;
+			}
+			div.name-card div.card-image.first img:first-child{
+				margin-bottom: 20px;
+			}
+			nav ul.nav-list li:not(li.active){
+				display: none;
+			}
+			nav ul.nav-list li.active{
+				padding: 12.5px 24px;
+			}
+			nav div.toggler{
+				display: none;
+			}
+			div.menu{
+				display: none;
+			}
+			nav div.box-toggler{
+				display: block;
+				padding: 17px 24px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<div class="nav-container">
+			<ul class="nav-list">
+				<li class="active">
+					<a href="#"><span class="box"></span> Logo</a>
+				</li>
+				<li>
+					<span class="box"></span>
+				</li>
+				<li>
+					<span class="box"></span>
+				</li>
+				<li>
+					<span class="box"></span>
+				</li>
+				<li>
+					<span class="box"></span>
+				</li>
+				<li class="drop-down">
+					<a href="#" class="drop-btn"><span class="box badge"></span></a>
+					<div class="drop-content">
+						<a href="#">One new friend request</a>
+						<a href="#">John Doe posted on your wall</a>
+						<a href="#">Jane likes your post</a>
+					</div>
+				</li>
+			</ul>
+			<div class="toggler">
+				<img src="images/jenny.jpg">
+			</div>
+		</div>
+		<div class="box-toggler" onclick="togMenu()">
+			<span></span>
+		</div>
+	</nav>
+	<div class="menu">
+		<ul class="menu-list">
+			<li>
+				<a href="#">Link 2</a>
+			</li>
+			<li>
+				<a href="#">Link 3</a>
+			</li>
+			<li>
+				<a href="#">My Profile</a>
+			</li>
+		</ul>
+	</div>
+	<section class="main-content">
+		<div class="splitter">
+			<div class="split-left">
+				<div class="profile-card">
+					<div class="card-head">
+						<h1>My Profile</h1>
+						<img src="images/mark.jpg">
+					</div>
+					<hr>
+					<ul class="card-body contact-list">
+						<li>
+							<span class="box"></span> Designer, UI
+						</li>
+						<li>
+							<span class="box"></span> London, UK
+						</li>
+						<li>
+							<span class="box"></span> April 1, 1988
+						</li>
+					</ul>
+				</div>
+				<div class="group-card">
+					<ul class="card-body contact-list">
+						<li>
+							<span class="box"></span> My Groups
+						</li>
+						<li>
+							<span class="box"></span> My Events
+						</li>
+						<li>
+							<span class="box"></span> My Photos
+						</li>
+					</ul>
+				</div>
+				<div class="interest-card">
+					<h2>Interest</h2>
+					<span style="background-color: #303e45">News</span>
+					<span style="background-color: #3a4b53">W3Schools</span>
+					<span  style="background-color: #435761">Labels</span>
+					<span  style="background-color: #4d636f">Games</span>
+					<span  style="background-color: #57707d">Friends</span>
+					<span style="background-color: #607d8b">Games</span>
+					<span style="background-color: #7d97a5">Friends</span>
+					<span  style="background-color: #9eb1bb; color: black;">Food</span>
+					<span style="background-color: #becbd2; color: black;">Design</span>
+					<span style="background-color: #dfe5e8; color: black;">Art</span>
+					<span style="background-color: #f5f7f8; color: black;">Photos</span>
+				</div>
+				<div class="find">
+					<h2>Hey!</h2>
+					<p>
+						People are looking at your profile. Find out who
+					</p>
+					<div class="icont">
+						<span></span>
+					</div>
+				</div>
+			</div>
+			<div class="split-middle">
+				<div class="status">
+					<h1>Social Media template by shaw</h1>
+					<input type="text" name="status" placeholder="Status: Feeling Blue">
+					<button><span></span> Post</button>
+				</div>
+				<div class="name-card">
+					<div class="card-head">
+						<div class="snackbar">
+							<img src="images/kyle.jpg">
+							<h1>John Doe</h1>
+						</div>
+						<p>1 min</p>
+					</div>
+					<div class="card-body">
+						<hr>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+							cillum dolore eu fugiat nulla pariatur.
+						</p>
+					</div>
+					<div class="card-image first">
+						<img src="images/sec.jpg">
+						<img src="images/third.jpg">
+					</div>
+					<div class="buttons">
+						<button><span></span> Like</button>
+						<button><span></span> Comment</button>
+					</div>
+				</div>
+				<div class="name-card">
+					<div class="card-head">
+						<div class="snackbar">
+							<img src="images/kyle.jpg">
+							<h1>John Doe</h1>
+						</div>
+						<p>1 min</p>
+					</div>
+					<div class="card-body">
+						<hr>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+							cillum dolore eu fugiat nulla pariatur.
+						</p>
+					</div>
+					<div class="buttons">
+						<button><span></span> Like</button>
+						<button><span></span> Comment</button>
+					</div>
+				</div>
+				<div class="name-card">
+					<div class="card-head">
+						<div class="snackbar">
+							<img src="images/kyle.jpg">
+							<h1>John Doe</h1>
+						</div>
+						<p>1 min</p>
+					</div>
+					<div class="card-body">
+						<hr>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+							cillum dolore eu fugiat nulla pariatur.
+						</p>
+					</div>
+					<div class="card-image whole">
+						<img src="images/third.jpg">
+					</div>
+					<div class="buttons">
+						<button><span></span> Like</button>
+						<button><span></span> Comment</button>
+					</div>
+				</div>
+			</div>
+			<div class="split-right">
+				<div class="event-card">
+					<h1>Upcoming Events:</h1>
+					<img src="images/boys.jpg">
+					<div class="card-body">
+						<h2>Holiday</h2>
+						<p>Friday 15:00</p>
+						<button>info</button>
+					</div>
+				</div>
+				<div class="friend-req">
+					<h1>Upcoming Events</h1>
+					<img src="images/jenny.jpg">
+					<div class="card-body">
+						<h2>Jane Doe</h2>
+						<div class="buttons">
+							<button><span></span></button>
+							<button><span></span></button>
+						</div>
+					</div>
+				</div>
+				<div class="ads">
+					<span>ADS</span>
+				</div>
+				<div class="box">
+					<span></span>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="footer">
+		<p>Footer</p>
+	</section>
+	<section class="copy-right">
+		<p>Powered by <ins>shaw</ins></p>
+	</section>
+
+	<script type="text/javascript">
+		let menu = document.querySelector("div.menu")
+		function togMenu(){
+			let menu = document.querySelector("div.menu")
+			menu.classList.toggle("tog")
+		}
+		window.addEventListener("resize", function(){
+			if (window.size > 600){
+				menu.classList.remove("tog")
+			}
+		})
+	</script>
+</body>
+</html>

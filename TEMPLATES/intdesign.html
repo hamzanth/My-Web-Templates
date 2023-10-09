@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Interior Design</title>
+	<style type="text/css">
+		*{
+			box-sizing: border-box;
+		}
+		html, body{
+			font-size: 10px;
+			margin: 0;
+			padding: 0;
+			/*height: 100%;*/
+		}
+		/*body{
+			background-color: #ffdddd;
+		}*/
+		a{
+			text-decoration: none;
+			color: black;
+		}
+		ul{
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+		}
+		aside{
+			z-index: 55;
+			width: 300px;
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 100%;
+			z-index: 44;
+			/*border: 1px solid green;*/
+			background-color: #F44336;
+			transition: width 0.5s;
+			overflow: hidden;
+		}
+		aside>h1{
+			font-size: 2.4rem;
+			color: white;
+			text-align: center;
+			cursor: pointer;
+			margin: 0;
+			padding: 12px;
+			visibility: hidden;
+		}
+		aside>h1:hover{
+			background-color: lightgrey;
+			color: black;
+		}
+		aside div.name{
+			margin-top: 65px;
+			margin-left: 30px;
+			margin-bottom: 70px;
+		}
+		aside div.name h1{
+			/*text-align: center;*/
+			font-size: 2.5rem;
+			line-height: 35px;
+			color: white;
+		}
+		aside ul.nav-list{
+			margin: 0 15px;
+			/*margin-right: 25px;*/
+		}
+		aside ul.nav-list li{
+			/*text-align: center;*/
+			padding: 12px 12px;
+		}
+		aside ul.nav-list li:hover{
+			background-color: #f1f1f1;
+		}
+		aside ul.nav-list li:hover a{
+			color: black;
+		}
+		aside ul.nav-list li a{
+			font-size: 2rem;
+			color: white;
+			font-weight: bold;
+			cursor: pointer;
+		}
+		nav{
+			display: flex;
+			background-color: #f44336;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			padding: 10px 20px;
+			display: none;
+			z-index: 25;
+		}
+		nav h1{
+			font-size: 2.4rem;
+			margin-top: 10px;
+			margin-bottom: 0;
+			color: white;
+			font-weight: bold;
+			letter-spacing: 1px;
+		}
+		nav div.toggler{
+			cursor: pointer;
+			padding: 11px;
+			margin-right: 35px;
+		}
+		nav div.toggler:hover{
+			background-color: lightgrey;
+		}
+		nav div.toggler:hover div.tog{
+			background-color: black;
+		}
+		div.toggler div.tog{
+			width: 1.8rem;
+			height: 0.2rem;
+			margin: 0.5rem;
+			background-color: white;
+		}
+		div.overlay{
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+			display: none;
+			z-index: 10;
+			background-color: rgba(0,0,0,0.6);
+			z-index: 35;
+		}
+		main{
+			margin-left: 300px;
+			margin-top: 68px;
+			/*border: 1px solid blue;*/
+		}
+		section.header{
+				margin: 0 50px;
+				padding-top: 1px;
+		}
+		section.header h1{
+			font-size: 6.4rem;
+			margin: 30px 0;
+		}
+		section.header h2{
+			font-size: 5.5rem;
+			color: #f44336;
+			margin: 10px 0;
+		}
+		section.header span.hor{
+			display: inline-block;
+			width: 14%;
+			background-color: red;
+			height: 10px;
+			border-radius: 8px;
+			margin: 10px 0;
+		}
+		section.image-show{
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			margin: 0 50px;
+		}
+		section.image-show img{
+			width: 49%;
+			max-height: 55vh;
+			opacity: 0.9;
+			margin-bottom: 15px;
+		}
+		section.image-show img:hover{
+			opacity: 1;
+		}
+		section.services{
+			margin: 80px 50px;
+			padding-top: 1px;
+		}
+		section.services h1{
+			font-size: 5.2rem;
+			color: #f44336;
+			margin: 10px 0;
+		}
+		section.services span.hor{
+			display: inline-block;
+			width: 14%;
+			background-color: red;
+			height: 10px;
+			border-radius: 8px;
+			margin: 10px 0;
+		}
+		section.services p{
+			font-size: 1.8rem;
+			line-height: 25px;
+		}
+		section.designers{
+			margin: 50px 50px;
+			padding-top: 1px;
+		}
+		section.designers>h1{
+			font-size: 5.2rem;
+			color: #f44336;
+			margin: 10px 0;
+		}
+		section.designers span.hor{
+			display: inline-block;
+			width: 14%;
+			background-color: red;
+			height: 10px;
+			border-radius: 8px;
+			margin: 10px 0;
+		}
+		section.designers>p{
+			font-size: 1.8rem;
+			line-height: 25px;
+		}
+		div.cards>h1{
+			font-size: 1.8rem;
+		}
+		div.cards div.card-cont{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		div.card-cont div.card{
+			width: 32%;
+			background-color: #f1f1f1;
+		}
+		div.card div.card-body{
+			padding: 15px 15px;
+			background-color: #f1f1f1;
+		}
+		div.card-body h1{
+			margin: 0;
+			font-size: 2.6rem;
+		}
+		div.card-body h2{
+			font-size: 2rem;
+			font-weight: normal;
+			color: grey;
+		}
+		div.card-body p{
+			font-size: 1.7rem;
+			margin-bottom: 0;
+		}
+		div.card img{
+			width: 100%;
+			height: 40vh;
+		}
+		section.packages{
+			margin: 10px 50px;
+			padding-top: 30px;
+		}
+		section.packages h1{
+			font-size: 5.2rem;
+			color: #f44336;
+			margin: 10px 0;
+		}
+		section.packages span.hor{
+			display: inline-block;
+			width: 14%;
+			background-color: red;
+			height: 10px;
+			border-radius: 8px;
+			margin: 10px 0;
+		}
+		section.packages p{
+			font-size: 1.8rem;
+			line-height: 25px;
+		}
+		section.packages div.charge-cont{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		div.charge-cont ul.charge-list{
+			width: 32%;
+		} 
+		div.charges div.charge-cont{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+		div.charge-cont ul.charge-list{
+			width: 49%;
+			background-color: white;
+			border: 1px solid lightgrey;
+		}  
+		ul.charge-list li{
+			background-color: #f1f1f1;
+			text-align: center;
+			font-size: 1.7rem;
+			padding: 20px 2px;
+			border-bottom: 1px solid lightgrey;
+		}
+		ul.charge-list li.charge-head{
+			font-size: 2.7rem;
+			color: white;
+			background-color: black;
+			padding: 35px 15px;
+		}
+		ul.charge-list:last-child li.charge-head{
+			background-color: #f44336;
+		}
+		ul.charge-list li.money h2{
+			margin-top: 5px;
+			margin-bottom: 15px;
+			font-size: 3rem;
+			font-weight: normal;
+		}
+		ul.charge-list li.money p{
+			margin: 0;
+		}
+		ul.charge-list li.sign-up{
+			background-color: #f1f1f1;
+		}
+		ul.charge-list li.sign-up button{
+			background-color: white;
+			color: black;
+			border: none;
+			padding: 14px 22px;
+			font-size: 1.5rem;
+		}
+		ul.charge-list:last-child li.sign-up button{
+			background-color: #f44336;
+			color: white;
+		}
+		ul.charge-list li.sign-up button:hover{
+			background-color: black;
+			color: white;
+		}
+		section.contact{
+			margin: 120px 50px;
+			padding-top: 1px;
+		}
+		section.contact h1{
+			font-size: 5.2rem;
+			color: #f44336;
+			margin: 10px 0;
+		}
+		section.contact span.hor{
+			display: inline-block;
+			width: 14%;
+			background-color: red;
+			height: 10px;
+			border-radius: 8px;
+			margin: 10px 0;
+		}
+		section.contact p{
+			font-size: 1.8rem;
+			line-height: 25px;
+		}
+		section.contact form input{
+			width: 100%;
+			padding: 1rem;
+			font-size: 1.5rem;
+			border: 1px solid lightgrey;
+			margin-top: 4px;
+			margin-bottom: 12px;
+		}
+		section.contact form label{
+			font-size: 1.7rem;
+		}
+		section.contact form button{
+			border: none;
+			color: white;
+			background-color: #f44336;
+			padding: 15px 18px;
+			font-size: 1.5rem;
+			text-align: center;
+			width: 100%;
+		}
+		section.copy-right{
+			background-color: #f1f1f1;
+			text-align: right;
+			padding: 30px;	
+			padding-right: 50px;
+		}
+		section.copy-right p{
+			/*color: white;*/
+			font-size: 1.7rem;
+		}
+		@media screen and (max-width: 1000px){
+			nav{
+				display: flex;
+			}
+			aside{
+				display: none;
+			}
+			aside>h1{
+				visibility: visible;
+			}
+			main{
+				margin-left: 0px;
+			}
+			section.header, section.image-show, section.services, section.designers, section.packages, section.contact{
+				margin-left: 15px;
+				margin-right: 15px;
+			}
+		}
+		@media screen and (max-width: 600px){
+			section.image-show img{
+				width: 100%;
+			}
+			div.card-cont div.card{
+				width: 100%;
+			}
+			div.charge-cont ul.charge-list{
+				width: 100%;
+				margin-bottom: 15px;
+			} 
+		}
+	</style>
+</head>
+<body>
+	<div class="overlay">
+		
+	</div>
+	<nav>
+		<div class="toggler" onclick="toggleNav()">
+			<div class="tog"></div>
+			<div class="tog"></div>
+			<div class="tog"></div>
+		</div>
+		<h1>Company Name</h1>
+	</nav>
+	<aside>
+		<h1 class="close" onclick="closeNav()">Close Menu</h1>
+		<div class="name">
+			<h1>Company <br> Name</h1>
+		</div>
+		<ul class="nav-list">
+			<li>
+				<a href="#">Home</a>
+			</li>
+			<li>
+				<a href="#">Showcase</a>
+			</li>
+			<li>
+				<a href="#">Services</a>
+			</li>
+			<li>
+				<a href="#">Designers</a>
+			</li>
+			<li>
+				<a href="#">Packages</a>
+			</li>
+			<li>
+				<a href="#">Contact</a>
+			</li>
+		</ul>
+	</aside>
+	<main>
+		<section class="header">
+			<h1>Interior Design</h1>
+			<h2>Showcase.</h2>
+			<span class="hor"></span>
+		</section>
+		<section class="image-show">
+			<img src="images/book.jpg">
+			<img src="images/boys.jpg">
+			<img src="images/chamber.jpg">
+			<img src="images/default.jpg">
+			<img src="images/ferrari.jpg">
+			<img src="images/fourth.jpg">
+		</section>
+		<section class="services">
+			<h1>Services</h1>
+			<span class="hor"></span>
+			<p>
+				We are a interior design services that focus on what's best for your home and what's best for you!
+				<br><br>
+				Some text about services. Some text about me. I am Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+		</section>
+		<section class="designers">
+			<h1>Designers</h1>
+			<span class="hor"></span>
+			<p>
+				The best team in the world
+				<br><br>
+				We are Lorem. Some text about me. I am Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+			<div class="cards">
+				<h1>Our designers are thoughtfully chosen</h1>
+				<div class="card-cont">
+					<div class="card">
+						<img src="images/mark.jpg">
+						<div class="card-body">
+							<h1>John Doe</h1>
+							<h2>CEO & Founder</h2>
+							<p>
+								Phasellus eget enim eu lectus faucibus vesitibulum. Suspendisse sodales pellentesque elementum
+							</p>
+						</div>
+					</div>
+					<div class="card">
+						<img src="images/jenny.jpg">
+						<div class="card-body">
+							<h1>Jane Doe</h1>
+							<h2>Designer</h2>
+							<p>
+								Phasellus eget enim eu lectus faucibus vesitibulum. Suspendisse sodales pellentesque elementum
+							</p>
+						</div>
+					</div>
+					<div class="card">
+						<img src="images/kyle.jpg">
+						<div class="card-body">
+							<h1>Mike Ross</h1>
+							<h2>Architect</h2>
+							<p>
+								Phasellus eget enim eu lectus faucibus vesitibulum. Suspendisse sodales pellentesque elementum
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="packages">
+			<h1>Packages.</h1>
+			<span class="hor"></span>
+			<p>
+				Some text about services. Some text about me. I am Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+			<div class="charge-cont">
+				<ul class="charge-list">
+					<li class="charge-head">
+						Basic
+					</li>
+					<li>Floorplanning</li>
+					<li>10 hours support</li>
+					<li>Photography</li>
+					<li>20% furniture discount</li>
+					<li>Good deals</li>
+					<li class="money">
+						<h2>$ 199</h2>
+						<p>per room</p>
+					</li>
+					<li class="sign-up">
+						<button>Sign Up</button>
+					</li>
+				</ul>
+				<ul class="charge-list">
+					<li class="charge-head green-head">
+						Pro
+					</li>
+					<li>Floorplanning</li>
+					<li>50 hours support</li>
+					<li>Photography</li>
+					<li>50% furniture discount</li>
+					<li>GREAT deals</li>
+					<li class="money">
+						<h2>$ 249</h2>
+						<p>per room</p>
+					</li>
+					<li class="sign-up">
+						<button>Sign Up</button>
+					</li>
+				</ul>
+			</div>
+		</section>
+		<section class="contact">
+			<h1>Contact</h1>
+			<span class="hor"></span>
+			<p>
+				Do you want us to style your home? Fill out the form and fill me in with the details :) We love meeting new people! 
+			</p>
+			<form>
+				<label for="name">Name</label>
+				<input type="text" name="name" id="name">
+				<label for="email">Email</label>
+				<input type="email" name="email" id="email">
+				<label for="message">Message</label>
+				<input type="text" name="message" id="message">
+				<button>Send Message</button>
+			</form>	
+		</section>
+		<section class="copy-right">
+			<p>Powered by <ins>shaw</ins></p>
+		</section>
+	</main>
+
+	<script type="text/javascript">
+		let aside = document.querySelector("aside")
+		let overlay = document.querySelector("div.overlay")
+		function toggleNav(){
+			if(aside.style.display == "block"){
+				aside.style.display = "none"
+				overlay.style.display = "none"
+			}
+			else{
+				aside.style.display = "block"
+				overlay.style.display = "block"
+			}
+		}
+		function closeNav(){
+			aside.style.display = "none"
+			overlay.style.display = "none"
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fashion Blog</title>
+	<style type="text/css">
+		*{
+			box-sizing: border-box;
+		}
+		html, body{
+			font-size: 10px;
+			margin: 0;
+			padding: 0;
+			height: 100%;
+		}
+		a{
+			text-decoration: none;
+			color: black;
+		}
+		ul{
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+		}
+		img{
+			width: 100%;
+		}
+		nav{
+			display: flex;
+			justify-content: space-between;
+			background-color: black;
+		}
+		nav div.icont div.ic{
+			width: 1.5rem;
+			height: 0.2rem;
+			margin: 0.2rem;
+			background-color: white;
+		}
+		nav ul.icon-list{
+			display: flex;
+		}
+		nav div.icont{
+			padding: 12px 20px;
+		}
+		nav ul.icon-list li:hover div.icont div.ic{
+			background-color: black;
+		}
+		nav div.icont:hover{
+			background-color: lightgrey; 
+		}
+		nav div.toggler:hover div.icont div.ic{
+			background-color: black;
+		}
+		section.hero{
+			padding: 20px;
+			height: 100vh;
+			background-image: url("images/chamber.jpg");
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+			position: relative;
+		}
+		section.hero div.hero-content{
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+		div.hero-content h3{
+			font-size: 4rem;
+			color: white;
+			font-weight: normal;
+		}
+		div.hero-content h1{
+			font-size: 6rem;
+			color: white;
+		}
+		div.hero-content button{
+			border: none;
+			font-size: 1.9rem;
+			padding: 1.8rem 2.8rem;
+			color: white;
+			background-color: rgba(0,0,0,0.6)
+		}
+		section.header{
+			text-align: center;
+			padding-bottom: 50px;
+			padding-top: 20px;
+		}
+		section.header h1{
+			font-size: 5rem;
+			margin-bottom: 10px;
+
+		}
+		section.header p{
+			font-size: 1.6rem;
+		}
+		section.header p span.dark{
+			color: white;
+			background-color: black;
+			padding: 3px 8px;
+		}
+		section.splitter{
+			width: 100%;
+			/*margin: 0 auto;*/
+			padding: 25px 35px;
+			background-color: #f1f1f1;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+		}
+		section.splitter div.split-left{
+			width: 65%;
+		}
+		section.splitter div.split-right{
+			width: 32%;
+		}
+		div.name-card, div.blog-card, div.posts, div.tags, div.head-card, div.advertise, div.inspiration, div.follow{
+			background-color: white;
+			/*box-shadow: 2px 2px 4px 5px rgba(0,0,0,0.2);*/
+			margin-bottom: 40px;
+		}
+		div.head-card img{
+			height: 75vh;
+		}
+		div.head-card div.head{
+			text-align: center;
+		}
+		div.name-card img{
+			height: 35vh;
+		}
+		div.name-card div.card-detail{
+			padding: 0px 15px;
+		}
+		div.name-card{
+			padding-bottom: 8px;
+			background-color: black;
+		}
+		div.name-card div.card-detail h1{
+			font-size: 2.1rem;
+			color: white;
+		}
+		div.name-card div.card-detail p{
+			font-size: 1.5rem;
+			color: white;
+			line-height: 22px;
+		}
+		div.posts h1{
+			font-size: 2.2rem;
+			background-color: black;
+			color: white;
+			margin: 0;
+			padding: 2.2rem 2rem;
+			font-weight: normal;
+		}
+		ul.post-lists li{
+			display: flex;
+			border-bottom: 1px solid lightgrey;
+			align-items: center;
+			padding: 15px 12px;
+		}
+		ul.post-lists li:hover{
+			background-color: lightgrey;
+		}
+		ul.post-lists li img{
+			width: 50px;
+			height: 50px;
+		}
+		ul.post-lists li div.stack{
+			margin-left: 10px;
+		}
+		div.stack h2, div.stack p{
+			margin: 0;
+		}
+		div.stack h2{
+			font-size: 1.9rem;
+			margin-bottom: 5px;
+		}
+		div.stack p{
+			font-size: 1.5rem;
+		}
+		div.tags{
+			padding-bottom: 15px;
+		}
+		div.tags h1{
+			font-size: 2.2rem;
+			background-color: black;
+			color: white;
+			margin: 0;
+			padding: 2.2rem 1.7rem;
+			font-weight: normal;
+		}
+		div.tag-detail{
+			padding: 0 8px;
+		}
+		div.tag-detail span{
+			display: inline-block;
+			background-color: #f1f1f1;
+			font-size: 1.3rem;
+			padding: 2px 8px;
+			margin: 10px 3px;
+		}
+		div.tag-detail span.active{
+			color: white;
+			background-color: black;
+			font-size: 1.5rem;
+		}
+		div.head-card{
+			padding: 24px;
+		}
+		div.head-card div.head-detail{
+			/*padding: 0 12px;*/
+		}
+		div.head-card div.head h1{
+			font-size: 2.3rem;
+
+		}
+		div.head-card div.head h2{
+			font-size: 1.9rem;
+		}
+		div.head-card div.head h2 span.grey-text{
+			color: grey;
+		}
+		div.head-detail>p{
+			font-size: 1.5rem;
+			line-height: 22px;
+		}
+		div.head-detail>p span.dark{
+			font-weight: bold;
+		}
+		div.head-detail div.head-bottom{
+			display: flex;
+			justify-content: space-between;
+			/*border: 1px solid green;*/
+		}
+		div.head-bottom button.like{
+			font-size: 1.5rem;
+			background-color: white;
+			color: black;
+			padding: 10px 20px;
+			border: 1px solid lightgrey;
+			font-weight: bold
+		}
+		div.head-bottom button.reply{
+			font-size: 1.3rem;
+			color: white;
+			border: none;
+			background-color: black;
+			padding: 8px 20px;
+			font-weight: bold;
+		}
+		div.head-bottom button.reply span.light{
+			background-color: white;
+			color: black;
+			padding: 3px 8px;
+			display: inline-block;
+			margin-left: 5px;
+		}
+		div.head-bottom p{
+			margin: 0;
+			font-size: 1.7rem;
+			font-weight: bold;
+		}
+		div.head-bottom p span.dark{
+			display: inline-block;
+			background-color: black;
+			color: white;
+			padding: 0px 5px;
+			margin-left: 10px;
+		}
+		div.blog-card{
+			padding-bottom: 10px;
+		}
+		div.blog-card div.blog-detail{
+			padding: 0 12px;
+		}
+		div.blog-detail h1{
+			font-size: 2.3rem;
+		}
+		div.blog-detail h2{
+			font-size: 1.9rem;
+		}
+		div.blog-detail h2 span.grey-text{
+			color: grey;
+		}
+		div.blog-detail p{
+			font-size: 1.6rem;
+			line-height: 20px;
+		}
+		div.blog-detail div.blog-bottom{
+			display: flex;
+			justify-content: space-between;
+		}
+		div.head-bottom{
+			margin-bottom: 50px;
+		}
+		div.blog-bottom button.readmore{
+			border: none;
+			font-size: 1.5rem;
+			background-color: white;
+			color: black;
+			padding: 12px 20px;
+			border: 1px solid grey;
+			font-weight: bold
+		}
+		div.blog-bottom button.reply{
+			margin: 0;
+			font-size: 1.7rem;
+			font-weight: bold;
+		}
+		div.blog-bottom p span.dark{
+			display: inline-block;
+			background-color: black;
+			color: white;
+			padding: 0px 5px;
+			margin-left: 10px;
+		}
+		div.person{
+			display: flex;
+			align-items: center;
+			margin-top: 20px;
+		}
+		div.person div.bstack{
+			margin-left: 33px
+		}
+		div.bstack h1{
+			font-size: 1.9rem;
+			margin: 0;
+			font-weight: normal;
+			color: grey;
+		}
+		div.bstack h1 span.dark{
+			color: black;
+		}
+		div.bstack p{
+			font-size: 1.6rem;
+		}
+		div.person img{
+			width: 90px;
+			height: 100px;
+		}
+		div.head-detail hr{
+			opacity: 0.2;
+		}
+		/*div.advertise{
+			background-color: white;
+		}*/
+		div.advertise h1{
+			font-size: 2.2rem;
+			background-color: black;
+			color: white;
+			margin: 0;
+			padding: 2.2rem 2rem;
+			font-weight: normal;
+		}
+		div.advertise div.cont{
+			height: 30vh;
+			position: relative;
+			background-color: #f1f1f1;
+		}
+		div.advertise div.advert-body{
+			padding: 15px;
+			background-color: white;
+		}
+		div.cont p{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			font-size: 1.6rem;
+		}
+		div.inspiration h1{
+			font-size: 2.2rem;
+			background-color: black;
+			color: white;
+			margin: 0;
+			padding: 2.2rem 2rem;
+			font-weight: normal;
+		}
+		div.inspiration div.inspire-cont{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			padding: 15px;
+		}
+		div.inspire-cont img{
+			width: 48%;
+			/*height: 20vh;*/
+		}
+		div.inspire-cont img:nth-child(1), div.inspire-cont img:nth-child(2){
+			margin-bottom: 15px;
+		}
+		div.follow h1{
+			font-size: 2.2rem;
+			background-color: black;
+			color: white;
+			margin: 0;
+			padding: 2.2rem 2rem;
+			font-weight: normal;
+		}
+		div.follow div.follow-cont{
+			padding: 17px;
+			background-color: white;
+		}
+		div.follow div.icont div.ic{
+			width: 1.5rem;
+			height: 0.2rem;
+			margin: 0.3rem;
+			background-color: black;
+		}
+		div.follow div.icont{
+			display: inline-block;
+		}
+		div.subscribe h1{
+			font-size: 2.2rem;
+			background-color: black;
+			color: white;
+			margin: 0;
+			padding: 2.2rem 2rem;
+			font-weight: normal;
+		}
+		div.subscribe div.subscribe-body{
+			background-color: white;
+			padding: 15px;
+		} 
+		div.subscribe-body p{
+			font-size: 1.5rem;
+		}
+		div.subscribe-body p:after{
+			content: "s.";
+		}
+		div.subscribe-body form input{
+			width: 100%;
+			padding: 1.1rem;
+			font-size: 1.3rem;
+			margin-bottom: 14px;
+			border: 1px solid lightgrey;
+		}
+		div.subscribe-body form button{
+			border: none;
+			font-size: 1.3rem;
+			background-color: red;
+			padding: 1rem;
+			color: white;
+			width: 100%;
+			cursor: pointer;
+		}
+		div.subscribe-body form button:hover{
+			background-color: lightgrey;
+			color: black;
+		}
+		section.footer{
+			padding: 50px 20px;
+			background-color: grey;
+			margin-top: 10px;
+		}
+		section.footer a.top{
+			background-color: black;
+			color: white;
+			cursor: pointer;
+			border: none;
+			font-size: 1.5rem;
+			padding: 1.5rem 2.3rem;
+			display: inline-block;
+		}
+		section.footer a.top:hover{
+			color: black;
+			background-color: lightgrey;
+		}
+		section.footer p{
+			font-size: 1.7rem;
+			color: white;
+			margin-top: 24px;
+			margin-bottom: 0;
+		}
+		section.footer p span.under{
+			text-decoration: underline;
+		}
+		@media screen and (max-width: 1000px){
+			section.hero{
+				height: 80vh;
+			}
+			section.splitter div.split-left, section.splitter div.split-right{
+				width: 100%;
+			}
+			div.name-card img{
+				height: 70vh;
+			}
+		}
+		@media screen and (max-width: 900px){
+			div.head-card>img{
+				height: 70vh;
+			}
+			div.name-card img{
+				height: 60vh;
+			}
+		}
+		@media screen and (max-width: 800px){
+			section.hero{
+				height: 60vh;
+			}
+			div.head-card>img{
+				height: 55vh;
+			}
+			div.name-card img{
+				height: 50vh;
+			}
+		}
+		@media screen and (max-width: 700px){
+			div.head-card>img{
+				height: 45vh;
+			}
+			div.name-card img{
+				height: 40vh;
+			}
+		}
+		@media screen and (max-width: 600px){
+			section.hero{
+				height: 50vh;
+			}
+			section.hero div.hero-content h1{
+				display: none;
+			}
+			div.head-card>img{
+				height: 35vh;
+			}
+			div.name-card img{
+				height: 30vh;
+			}
+		}
+	</style>
+</head>
+<body>
+	<nav id="top">
+		<ul class="icon-list">
+			<li>
+				<div class="icont">
+					<div class="ic"></div>
+					<div class="ic"></div>
+					<div class="ic"></div>
+				</div>
+			</li>
+			<li>
+				<div class="icont">
+					<div class="ic"></div>
+					<div class="ic"></div>
+					<div class="ic"></div>
+				</div>
+			</li>
+			<li>
+				<div class="icont">
+					<div class="ic"></div>
+					<div class="ic"></div>
+					<div class="ic"></div>
+				</div>
+			</li>
+			<li>
+				<div class="icont">
+					<div class="ic"></div>
+					<div class="ic"></div>
+					<div class="ic"></div>
+				</div>
+			</li>
+			<li>
+				<div class="icont">
+					<div class="ic"></div>
+					<div class="ic"></div>
+					<div class="ic"></div>
+				</div>
+			</li>
+			<li>
+				<div class="icont">
+					<div class="ic"></div>
+					<div class="ic"></div>
+					<div class="ic"></div>
+				</div>
+			</li>
+		</ul>
+		<div class="toggler">
+			<div class="icont">
+				<div class="ic"></div>
+				<div class="ic"></div>
+				<div class="ic"></div>
+			</div>
+		</div>
+	</nav>
+	<section class="header">
+		<h1>JANE BLOGLIFE</h1>
+		<p>Welcome to the blog of <span class="dark">Jane's world</span></p>
+	</section>
+	<section class="hero">
+		<div class="hero-content">
+			<h3>Jane's</h3>
+			<h1>FASHION BLOG</h1>
+			<button>SUBSCRIBE</button>
+		</div>
+	</section>
+	<section class="splitter">
+		<div class="split-left">
+			<div class="head-card">
+				<div class="head">
+					<h1>TITLE HEADING</h1>
+					<h2>Title description, <span class="grey-text">April 7, 2014</span></h2>
+				</div>
+				<img src="images/boys.jpg">
+				<div class="head-detail">
+					<p>
+						<span class="dark">More Hats!</span> I am crazy about hats these days. Some text about this blog entry. Fashion fashion and
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						<br>
+						<br>
+						Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+					<div class="head-bottom">
+						<button class="like">&raquo; Like</button>
+						<button class="reply">Replies <span class="light">0</span></button>
+					</div>
+					<hr>
+					<div class="person">
+						<img src="images/kyle.jpg">
+						<div class="bstack">
+							<h1><span class="dark">George</span> May 3, 2015, 6:23PM</h1>
+							<p>Great blog post! Following</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- shh -->
+			<div class="head-card">
+				<div class="head">
+					<h1>TITLE HEADING</h1>
+					<h2>Title description, <span class="grey-text">April 7, 2014</span></h2>
+				</div>
+				<img src="images/rockstar.jpg">
+				<div class="head-detail">
+					<p>
+						<span class="dark">More Hats!</span> I am crazy about hats these days. Some text about this blog entry. Fashion fashion and
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						<br>
+						<br>
+						Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+					<div class="head-bottom">
+						<button class="like">&raquo; Like</button>
+						<button class="reply">Replies <span class="light">0</span></button>
+					</div>
+					<hr>
+					<div class="person">
+						<img src="images/jenny.jpg">
+						<div class="bstack">
+							<h1><span class="dark">George</span> May 3, 2015, 6:23PM</h1>
+							<p>Great blog post! Following</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- shh -->
+			<div class="head-card">
+				<div class="head">
+					<h1>TITLE HEADING</h1>
+					<h2>Title description, <span class="grey-text">April 7, 2014</span></h2>
+				</div>
+				<img src="images/kids.jpg">
+				<div class="head-detail">
+					<p>
+						<span class="dark">More Hats!</span> I am crazy about hats these days. Some text about this blog entry. Fashion fashion and
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						<br>
+						<br>
+						Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+					<div class="head-bottom">
+						<button class="like">&raquo; Like</button>
+						<button class="reply">Replies <span class="light">0</span></button>
+					</div>
+					<hr>
+					<div class="person">
+						<img src="images/mark.jpg">
+						<div class="bstack">
+							<h1><span class="dark">George</span> May 3, 2015, 6:23PM</h1>
+							<p>Great blog post! Following</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- shh -->
+		</div>
+		<div class="split-right">
+			<div class="name-card">
+				<img src="images/jenny.jpg">
+				<div class="card-detail">
+					<h1>MY NAME</h1>
+					<P>
+						Just me, myself and I, exploring the universe of unknownment. I have a heart of love and an interest of lorem ipsum and mauris neque quam blog. I want to share my world with you.
+					</P>
+				</div>
+			</div>
+			<div class="posts">
+				<h1>Popular Posts</h1>
+				<ul class="post-lists">
+					<li>
+						<img src="images/geometry.jpg">
+						<div class="stack">
+							<h2>Lorem</h2>
+							<p>sed manthis nunc</p>
+						</div>
+					</li>
+					<li>
+						<img src="images/geometry.jpg">
+						<div class="stack">
+							<h2>Lorem</h2>
+							<p>sed manthis nunc</p>
+						</div>
+					</li>
+					<li>
+						<img src="images/geometry.jpg">
+						<div class="stack">
+							<h2>Lorem</h2>
+							<p>sed manthis nunc</p>
+						</div>
+					</li>
+					<li>
+						<img src="images/geometry.jpg">
+						<div class="stack">
+							<h2>Lorem</h2>
+							<p>sed manthis nunc</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="advertise">
+				<h1>Advertise</h1>
+				<div class="advert-body">
+					<div class="cont">
+						<p>Your Ad Here</p>
+					</div>
+				</div>
+			</div>
+			<div class="tags">
+				<h1>Tags</h1>
+				<div class="tag-detail">
+						<span class="active">Travel</span>
+						<span>New Yor</span>
+						<span>London</span>
+						<span>IKEA</span>
+						<span>NORWAY</span>
+						<span>DIY</span>
+						<span>ideas</span>
+						<span>Baby</span>
+						<span>Family</span>
+						<span>News</span>
+						<span>Clothing</span>
+						<span>Shopping</span>
+						<span>Sports</span>
+						<span>Games</span>
+				</div>
+			</div>
+			<div class="inspiration">
+				<h1>Inspiration</h1>
+				<div class="inspire-cont">
+					<img src="images/rockstar.jpg">
+					<img src="images/mark.jpg">
+					<img src="images/jenny.jpg">
+					<img src="images/kyle.jpg">
+				</div>
+			</div>
+			<div class="follow">
+				<h1>Follow Me</h1>
+				<div class="follow-cont">
+					<div class="icont">
+						<div class="ic"></div>
+						<div class="ic"></div>
+						<div class="ic"></div>
+					</div>
+					<div class="icont">
+						<div class="ic"></div>
+						<div class="ic"></div>
+						<div class="ic"></div>
+					</div>
+					<div class="icont">
+						<div class="ic"></div>
+						<div class="ic"></div>
+						<div class="ic"></div>
+					</div>
+					<div class="icont">
+						<div class="ic"></div>
+						<div class="ic"></div>
+						<div class="ic"></div>
+					</div>
+					<div class="icont">
+						<div class="ic"></div>
+						<div class="ic"></div>
+						<div class="ic"></div>
+					</div>
+					<div class="icont">
+						<div class="ic"></div>
+						<div class="ic"></div>
+						<div class="ic"></div>
+					</div>
+				</div>
+			</div>
+			<div class="subscribe">
+				<h1>Subscribe</h1>
+				<div class="subscribe-body">
+					<p>Enter your email below and get notified on the latest blog post</p>
+					<form>
+						<input type="text" name="email" placeholder="Enter e-mail">
+						<button>Subscribe</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="footer">
+		<a class="top" href="#top">To the top</a>
+		<p>Powered by <span class="under">Shaw</span></p>
+	</section>
+</body>
+</html>

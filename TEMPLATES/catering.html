@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Catering</title>
+	<style type="text/css">
+		*{
+			box-sizing: border-box;
+		}
+		html, body{
+			font-size: 10px;
+			margin: 0;
+			padding: 0;
+			height: 100%;
+		}
+		a{
+			text-decoration: none;
+			color: black;
+		}
+		ul{
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+		}
+		nav{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			position: sticky;
+			background-color: white;
+			top: 0;
+			left: 0;
+			z-index: 33;
+			width: 100%;
+			padding: 5px 20px;
+			box-shadow: 0px 3px 6px rgba(0,0,0,0.2)
+		}
+		nav ul.navlist{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		nav ul.navlist li{
+			margin: 0 15px;
+			padding: 1rem;
+		} 
+		nav h1{
+			padding: 1rem;
+			margin: 0;
+			font-weight: normal;
+			cursor: pointer;
+		}
+		nav ul.navlist li:hover, nav h1:hover{
+			background-color: lightgrey;
+		}
+		nav div.toggler{
+			cursor: pointer;
+			display: none;
+		}
+		nav div.toggler:hover{
+			/*background-color: red;*/
+		}
+		nav div.tog{
+			width: 1.8rem;
+			height: 0.2rem;
+			margin: 0.2rem;
+			background-color: black;
+		}
+		div.sidebar{
+			background-color: black;
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 320px;
+			z-index: 55;
+			padding-top: 20%;
+			display: none;
+		}
+		div.sidebar ul.sidebar-links li{
+			text-align: center;
+			line-height: 38px;
+			/*border: 1px solid blue;*/
+		}
+		div.sidebar ul.sidebar-links li a{
+			color: white;
+			font-size: 2.5rem;
+		}
+		ul.navlist li a, nav h1{
+			font-size: 1.4rem;
+			letter-spacing: 4px;
+		}
+		section.hero{
+			background-image: url("images/boys.jpg");
+			background-repeat: no-repeat;
+			background-size: cover;
+			height: 90vh;
+			position: relative;
+		}
+		section.hero h1{
+			position: absolute;
+			bottom: 40px;
+			left: 25px;
+			font-size: 4rem;
+			/*color: darkgrey;*/
+		}
+		section.about, section.menu-items{
+			display: flex;
+			justify-content: center;
+			width: 80%;
+			margin: 70px auto;
+		}
+		div.half, .menu-half{
+			width: 50%;
+		}
+		div.pic img, div.menu-pic img{
+			width: 100%;
+			height: 100%;
+		}
+		div.about-content h1, div.about-content h3, div.about-content p{
+			text-align: center;
+		}
+		div.about-content h1{
+			font-size: 3.5rem;
+			letter-spacing: 10px;
+		}
+		div.about-content h3{
+			font-size: 1.6rem;
+			letter-spacing: 8px;
+			margin: 48px 0;
+		}
+		div.about-content p{
+			padding-left: 50px;
+			text-align: justify;
+		}
+		div.about-content p{
+			font-size: 1.7rem;
+			/*border: 1px solid blue;*/
+		}
+		span.greytext{
+			color: grey;
+		}
+		section.horizontal-line{
+			margin: 100px 0;
+		}
+		section.horizontal-line hr{
+			color: grey;
+			width: 80%;
+		}
+		.menu-half h1.listhead{
+			text-align: center;
+			font-size: 3.5rem;
+			letter-spacing: 10px
+		}
+		ul.menu-half li{
+			margin: 50px 0px;
+			/*border: 1px solid red;*/
+		}
+		ul.menu-half li h1{
+			font-size: 2rem;
+			letter-spacing: 5px;
+		}
+		ul.menu-half li p{
+			font-size: 1.4rem;
+			color: grey;
+		}
+		section.contact{
+			width: 80%;
+			margin: 0 auto;
+			padding: 0 18px;
+		}
+		section.contact h1{
+			font-size: 3.5rem;
+			letter-spacing: 8px;
+		}
+		section.contact h2{
+			font-size: 1.6rem;
+			color: darkblue;
+		}
+		section.contact p{
+			font-size: 1.5rem;
+		}
+		section.contact input:not(input[type="submit"]){
+			width: 100%;
+			font-size: 1.4rem;
+			padding: 13px 6px;
+			border: none;
+			border-bottom: 1px solid grey; 
+			margin: 12px 0;
+		}
+		section input[type="submit"]{
+			border: none;
+			font-size: 1.4rem;
+			padding: 12px 14px;
+			margin-top: 15px;
+		}
+		section.footer{
+			margin-top: 50px;
+		}
+		section.footer p{
+			font-size: 1.5rem;
+			text-align: center;
+			background-color: #f2f2f2;
+			padding: 40px;
+		}
+		@media screen and (max-width: 1250px){
+			section.menu-items{
+				flex-wrap: wrap;
+			}
+			.menu-half{
+				width: 100%;
+			}
+			div.menu-pic img{
+				height: 65vh;
+			}
+			section.contact{
+				width: 94%;
+			}
+		}
+		@media screen and (max-width: 1000px){
+			div.pic img{
+				height: 50%;
+			}
+			span.greytext{
+				display: none;
+			}
+		}
+		@media screen and (max-width: 600px){
+			section.hero{
+				height: 50vh;
+			}
+			section.about{
+				flex-wrap: wrap;
+			}
+			div.half{
+				width: 100%;
+			}
+			div.pic{
+				display: none;
+			}
+			div.about-content p{
+			padding-left: 0px;
+			}
+			nav ul.navlist{
+				display: none;
+			}
+			nav div.toggler{
+				display: block;
+			}
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<h1 class="navbrand">Gaurment au Catering</h1>
+		<ul class="navlist">
+			<li>
+				<a href="#about">About</a>
+			</li>
+			<li>
+				<a href="#menu">Menu</a>
+			</li>
+			<li>
+				<a href="#contact">Contact</a>
+			</li>
+		</ul>
+		<div class="toggler" onclick="openSidebar()">
+			<div class="tog"></div>
+			<div class="tog"></div>
+			<div class="tog"></div>
+		</div>
+	</nav>
+	<div class="sidebar">
+		<ul class="sidebar-links">
+			<li>
+				<a href="#about">About</a>
+			</li>
+			<li>
+				<a href="#menu">Menu</a>
+			</li>
+			<li>
+				<a href="#contact">Contact</a>
+			</li>
+		</ul>
+	</div>
+	<section class="hero">
+		<h1>Le Catering</h1>
+	</section>
+	<section class="about" id="about">
+		<div class="pic half">
+			<img src="images/book.jpg">
+		</div>
+		<div class="about-content half">
+			<h1>About Catering</h1>
+			<h3>Tradition since 1889</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			<br><br>
+			<span class="greytext">
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.	
+			</span>
+			</p>
+		</div>
+	</section>
+	<section class="horizontal-line">
+		<hr>
+	</section>
+	<section class="menu-items" id="menu">
+		<ul class="menu-half">
+			<h1 class="listhead">Our Menu</h1>
+			<li>
+				<h1>Bread Basket</h1>
+				<p>Assortment of fresh baked fruit breads and muffins 5.50</p>
+			</li>
+			<li>
+				<h1>Honey Almond Granola With Fuits</h1>
+				<p>Assortment of fresh baked fruit breads and muffins 5.50</p>
+			</li>
+			<li>
+				<h1>Belgian Waffle</h1>
+				<p>Vanilla flavored batter with malted flour 7.50</p>
+			</li>
+			<li>
+				<h1>Scrambled eggs</h1>
+				<p>Scrambled eggs, roasted red pepper and garlic, with green onions 7.50</p>
+			</li>
+			<li>
+				<h1>Blueberry Pancakes</h1>
+				<p>With syrup, butter and lots of berries 8.50</p>
+			</li>
+		</ul>
+		<div class="menu-half menu-pic">
+			<img src="images/third.jpg">
+		</div>
+	</section>
+	<section class="horizontal-line">
+		<hr>
+	</section>
+	<section class="contact">
+		<h1>Contact</h1>
+		<p>We offer full-service catering for any event, large or small. We understand your needs and we will cater the food to satisfy the biggest criteria of them all, both look and taste. Do not hesitate to contact us</p>
+		<h2>Catering serivices, 42nd Living St, 43043 New Your, NY</h2>
+		<p>You can also contact us by phone 00553123-2323 or email catering@catering.com, or you can send us a message here:</p>
+		<div class="form-container">
+			<form>
+				<input type="text" name="name" placeholder="Name">
+				<input type="number" name="people" placeholder="How many people">
+				<input type="datetime-local" name="date" placeholder="11/16/2020 08:00 PM">
+				<input type="text" name="message" placeholder="Message \ Special requirements">
+				<input type="submit" value="SEND MESSAGE">
+			</form>
+		</div>
+	</section>
+	<section class="footer">
+		<p>Powered by Shaw</p>
+	</section>
+
+	<script type="text/javascript">
+		let sidebar = document.querySelector('div.sidebar')
+		console.log(sidebar.style.display)
+		sidebar.style.display = "none"
+		function openSidebar(){
+			 if(sidebar.style.display == "none"){
+			 	sidebar.style.display = "block"
+			 }
+			 else{
+			 	sidebar.style.display = "none"
+			 }
+		}
+	</script>
+</body>
+</html>
